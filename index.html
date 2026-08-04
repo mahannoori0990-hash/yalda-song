@@ -103,19 +103,15 @@
       <button type="button" id="closeAuth" class="close" aria-label="بستن">×</button>
       <div id="authGuestView">
         <p class="eyebrow dark">حساب کاربری</p>
-        <h2>ورود یا ثبت‌نام</h2>
-        <p class="auth-intro">با ایمیل و رمز عبور وارد شو. برای حساب جدید، تب «ثبت‌نام» را انتخاب کن.</p>
-        <div class="auth-tabs" role="tablist" aria-label="ورود یا ثبت‌نام">
-          <button id="loginTab" class="auth-tab active" type="button" role="tab" aria-selected="true">ورود</button>
-          <button id="signupTab" class="auth-tab" type="button" role="tab" aria-selected="false">ثبت‌نام</button>
-        </div>
-        <form id="authForm" class="auth-form">
-          <label><span>ایمیل</span><input id="authEmail" type="email" autocomplete="email" required placeholder="name@example.com" /></label>
-          <label><span>رمز عبور</span><input id="authPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="حداقل ۶ کاراکتر" /></label>
-          <label id="authNameField" hidden><span>نام نمایشی</span><input id="authName" maxlength="50" autocomplete="name" placeholder="مثلاً ماهان" /></label>
-          <button id="authSubmitBtn" class="primary full" type="submit">ورود</button>
+        <h2 id="authTitle">ورود</h2>
+        <p class="auth-intro">برای ثبت آهنگ و جلوگیری از اسپم، ابتدا وارد حساب خودت شو.</p>
+        <form id="authForm">
+          <label id="displayNameLabel" hidden><span>نام نمایشی</span><input id="displayName" maxlength="50" autocomplete="name" /></label>
+          <label><span>ایمیل</span><input id="authEmail" type="email" required maxlength="254" autocomplete="email" /></label>
+          <label><span>رمز عبور</span><input id="authPassword" type="password" required minlength="8" maxlength="72" autocomplete="current-password" /></label>
+          <button id="authSubmit" class="primary full" type="submit">ورود</button>
         </form>
-        <p class="auth-note">پس از ثبت‌نام، بدون ایمیل تأیید وارد حساب می‌شوی.</p>
+        <button id="switchAuthMode" class="text-btn" type="button">حساب نداری؟ ثبت‌نام کن</button>
         <p id="authMessage" class="form-message" aria-live="polite"></p>
       </div>
       <div id="authUserView" hidden>

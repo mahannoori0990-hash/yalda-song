@@ -10,7 +10,7 @@ const colors=['#7a2638','#9d3d48','#b85d4d','#6a3746','#a66a3f','#8b4a3e','#5f45
 const $=s=>document.querySelector(s);
 const esc=(v='')=>String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const number=n=>new Intl.NumberFormat('fa-IR').format(n);
-let selected='',songs=[],likes=[],user=null,pendingAdd=false,authMode='login';
+let selected='',songs=[],likes=[],user=null,authMode='login',pendingAdd=false;
 
 function toast(message){const el=$('#toast');el.textContent=message;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
 function provinceName(id){return provinceNames[id]||id}
@@ -66,57 +66,32 @@ async function toggleLike(songId){
 function openSongDialog(){if(!selected){toast('اول یک استان را انتخاب کن.');return}if(!user){pendingAdd=true;openAuth();toast('برای ثبت آهنگ ابتدا وارد یا ثبت‌نام شو.');return}$('#dialogProvince').textContent=provinceName(selected);$('#songDialog').showModal()}
 async function submitSong(event){
   event.preventDefault();if(!user)return openAuth();const button=event.submitter;button.disabled=true;
-  const name=userDisplayName().slice(0,50);const link=$('#songLink').value.trim()||null;
+  const name=(user.user_metadata?.display_name||user.email.split('@')[0]).slice(0,50);const link=$('#songLink').value.trim()||null;
   const {error}=await db.from('songs').insert({province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link,submitted_by:name,user_id:user.id});button.disabled=false;
   if(error){toast(error.code==='42501'?'اجازه ثبت وجود ندارد؛ setup-auth.sql را بررسی کن.':'ثبت انجام نشد؛ یک دقیقه بعد دوباره امتحان کن.');return}
   event.target.reset();$('#songDialog').close();$('#filterProvince').value=selected;await loadSongs();toast('آهنگ با موفقیت ثبت شد 🎉');$('#songs-section').scrollIntoView({behavior:'smooth'});
 }
 
-function openAuth(){renderAuth();setAuthMode('login');$('#authMessage').textContent='';$('#authDialog').showModal();setTimeout(()=>$('#authEmail').focus(),50)}
-function userDisplayName(){
-  const metadata=user?.user_metadata||{};
-  return metadata.full_name||metadata.name||metadata.display_name||user?.email?.split('@')[0]||'کاربر یلدا';
-}
+function openAuth(){renderAuth();$('#authDialog').showModal()}
 function renderAuth(){
   $('#authGuestView').hidden=Boolean(user);$('#authUserView').hidden=!user;$('#accountBtn').classList.toggle('signed-in',Boolean(user));
-  $('#accountBtn').textContent=user?userDisplayName():'ورود / ثبت‌نام';
-  if(user){$('#userDisplayName').textContent=userDisplayName();$('#userEmail').textContent=user.email||'';}
-}
-function setAuthMode(mode){
-  authMode=mode;const signup=mode==='signup';
-  $('#loginTab').classList.toggle('active',!signup);$('#signupTab').classList.toggle('active',signup);
-  $('#loginTab').setAttribute('aria-selected',String(!signup));$('#signupTab').setAttribute('aria-selected',String(signup));
-  $('#authNameField').hidden=!signup;$('#authPassword').autocomplete=signup?'new-password':'current-password';
-  $('#authSubmitBtn').textContent=signup?'ساخت حساب':'ورود';$('#authMessage').textContent='';
-}
-function authErrorMessage(error){
-  const text=(error?.message||'').toLowerCase();
-  if(text.includes('invalid login credentials'))return 'ایمیل یا رمز عبور اشتباه است.';
-  if(text.includes('already registered')||text.includes('already been registered'))return 'این ایمیل قبلاً ثبت شده؛ وارد حساب شو.';
-  if(text.includes('password'))return 'رمز عبور باید حداقل ۶ کاراکتر باشد.';
-  if(text.includes('email'))return 'آدرس ایمیل معتبر وارد کن.';
-  return 'عملیات انجام نشد؛ دوباره تلاش کن.';
+  $('#accountBtn').textContent=user?(user.user_metadata?.display_name||'حساب من'):'ورود / ثبت‌نام';
+  if(user){$('#userDisplayName').textContent=user.user_metadata?.display_name||'کاربر یلدا';$('#userEmail').textContent=user.email;return}
+  const signup=authMode==='signup';$('#authTitle').textContent=signup?'ساخت حساب':'ورود';$('#authSubmit').textContent=signup?'ثبت‌نام':'ورود';$('#displayNameLabel').hidden=!signup;$('#displayName').required=signup;$('#switchAuthMode').textContent=signup?'حساب داری؟ وارد شو':'حساب نداری؟ ثبت‌نام کن';$('#authPassword').autocomplete=signup?'new-password':'current-password';
 }
 async function submitAuth(event){
-  event.preventDefault();const email=$('#authEmail').value.trim();const password=$('#authPassword').value;const button=$('#authSubmitBtn');const msg=$('#authMessage');
-  button.disabled=true;msg.textContent=authMode==='signup'?'در حال ساخت حساب…':'در حال ورود…';msg.className='form-message';
-  let result;
-  if(authMode==='signup'){
-    const displayName=$('#authName').value.trim().slice(0,50)||email.split('@')[0];
-    result=await db.auth.signUp({email,password,options:{data:{display_name:displayName}}});
-  }else result=await db.auth.signInWithPassword({email,password});
-  button.disabled=false;
-  if(result.error){msg.textContent=authErrorMessage(result.error);return}
-  if(authMode==='signup'&&!result.data.session){msg.textContent='حساب ساخته شد، اما تأیید ایمیل در Supabase هنوز روشن است. آن را خاموش کن.';return}
-  msg.className='form-message success';msg.textContent=authMode==='signup'?'حساب ساخته شد و وارد شدی.':'با موفقیت وارد شدی.';
-  setTimeout(()=>$('#authDialog').close(),500);
+  event.preventDefault();const email=$('#authEmail').value.trim();const password=$('#authPassword').value;const msg=$('#authMessage');msg.textContent='کمی صبر کن…';msg.className='form-message';
+  let result;if(authMode==='signup'){result=await db.auth.signUp({email,password,options:{data:{display_name:$('#displayName').value.trim()}}})}else{result=await db.auth.signInWithPassword({email,password})}
+  if(result.error){msg.textContent=result.error.message.includes('Invalid login')?'ایمیل یا رمز عبور اشتباه است.':result.error.message;return}
+  if(authMode==='signup'&&!result.data.session){msg.textContent='لینک تأیید به ایمیلت فرستاده شد. ایمیل را تأیید کن و سپس وارد شو.';msg.classList.add('success');return}
+  msg.textContent='';$('#authDialog').close();toast('با موفقیت وارد شدی.');
 }
 async function signOut(){await db.auth.signOut();$('#authDialog').close();toast('از حساب خارج شدی.')}
 
 $('#provinceFallback').addEventListener('change',e=>e.target.value&&selectProvince(e.target.value));$('#filterProvince').addEventListener('change',renderSongs);
 $('#addSongBtn').addEventListener('click',openSongDialog);$('#openAddTop').addEventListener('click',()=>selected?openSongDialog():$('#map-section').scrollIntoView({behavior:'smooth'}));
 $('#closeDialog').addEventListener('click',()=>$('#songDialog').close());$('#songDialog').addEventListener('click',e=>e.target===$('#songDialog')&&$('#songDialog').close());$('#songForm').addEventListener('submit',submitSong);
-$('#accountBtn').addEventListener('click',openAuth);$('#closeAuth').addEventListener('click',()=>$('#authDialog').close());$('#authDialog').addEventListener('click',e=>e.target===$('#authDialog')&&$('#authDialog').close());$('#loginTab').addEventListener('click',()=>setAuthMode('login'));$('#signupTab').addEventListener('click',()=>setAuthMode('signup'));$('#authForm').addEventListener('submit',submitAuth);$('#signOutBtn').addEventListener('click',signOut);
+$('#accountBtn').addEventListener('click',openAuth);$('#closeAuth').addEventListener('click',()=>$('#authDialog').close());$('#authDialog').addEventListener('click',e=>e.target===$('#authDialog')&&$('#authDialog').close());$('#switchAuthMode').addEventListener('click',()=>{authMode=authMode==='login'?'signup':'login';$('#authMessage').textContent='';renderAuth()});$('#authForm').addEventListener('submit',submitAuth);$('#signOutBtn').addEventListener('click',signOut);
 $('#languageSelect').addEventListener('change',e=>{if(e.target.value!=='fa')toast('نسخه ورود در حال حاضر با رابط فارسی فعال است.');e.target.value='fa'});
 db.auth.onAuthStateChange((_event,session)=>{user=session?.user||null;renderAuth();renderSongs();updateStats();if(user&&pendingAdd){pendingAdd=false;setTimeout(openSongDialog,200)}});
 
