@@ -26,6 +26,7 @@
           <a href="#story-section" data-i18n="navStory">درباره یلدا</a>
           <a href="#event-section" data-i18n="navEvent">مراسم</a>
           <a href="#faq-section" data-i18n="navFaq">سؤالات</a>
+          <button id="authButton" class="auth-button" type="button">ورود / ثبت‌نام</button>
           <button id="openAddTop" class="primary small" data-i18n="addSong">افزودن آهنگ</button>
         </div>
         <label class="language-picker" for="languageSelect">
@@ -168,13 +169,33 @@
       <label><span data-i18n="songName">نام آهنگ</span><input id="songTitle" required maxlength="80" data-i18n-placeholder="songPlaceholder" placeholder="مثلاً شب یلدا" /></label>
       <label><span data-i18n="artistName">نام خواننده</span><input id="artistName" required maxlength="80" data-i18n-placeholder="artistPlaceholder" placeholder="نام خواننده یا گروه" /></label>
       <label><span data-i18n="songLink">لینک آهنگ</span> <small data-i18n="optional">(اختیاری)</small><input id="songLink" type="url" placeholder="https://youtube.com/..." /></label>
-      <label><span data-i18n="yourName">نام شما</span> <small data-i18n="optional">(اختیاری)</small><input id="submitter" maxlength="50" data-i18n-placeholder="guestPlaceholder" placeholder="مهمان یلدا" /></label>
+      <label><span data-i18n="yourName">نام شما</span><input id="submitter" maxlength="50" required data-i18n-placeholder="guestPlaceholder" placeholder="نام نمایشی شما" /></label>
       <button class="primary full" type="submit" data-i18n="submitSong">ثبت آهنگ</button>
-      <p class="privacy" data-i18n="privacy">نسخه آزمایشی اطلاعات را در مرورگر خودت ذخیره می‌کند.</p>
+      <p class="privacy">آهنگ با حساب کاربری شما ثبت می‌شود.</p>
     </form>
   </dialog>
 
+  <dialog id="authDialog">
+    <form id="authForm" class="dialog-card auth-card">
+      <button type="button" id="closeAuthDialog" class="close" aria-label="بستن">×</button>
+      <p class="eyebrow dark">حساب کاربری</p>
+      <h2 id="authTitle">ورود به یلدای ایران</h2>
+      <p class="auth-lead">برای ثبت آهنگ و رأی‌دادن وارد حساب خود شوید.</p>
+      <label><span>ایمیل</span><input id="authEmail" type="email" autocomplete="email" required placeholder="name@example.com" /></label>
+      <label><span>رمز عبور</span><input id="authPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="حداقل ۶ کاراکتر" /></label>
+      <button id="authSubmit" class="primary full" type="submit">ورود</button>
+      <button id="authModeToggle" class="text-button" type="button">حساب ندارید؟ ثبت‌نام کنید</button>
+      <p id="authMessage" class="auth-message" aria-live="polite"></p>
+    </form>
+  </dialog>
+
+  <div id="accountMenu" class="account-menu" hidden>
+    <span id="accountEmail"></span>
+    <button id="signOutButton" type="button">خروج از حساب</button>
+  </div>
+
   <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 </body>
 </html>

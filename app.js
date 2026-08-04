@@ -1,3 +1,10 @@
+// Paste the values from Supabase > Project Settings > API here.
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const backendReady = !SUPABASE_URL.startsWith('YOUR_') && !SUPABASE_ANON_KEY.startsWith('YOUR_');
+const supabaseClient = backendReady ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+let currentUser = null;
+
 const provinceNames = {
   fa: {
     alborz:'البرز', ardabil:'اردبیل', 'azerbaijan-east':'آذربایجان شرقی', 'azerbaijan-west':'آذربایجان غربی',
@@ -87,7 +94,7 @@ const fallbackSongs = [
   {id:2,province:'gilan',title:'گل انار',artist:'آهنگ محلی گیلکی',link:'https://www.youtube.com/results?search_query=آهنگ+محلی+گیلکی+یلدا',by:'امیر',likes:14,liked:false},
   {id:3,province:'tehran',title:'زمستون',artist:'افشین مقدم',link:'https://www.youtube.com/results?search_query=افشین+مقدم+زمستون',by:'مهمان یلدا',likes:31,liked:false}
 ];
-let songs = JSON.parse(localStorage.getItem('yaldaSongs') || 'null') || fallbackSongs;
+let songs = fallbackSongs;
 const $=s=>document.querySelector(s);
 const t=(key,vars={})=>Object.entries(vars).reduce((text,[k,v])=>text.replaceAll(`{${k}}`,v),translations[currentLang][key]||key);
 const provinceName=id=>provinceNames[currentLang][id] || provinceNames.en[id] || id;
@@ -162,19 +169,83 @@ function renderSongs(){
   </article>`).join('');
   $('#emptyState').hidden=!!list.length; document.querySelectorAll('[data-like]').forEach(btn=>btn.addEventListener('click',()=>toggleLike(Number(btn.dataset.like))));
 }
-function toggleLike(id){const s=songs.find(x=>x.id===id);if(!s)return;s.liked=!s.liked;s.likes+=s.liked?1:-1;save();renderSongs();updateStats()}
+async function toggleLike(id){
+  if(!requireLogin()) return;
+  const song=songs.find(item=>item.id===id); if(!song) return;
+  const query=supabaseClient.from('song_likes');
+  const {error}=song.liked
+    ? await query.delete().eq('song_id',id).eq('user_id',currentUser.id)
+    : await query.insert({song_id:id,user_id:currentUser.id});
+  if(error){toast('ثبت رأی انجام نشد');return}
+  song.liked=!song.liked; song.likes+=song.liked?1:-1; renderSongs(); updateStats();
+}
 const dialog=$('#songDialog');
-function openDialog(){if(!selected){toast(t('chooseFirst'));return}$('#dialogProvince').textContent=provinceName(selected);dialog.showModal();setTimeout(()=>$('#songTitle').focus(),50)}
+function openDialog(){if(!selected){toast(t('chooseFirst'));return}if(!requireLogin())return;$('#dialogProvince').textContent=provinceName(selected);dialog.showModal();setTimeout(()=>$('#songTitle').focus(),50)}
 $('#addSongBtn').addEventListener('click',openDialog); $('#openAddTop').addEventListener('click',()=>{if(selected)openDialog();else document.querySelector('#map-section').scrollIntoView()});
 $('#closeDialog').addEventListener('click',()=>dialog.close()); dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
-$('#songForm').addEventListener('submit',e=>{
-  e.preventDefault(); songs.push({id:Date.now(),province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link:$('#songLink').value.trim(),by:$('#submitter').value.trim()||t('guest'),likes:0,liked:false});
-  save();e.target.reset();dialog.close();filterProvince.value=selected;renderSongs();updateStats();toast(t('addedSuccess'));document.querySelector('#songs-section').scrollIntoView({behavior:'smooth'});
+$('#songForm').addEventListener('submit',async e=>{
+  e.preventDefault(); if(!requireLogin())return;
+  const submitButton=e.target.querySelector('[type="submit"]'); submitButton.disabled=true;
+  const payload={province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link:$('#songLink').value.trim()||null,submitted_by:$('#submitter').value.trim(),user_id:currentUser.id};
+  const {error}=await supabaseClient.from('songs').insert(payload);
+  submitButton.disabled=false;
+  if(error){toast(error.message.includes('wait')?'لطفاً ۶۰ ثانیه تا ثبت آهنگ بعدی صبر کنید':'ثبت آهنگ انجام نشد');return}
+  e.target.reset();dialog.close();filterProvince.value=selected;await loadSongs();toast(t('addedSuccess'));document.querySelector('#songs-section').scrollIntoView({behavior:'smooth'});
 });
-function save(){localStorage.setItem('yaldaSongs',JSON.stringify(songs))}
 function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function escapeAttr(v=''){return escapeHtml(v)}
 function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
+
+const authDialog=$('#authDialog'); let authMode='login';
+function requireLogin(){
+  if(!backendReady){toast('ابتدا اطلاعات Supabase را در app.js وارد کنید');return false}
+  if(currentUser)return true;
+  authDialog.showModal();return false;
+}
+function renderAuth(){
+  $('#authButton').textContent=currentUser?'حساب من':'ورود / ثبت‌نام';
+  $('#accountEmail').textContent=currentUser?.email||'';
+  if(currentUser&&!$('#submitter').value)$('#submitter').value=currentUser.user_metadata?.display_name||currentUser.email.split('@')[0];
+}
+$('#authButton').addEventListener('click',()=>{if(currentUser){$('#accountMenu').hidden=!$('#accountMenu').hidden}else authDialog.showModal()});
+$('#closeAuthDialog').addEventListener('click',()=>authDialog.close());
+authDialog.addEventListener('click',e=>{if(e.target===authDialog)authDialog.close()});
+$('#authModeToggle').addEventListener('click',()=>{
+  authMode=authMode==='login'?'signup':'login';
+  $('#authTitle').textContent=authMode==='login'?'ورود به یلدای ایران':'ساخت حساب جدید';
+  $('#authSubmit').textContent=authMode==='login'?'ورود':'ثبت‌نام';
+  $('#authModeToggle').textContent=authMode==='login'?'حساب ندارید؟ ثبت‌نام کنید':'حساب دارید؟ وارد شوید';
+  $('#authMessage').textContent='';
+});
+$('#authForm').addEventListener('submit',async e=>{
+  e.preventDefault(); if(!backendReady){$('#authMessage').textContent='اطلاعات اتصال Supabase هنوز وارد نشده است.';return}
+  const email=$('#authEmail').value.trim(),password=$('#authPassword').value;
+  $('#authSubmit').disabled=true;
+  const result=authMode==='login'?await supabaseClient.auth.signInWithPassword({email,password}):await supabaseClient.auth.signUp({email,password});
+  $('#authSubmit').disabled=false;
+  if(result.error){$('#authMessage').textContent=result.error.message;return}
+  if(authMode==='signup'&&!result.data.session){$('#authMessage').textContent='لینک تأیید برای ایمیل شما ارسال شد.';return}
+  authDialog.close();e.target.reset();toast('با موفقیت وارد شدید');
+});
+$('#signOutButton').addEventListener('click',async()=>{await supabaseClient.auth.signOut();$('#accountMenu').hidden=true;toast('از حساب خارج شدید')});
+
+async function loadSongs(){
+  if(!backendReady){songs=fallbackSongs;renderSongs();updateStats();return}
+  const [{data:rows,error},{data:likes}]=await Promise.all([
+    supabaseClient.from('songs').select('id,province,title,artist,link,submitted_by,created_at').order('created_at',{ascending:false}),
+    supabaseClient.from('song_likes').select('song_id,user_id')
+  ]);
+  if(error){toast('دریافت آهنگ‌ها انجام نشد');return}
+  const allLikes=likes||[];
+  songs=(rows||[]).map(row=>({...row,by:row.submitted_by,likes:allLikes.filter(l=>l.song_id===row.id).length,liked:!!currentUser&&allLikes.some(l=>l.song_id===row.id&&l.user_id===currentUser.id)}));
+  renderSongs();updateStats();
+}
+
+async function initAuth(){
+  if(!backendReady){renderAuth();await loadSongs();return}
+  const {data}=await supabaseClient.auth.getSession(); currentUser=data.session?.user||null;renderAuth();await loadSongs();
+  supabaseClient.auth.onAuthStateChange((_event,session)=>{currentUser=session?.user||null;renderAuth();loadSongs()});
+}
 
 function initRevealAnimations(){
   const items=document.querySelectorAll('.reveal');
@@ -185,4 +256,4 @@ function initRevealAnimations(){
   items.forEach(item=>observer.observe(item));
 }
 
-applyLanguage(currentLang); loadMap(); initRevealAnimations();
+applyLanguage(currentLang); loadMap(); initRevealAnimations(); initAuth();
