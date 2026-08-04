@@ -18,6 +18,7 @@
         <div class="nav-links">
           <a href="#map-section" data-i18n="navMap">نقشه</a>
           <a href="#songs-section" data-i18n="navSongs">آهنگ‌ها</a>
+          <button id="accountBtn" class="account-btn" type="button">ورود / ثبت‌نام</button>
           <button id="openAddTop" class="primary small" data-i18n="addSong">افزودن آهنگ</button>
         </div>
         <label class="language-picker" for="languageSelect">
@@ -92,10 +93,34 @@
       <label><span data-i18n="songName">نام آهنگ</span><input id="songTitle" required maxlength="80" data-i18n-placeholder="songPlaceholder" placeholder="مثلاً شب یلدا" /></label>
       <label><span data-i18n="artistName">نام خواننده</span><input id="artistName" required maxlength="80" data-i18n-placeholder="artistPlaceholder" placeholder="نام خواننده یا گروه" /></label>
       <label><span data-i18n="songLink">لینک آهنگ</span> <small data-i18n="optional">(اختیاری)</small><input id="songLink" type="url" placeholder="https://youtube.com/..." /></label>
-      <label><span data-i18n="yourName">نام شما</span> <small data-i18n="optional">(اختیاری)</small><input id="submitter" maxlength="50" data-i18n-placeholder="guestPlaceholder" placeholder="مهمان یلدا" /></label>
       <button class="primary full" type="submit" data-i18n="submitSong">ثبت آهنگ</button>
-      <p class="privacy" data-i18n="privacy">آهنگ برای همه بازدیدکنندگان در پایگاه داده ثبت می‌شود.</p>
+      <p class="privacy">این پیشنهاد با حساب کاربری شما ثبت می‌شود.</p>
     </form>
+  </dialog>
+
+  <dialog id="authDialog">
+    <div class="dialog-card auth-card">
+      <button type="button" id="closeAuth" class="close" aria-label="بستن">×</button>
+      <div id="authGuestView">
+        <p class="eyebrow dark">حساب کاربری</p>
+        <h2 id="authTitle">ورود</h2>
+        <p class="auth-intro">برای ثبت آهنگ و جلوگیری از اسپم، ابتدا وارد حساب خودت شو.</p>
+        <form id="authForm">
+          <label id="displayNameLabel" hidden><span>نام نمایشی</span><input id="displayName" maxlength="50" autocomplete="name" /></label>
+          <label><span>ایمیل</span><input id="authEmail" type="email" required maxlength="254" autocomplete="email" /></label>
+          <label><span>رمز عبور</span><input id="authPassword" type="password" required minlength="8" maxlength="72" autocomplete="current-password" /></label>
+          <button id="authSubmit" class="primary full" type="submit">ورود</button>
+        </form>
+        <button id="switchAuthMode" class="text-btn" type="button">حساب نداری؟ ثبت‌نام کن</button>
+        <p id="authMessage" class="form-message" aria-live="polite"></p>
+      </div>
+      <div id="authUserView" hidden>
+        <p class="eyebrow dark">حساب من</p>
+        <h2 id="userDisplayName">کاربر یلدا</h2>
+        <p id="userEmail" class="auth-intro"></p>
+        <button id="signOutBtn" class="secondary full" type="button">خروج از حساب</button>
+      </div>
+    </div>
   </dialog>
 
   <div id="toast" class="toast" aria-live="polite"></div>

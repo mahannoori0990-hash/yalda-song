@@ -25,3 +25,5 @@
 .svg-layer #provinces path.is-selected {
   transform: scale(1.018);
 }
+
+.account-btn{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;border-radius:11px;padding:8px 13px;cursor:pointer;white-space:nowrap}.account-btn.signed-in{border-color:#f4ca73;color:#f4ca73}.secondary{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--wine);font-weight:800;padding:12px 20px;cursor:pointer}.full{width:100%}.auth-card{min-height:330px}.auth-intro{color:var(--muted);line-height:1.8}.text-btn{display:block;margin:16px auto 0;border:0;background:none;color:var(--wine2);font-weight:700;cursor:pointer}.form-message{min-height:24px;text-align:center;font-size:13px;color:var(--wine2)}.form-message.success{color:var(--green)}@media(max-width:760px){.account-btn{font-size:12px;padding:7px 9px}.nav-links{flex-wrap:wrap;justify-content:flex-end}}
