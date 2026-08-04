@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#571c2a" />
+  <title>یلدای ایران | انتخاب آهنگ استان‌ها</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav shell">
+      <a class="brand" href="#map-section"><span>🍉</span><strong data-i18n="brand">یلدای ایران</strong></a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#map-section" data-i18n="navMap">نقشه</a>
+          <a href="#songs-section" data-i18n="navSongs">آهنگ‌ها</a>
+          <button id="openAddTop" class="primary small" data-i18n="addSong">افزودن آهنگ</button>
+        </div>
+        <label class="language-picker" for="languageSelect">
+          <span data-i18n="languageLabel">زبان</span>
+          <select id="languageSelect" aria-label="Language">
+            <option value="fa">فارسی</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+      </div>
+    </nav>
+    <div class="hero-content shell">
+      <p class="eyebrow" data-i18n="heroEyebrow">یک یلدا، سی‌ویک صدا</p>
+      <h1><span data-i18n="heroTitle1">آهنگ محبوب شهرت را</span><br><span data-i18n="heroTitle2">به نقشه یلدای ایران اضافه کن</span></h1>
+      <p data-i18n="heroText">استانت را انتخاب کن، آهنگ پیشنهادی‌ات را ثبت کن و به انتخاب‌های بقیه رأی بده.</p>
+      <a class="primary" href="#map-section" data-i18n="chooseProvince">انتخاب استان</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="map-section" class="section shell">
+      <div class="section-heading">
+        <div><p class="eyebrow dark" data-i18n="mapEyebrow">از روی نقشه انتخاب کن</p><h2 data-i18n="mapTitle">استان موردنظرت کجاست؟</h2></div>
+        <div id="selectedBadge" class="selected-badge" data-i18n="noneSelected">هنوز استانی انتخاب نشده</div>
+      </div>
+
+      <div class="map-layout">
+        <div class="map-card">
+          <div id="mapStatus" class="map-status" data-i18n="mapLoading">در حال آماده‌سازی نقشه تعاملی…</div>
+          <div id="mapStage" class="map-stage" aria-label="Interactive map of Iran provinces">
+            <div class="map-decoration" aria-hidden="true"><span>✦</span><span>●</span><span>✦</span></div>
+            <div id="svgLayer" class="svg-layer"></div>
+            <div id="tooltip" class="tooltip" role="status"></div>
+          </div>
+          <p class="map-note" data-i18n="mapNote">روی هر استان برو تا نام آن نمایش داده شود؛ با کلیک فقط همان استان انتخاب می‌شود.</p>
+        </div>
+
+        <aside class="side-panel">
+          <div class="panel-head"><span data-i18n="selectedProvinceLabel">استان انتخاب‌شده</span><strong id="selectedProvince">—</strong></div>
+          <p id="provinceHelp" data-i18n="provinceHelpDefault">از روی نقشه یک استان را انتخاب کن.</p>
+          <button id="addSongBtn" class="primary full" disabled data-i18n="addForProvince">+ افزودن آهنگ برای این استان</button>
+          <div class="stats">
+            <div><strong id="provinceSongCount">۰</strong><span data-i18n="songsCount">آهنگ</span></div>
+            <div><strong id="provinceLikeCount">۰</strong><span data-i18n="likesCount">لایک</span></div>
+          </div>
+          <label class="select-label" for="provinceFallback" data-i18n="chooseFromList">انتخاب از فهرست</label>
+          <select id="provinceFallback"><option value="" data-i18n="chooseProvinceOption">یک استان را انتخاب کن</option></select>
+        </aside>
+      </div>
+    </section>
+
+    <section id="songs-section" class="section songs-bg">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow dark" data-i18n="peopleChoice">انتخاب مردم</p><h2 id="songsTitle">محبوب‌ترین آهنگ‌های یلدایی</h2></div>
+          <select id="filterProvince" class="filter"><option value="all" data-i18n="allProvinces">همه استان‌ها</option></select>
+        </div>
+        <div id="songsGrid" class="songs-grid"></div>
+        <div id="emptyState" class="empty-state" hidden><div>🎵</div><h3 data-i18n="emptyTitle">هنوز آهنگی ثبت نشده</h3><p data-i18n="emptyText">اولین انتخاب این استان را تو اضافه کن.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell"><strong data-i18n="brand">یلدای ایران</strong><span data-i18n="footerText">ساخته‌شده برای کنار هم شنیدن صداهای ایران</span></div></footer>
+
+  <dialog id="songDialog">
+    <form id="songForm" class="dialog-card">
+      <button type="button" id="closeDialog" class="close" aria-label="Close">×</button>
+      <p class="eyebrow dark" data-i18n="yourSuggestion">پیشنهاد تو</p>
+      <h2><span data-i18n="addSongFor">افزودن آهنگ برای</span> <span id="dialogProvince">استان</span></h2>
+      <label><span data-i18n="songName">نام آهنگ</span><input id="songTitle" required maxlength="80" data-i18n-placeholder="songPlaceholder" placeholder="مثلاً شب یلدا" /></label>
+      <label><span data-i18n="artistName">نام خواننده</span><input id="artistName" required maxlength="80" data-i18n-placeholder="artistPlaceholder" placeholder="نام خواننده یا گروه" /></label>
+      <label><span data-i18n="songLink">لینک آهنگ</span> <small data-i18n="optional">(اختیاری)</small><input id="songLink" type="url" placeholder="https://youtube.com/..." /></label>
+      <label><span data-i18n="yourName">نام شما</span> <small data-i18n="optional">(اختیاری)</small><input id="submitter" maxlength="50" data-i18n-placeholder="guestPlaceholder" placeholder="مهمان یلدا" /></label>
+      <button class="primary full" type="submit" data-i18n="submitSong">ثبت آهنگ</button>
+      <p class="privacy" data-i18n="privacy">نسخه آزمایشی اطلاعات را در مرورگر خودت ذخیره می‌کند.</p>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
