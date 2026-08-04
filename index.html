@@ -103,15 +103,19 @@
       <button type="button" id="closeAuth" class="close" aria-label="بستن">×</button>
       <div id="authGuestView">
         <p class="eyebrow dark">حساب کاربری</p>
-        <h2 id="authTitle">ورود</h2>
-        <p class="auth-intro">برای ثبت آهنگ و جلوگیری از اسپم، ابتدا وارد حساب خودت شو.</p>
-        <form id="authForm">
-          <label id="displayNameLabel" hidden><span>نام نمایشی</span><input id="displayName" maxlength="50" autocomplete="name" /></label>
-          <label><span>ایمیل</span><input id="authEmail" type="email" required maxlength="254" autocomplete="email" /></label>
-          <label><span>رمز عبور</span><input id="authPassword" type="password" required minlength="8" maxlength="72" autocomplete="current-password" /></label>
-          <button id="authSubmit" class="primary full" type="submit">ورود</button>
-        </form>
-        <button id="switchAuthMode" class="text-btn" type="button">حساب نداری؟ ثبت‌نام کن</button>
+        <h2>ورود یا ثبت‌نام</h2>
+        <p class="auth-intro">برای ثبت آهنگ و جلوگیری از اسپم، با یکی از حساب‌های زیر ادامه بده.</p>
+        <div class="oauth-buttons">
+          <button class="oauth-btn" type="button" data-provider="google">
+            <span class="google-mark" aria-hidden="true">G</span>
+            <span>ادامه با Google</span>
+          </button>
+          <button class="oauth-btn apple" type="button" data-provider="apple">
+            <span class="apple-mark" aria-hidden="true">●</span>
+            <span>ادامه با Apple</span>
+          </button>
+        </div>
+        <p class="auth-note">با ادامه‌دادن، فقط اطلاعات پایه حساب برای ساخت پروفایل دریافت می‌شود.</p>
         <p id="authMessage" class="form-message" aria-live="polite"></p>
       </div>
       <div id="authUserView" hidden>

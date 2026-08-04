@@ -10,7 +10,7 @@ const colors=['#7a2638','#9d3d48','#b85d4d','#6a3746','#a66a3f','#8b4a3e','#5f45
 const $=s=>document.querySelector(s);
 const esc=(v='')=>String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const number=n=>new Intl.NumberFormat('fa-IR').format(n);
-let selected='',songs=[],likes=[],user=null,authMode='login',pendingAdd=false;
+let selected='',songs=[],likes=[],user=null,pendingAdd=false;
 
 function toast(message){const el=$('#toast');el.textContent=message;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
 function provinceName(id){return provinceNames[id]||id}
@@ -66,32 +66,33 @@ async function toggleLike(songId){
 function openSongDialog(){if(!selected){toast('اول یک استان را انتخاب کن.');return}if(!user){pendingAdd=true;openAuth();toast('برای ثبت آهنگ ابتدا وارد یا ثبت‌نام شو.');return}$('#dialogProvince').textContent=provinceName(selected);$('#songDialog').showModal()}
 async function submitSong(event){
   event.preventDefault();if(!user)return openAuth();const button=event.submitter;button.disabled=true;
-  const name=(user.user_metadata?.display_name||user.email.split('@')[0]).slice(0,50);const link=$('#songLink').value.trim()||null;
+  const name=userDisplayName().slice(0,50);const link=$('#songLink').value.trim()||null;
   const {error}=await db.from('songs').insert({province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link,submitted_by:name,user_id:user.id});button.disabled=false;
   if(error){toast(error.code==='42501'?'اجازه ثبت وجود ندارد؛ setup-auth.sql را بررسی کن.':'ثبت انجام نشد؛ یک دقیقه بعد دوباره امتحان کن.');return}
   event.target.reset();$('#songDialog').close();$('#filterProvince').value=selected;await loadSongs();toast('آهنگ با موفقیت ثبت شد 🎉');$('#songs-section').scrollIntoView({behavior:'smooth'});
 }
 
 function openAuth(){renderAuth();$('#authDialog').showModal()}
+function userDisplayName(){
+  const metadata=user?.user_metadata||{};
+  return metadata.full_name||metadata.name||metadata.display_name||user?.email?.split('@')[0]||'کاربر یلدا';
+}
 function renderAuth(){
   $('#authGuestView').hidden=Boolean(user);$('#authUserView').hidden=!user;$('#accountBtn').classList.toggle('signed-in',Boolean(user));
-  $('#accountBtn').textContent=user?(user.user_metadata?.display_name||'حساب من'):'ورود / ثبت‌نام';
-  if(user){$('#userDisplayName').textContent=user.user_metadata?.display_name||'کاربر یلدا';$('#userEmail').textContent=user.email;return}
-  const signup=authMode==='signup';$('#authTitle').textContent=signup?'ساخت حساب':'ورود';$('#authSubmit').textContent=signup?'ثبت‌نام':'ورود';$('#displayNameLabel').hidden=!signup;$('#displayName').required=signup;$('#switchAuthMode').textContent=signup?'حساب داری؟ وارد شو':'حساب نداری؟ ثبت‌نام کن';$('#authPassword').autocomplete=signup?'new-password':'current-password';
+  $('#accountBtn').textContent=user?userDisplayName():'ورود / ثبت‌نام';
+  if(user){$('#userDisplayName').textContent=userDisplayName();$('#userEmail').textContent=user.email||'ورود امن با حساب Apple';}
 }
-async function submitAuth(event){
-  event.preventDefault();const email=$('#authEmail').value.trim();const password=$('#authPassword').value;const msg=$('#authMessage');msg.textContent='کمی صبر کن…';msg.className='form-message';
-  let result;if(authMode==='signup'){result=await db.auth.signUp({email,password,options:{data:{display_name:$('#displayName').value.trim()}}})}else{result=await db.auth.signInWithPassword({email,password})}
-  if(result.error){msg.textContent=result.error.message.includes('Invalid login')?'ایمیل یا رمز عبور اشتباه است.':result.error.message;return}
-  if(authMode==='signup'&&!result.data.session){msg.textContent='لینک تأیید به ایمیلت فرستاده شد. ایمیل را تأیید کن و سپس وارد شو.';msg.classList.add('success');return}
-  msg.textContent='';$('#authDialog').close();toast('با موفقیت وارد شدی.');
+async function signInWithProvider(provider){
+  const msg=$('#authMessage');msg.textContent='در حال انتقال به صفحه ورود امن…';msg.className='form-message';
+  const {error}=await db.auth.signInWithOAuth({provider,options:{redirectTo:`${window.location.origin}${window.location.pathname}`}});
+  if(error){msg.textContent=error.message.includes('provider is not enabled')?'این روش ورود هنوز در Supabase فعال نشده است.':`ورود انجام نشد: ${error.message}`;}
 }
 async function signOut(){await db.auth.signOut();$('#authDialog').close();toast('از حساب خارج شدی.')}
 
 $('#provinceFallback').addEventListener('change',e=>e.target.value&&selectProvince(e.target.value));$('#filterProvince').addEventListener('change',renderSongs);
 $('#addSongBtn').addEventListener('click',openSongDialog);$('#openAddTop').addEventListener('click',()=>selected?openSongDialog():$('#map-section').scrollIntoView({behavior:'smooth'}));
 $('#closeDialog').addEventListener('click',()=>$('#songDialog').close());$('#songDialog').addEventListener('click',e=>e.target===$('#songDialog')&&$('#songDialog').close());$('#songForm').addEventListener('submit',submitSong);
-$('#accountBtn').addEventListener('click',openAuth);$('#closeAuth').addEventListener('click',()=>$('#authDialog').close());$('#authDialog').addEventListener('click',e=>e.target===$('#authDialog')&&$('#authDialog').close());$('#switchAuthMode').addEventListener('click',()=>{authMode=authMode==='login'?'signup':'login';$('#authMessage').textContent='';renderAuth()});$('#authForm').addEventListener('submit',submitAuth);$('#signOutBtn').addEventListener('click',signOut);
+$('#accountBtn').addEventListener('click',openAuth);$('#closeAuth').addEventListener('click',()=>$('#authDialog').close());$('#authDialog').addEventListener('click',e=>e.target===$('#authDialog')&&$('#authDialog').close());document.querySelectorAll('[data-provider]').forEach(button=>button.addEventListener('click',()=>signInWithProvider(button.dataset.provider)));$('#signOutBtn').addEventListener('click',signOut);
 $('#languageSelect').addEventListener('change',e=>{if(e.target.value!=='fa')toast('نسخه ورود در حال حاضر با رابط فارسی فعال است.');e.target.value='fa'});
 db.auth.onAuthStateChange((_event,session)=>{user=session?.user||null;renderAuth();renderSongs();updateStats();if(user&&pendingAdd){pendingAdd=false;setTimeout(openSongDialog,200)}});
 
