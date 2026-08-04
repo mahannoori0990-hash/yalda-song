@@ -1,0 +1,54 @@
+/* Mobile navigation: all controls stay visible without a hidden menu. */
+@media (max-width: 760px) {
+  .nav {
+    height: auto !important;
+    min-height: 78px;
+    padding: 12px 0;
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    gap: 12px 10px;
+    align-items: center !important;
+  }
+
+  .brand { min-width: 0; }
+  .brand strong { font-size: 17px; }
+  .nav-right { display: contents !important; }
+
+  .language-picker {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .language-picker span { display: none; }
+  .language-picker select { padding: 8px; }
+
+  .nav-links {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px !important;
+    width: 100%;
+  }
+
+  .nav-links a,
+  .nav-links .primary {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 7px 5px !important;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .08);
+    font-size: 12px !important;
+    line-height: 1.35;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .nav-links .primary {
+    border-color: transparent;
+    background: var(--gold);
+  }
+}

@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="yalda-theme.css" />
+  <link rel="stylesheet" href="mobile-nav.css" />
 </head>
 <body>
   <header class="hero">
@@ -26,7 +27,6 @@
           <a href="#story-section" data-i18n="navStory">درباره یلدا</a>
           <a href="#event-section" data-i18n="navEvent">مراسم</a>
           <a href="#faq-section" data-i18n="navFaq">سؤالات</a>
-          <button id="authButton" class="auth-button" type="button">ورود / ثبت‌نام</button>
           <button id="openAddTop" class="primary small" data-i18n="addSong">افزودن آهنگ</button>
         </div>
         <label class="language-picker" for="languageSelect">
@@ -152,7 +152,6 @@
         <div class="faq-list">
           <details open><summary data-i18n="faqStudentsQ">آیا جشن فقط برای دانشجویان است؟</summary><p data-i18n="faqStudentsA">خیر. شرکت در جشن برای همه آزاد است.</p></details>
           <details><summary data-i18n="faqAgeQ">آیا محدودیت سنی وجود دارد؟</summary><p data-i18n="faqAgeA">بله. ورود فقط برای افراد ۱۸ سال و بالاتر امکان‌پذیر است.</p></details>
-          <details><summary data-i18n="faqSongsQ">محدودیت افزودن آهنگ چگونه است؟</summary><p data-i18n="faqSongsA">برای افزودن آهنگ باید وارد حساب خود شوید. هر حساب می‌تواند هر ۶۰ ثانیه یک آهنگ ثبت کند و فعلاً سقفی برای تعداد کل آهنگ‌ها وجود ندارد.</p></details>
           <details><summary data-i18n="faqWhereQ">جشن کجا و چه زمانی برگزار می‌شود؟</summary><p data-i18n="faqWhereA">جمعه ۱۸ دسامبر ۲۰۲۶ از ساعت ۲۲:۰۰ در KulturCafé، Universitätsstraße 150, 44801 Bochum Süd.</p></details>
         </div>
       </div>
@@ -169,33 +168,13 @@
       <label><span data-i18n="songName">نام آهنگ</span><input id="songTitle" required maxlength="80" data-i18n-placeholder="songPlaceholder" placeholder="مثلاً شب یلدا" /></label>
       <label><span data-i18n="artistName">نام خواننده</span><input id="artistName" required maxlength="80" data-i18n-placeholder="artistPlaceholder" placeholder="نام خواننده یا گروه" /></label>
       <label><span data-i18n="songLink">لینک آهنگ</span> <small data-i18n="optional">(اختیاری)</small><input id="songLink" type="url" placeholder="https://youtube.com/..." /></label>
-      <label><span data-i18n="yourName">نام شما</span><input id="submitter" maxlength="50" required data-i18n-placeholder="guestPlaceholder" placeholder="نام نمایشی شما" /></label>
+      <label><span data-i18n="yourName">نام شما</span> <small data-i18n="optional">(اختیاری)</small><input id="submitter" maxlength="50" data-i18n-placeholder="guestPlaceholder" placeholder="مهمان یلدا" /></label>
       <button class="primary full" type="submit" data-i18n="submitSong">ثبت آهنگ</button>
-      <p class="privacy">آهنگ با حساب کاربری شما ثبت می‌شود.</p>
+      <p class="privacy" data-i18n="privacy">نسخه آزمایشی اطلاعات را در مرورگر خودت ذخیره می‌کند.</p>
     </form>
   </dialog>
-
-  <dialog id="authDialog">
-    <form id="authForm" class="dialog-card auth-card">
-      <button type="button" id="closeAuthDialog" class="close" aria-label="بستن">×</button>
-      <p class="eyebrow dark">حساب کاربری</p>
-      <h2 id="authTitle">ورود به یلدای ایران</h2>
-      <p class="auth-lead">برای ثبت آهنگ و رأی‌دادن وارد حساب خود شوید.</p>
-      <label><span>ایمیل</span><input id="authEmail" type="email" autocomplete="email" required placeholder="name@example.com" /></label>
-      <label><span>رمز عبور</span><input id="authPassword" type="password" autocomplete="current-password" minlength="6" required placeholder="حداقل ۶ کاراکتر" /></label>
-      <button id="authSubmit" class="primary full" type="submit">ورود</button>
-      <button id="authModeToggle" class="text-button" type="button">حساب ندارید؟ ثبت‌نام کنید</button>
-      <p id="authMessage" class="auth-message" aria-live="polite"></p>
-    </form>
-  </dialog>
-
-  <div id="accountMenu" class="account-menu" hidden>
-    <span id="accountEmail"></span>
-    <button id="signOutButton" type="button">خروج از حساب</button>
-  </div>
 
   <div id="toast" class="toast" aria-live="polite"></div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 </body>
 </html>

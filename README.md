@@ -1,22 +1,18 @@
-# یلدای ایران — نسخه دارای ورود و ثبت آهنگ
+# Yalda of Iran — Multilingual prototype
 
-این نسخه همان طراحی اصلی را نگه می‌دارد و ورود/ثبت‌نام واقعی، خروج از حساب، ثبت آهنگ در Supabase و لایک حساب‌محور را اضافه می‌کند.
+Open `index.html` in a modern browser.
 
-## راه‌اندازی
+Features:
+- Interactive SVG map of Iran provinces
+- Persian, English and German language switcher
+- RTL layout for Persian and LTR layout for English/German
+- Province selection, song submission, filtering and likes
+- Trilingual Yalda history and traditions section
+- Animated pomegranate, watermelon, candlelight, stars and scroll reveals
+- Realistic transparent pomegranate and watermelon artwork
+- Subtle red Persian boteh-jegheh background pattern
+- Event details, map link and FAQ
+- Fully visible two-row navigation on mobile screens
+- Language and demo data saved in localStorage
 
-1. در Supabase یک پروژه بسازید.
-2. فایل `setup-auth.sql` را در بخش **SQL Editor** کامل اجرا کنید.
-3. در **Authentication > Providers > Email** ورود ایمیلی را فعال نگه دارید.
-4. در فایل `app.js` مقدارهای `SUPABASE_URL` و `SUPABASE_ANON_KEY` را از **Project Settings > API** جایگزین کنید.
-5. همه فایل‌ها را بدون تغییر ساختار روی GitHub/Netlify قرار دهید.
-6. آدرس سایت را در Supabase، بخش **Authentication > URL Configuration > Site URL** ثبت کنید. اگر تأیید ایمیل فعال است، همان آدرس را در Redirect URLs نیز اضافه کنید.
-
-کلید `anon` برای مرورگر طراحی شده است؛ هرگز `service_role` را داخل سایت قرار ندهید. امنیت ثبت آهنگ و لایک با RLS داخل `setup-auth.sql` اعمال شده است.
-
-## رفتار سیستم
-
-- مشاهده آهنگ‌ها برای همه آزاد است.
-- برای ثبت آهنگ و رأی‌دادن، ورود لازم است.
-- هر حساب حداکثر هر ۶۰ ثانیه یک آهنگ ثبت می‌کند.
-- هر حساب برای هر آهنگ فقط یک لایک دارد و می‌تواند آن را بردارد.
-- در صورت فعال بودن Email Confirmation، کاربر پس از ثبت‌نام باید ایمیل خود را تأیید کند.
+The vector map is loaded from the public GitHub source used in earlier versions, so an internet connection is required for the map. The province dropdown remains available if loading fails.
