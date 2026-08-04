@@ -10,7 +10,7 @@ const colors=['#7a2638','#9d3d48','#b85d4d','#6a3746','#a66a3f','#8b4a3e','#5f45
 const $=s=>document.querySelector(s);
 const esc=(v='')=>String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const number=n=>new Intl.NumberFormat('fa-IR').format(n);
-let selected='',songs=[],likes=[],user=null,pendingAdd=false;
+let selected='',songs=[],likes=[],user=null,pendingAdd=false,authMode='login';
 
 function toast(message){const el=$('#toast');el.textContent=message;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
 function provinceName(id){return provinceNames[id]||id}
@@ -72,7 +72,7 @@ async function submitSong(event){
   event.target.reset();$('#songDialog').close();$('#filterProvince').value=selected;await loadSongs();toast('آهنگ با موفقیت ثبت شد 🎉');$('#songs-section').scrollIntoView({behavior:'smooth'});
 }
 
-function openAuth(){renderAuth();$('#authDialog').showModal()}
+function openAuth(){renderAuth();setAuthMode('login');$('#authMessage').textContent='';$('#authDialog').showModal();setTimeout(()=>$('#authEmail').focus(),50)}
 function userDisplayName(){
   const metadata=user?.user_metadata||{};
   return metadata.full_name||metadata.name||metadata.display_name||user?.email?.split('@')[0]||'کاربر یلدا';
@@ -80,19 +80,43 @@ function userDisplayName(){
 function renderAuth(){
   $('#authGuestView').hidden=Boolean(user);$('#authUserView').hidden=!user;$('#accountBtn').classList.toggle('signed-in',Boolean(user));
   $('#accountBtn').textContent=user?userDisplayName():'ورود / ثبت‌نام';
-  if(user){$('#userDisplayName').textContent=userDisplayName();$('#userEmail').textContent=user.email||'ورود امن با حساب Apple';}
+  if(user){$('#userDisplayName').textContent=userDisplayName();$('#userEmail').textContent=user.email||'';}
 }
-async function signInWithProvider(provider){
-  const msg=$('#authMessage');msg.textContent='در حال انتقال به صفحه ورود امن…';msg.className='form-message';
-  const {error}=await db.auth.signInWithOAuth({provider,options:{redirectTo:`${window.location.origin}${window.location.pathname}`}});
-  if(error){msg.textContent=error.message.includes('provider is not enabled')?'این روش ورود هنوز در Supabase فعال نشده است.':`ورود انجام نشد: ${error.message}`;}
+function setAuthMode(mode){
+  authMode=mode;const signup=mode==='signup';
+  $('#loginTab').classList.toggle('active',!signup);$('#signupTab').classList.toggle('active',signup);
+  $('#loginTab').setAttribute('aria-selected',String(!signup));$('#signupTab').setAttribute('aria-selected',String(signup));
+  $('#authNameField').hidden=!signup;$('#authPassword').autocomplete=signup?'new-password':'current-password';
+  $('#authSubmitBtn').textContent=signup?'ساخت حساب':'ورود';$('#authMessage').textContent='';
+}
+function authErrorMessage(error){
+  const text=(error?.message||'').toLowerCase();
+  if(text.includes('invalid login credentials'))return 'ایمیل یا رمز عبور اشتباه است.';
+  if(text.includes('already registered')||text.includes('already been registered'))return 'این ایمیل قبلاً ثبت شده؛ وارد حساب شو.';
+  if(text.includes('password'))return 'رمز عبور باید حداقل ۶ کاراکتر باشد.';
+  if(text.includes('email'))return 'آدرس ایمیل معتبر وارد کن.';
+  return 'عملیات انجام نشد؛ دوباره تلاش کن.';
+}
+async function submitAuth(event){
+  event.preventDefault();const email=$('#authEmail').value.trim();const password=$('#authPassword').value;const button=$('#authSubmitBtn');const msg=$('#authMessage');
+  button.disabled=true;msg.textContent=authMode==='signup'?'در حال ساخت حساب…':'در حال ورود…';msg.className='form-message';
+  let result;
+  if(authMode==='signup'){
+    const displayName=$('#authName').value.trim().slice(0,50)||email.split('@')[0];
+    result=await db.auth.signUp({email,password,options:{data:{display_name:displayName}}});
+  }else result=await db.auth.signInWithPassword({email,password});
+  button.disabled=false;
+  if(result.error){msg.textContent=authErrorMessage(result.error);return}
+  if(authMode==='signup'&&!result.data.session){msg.textContent='حساب ساخته شد، اما تأیید ایمیل در Supabase هنوز روشن است. آن را خاموش کن.';return}
+  msg.className='form-message success';msg.textContent=authMode==='signup'?'حساب ساخته شد و وارد شدی.':'با موفقیت وارد شدی.';
+  setTimeout(()=>$('#authDialog').close(),500);
 }
 async function signOut(){await db.auth.signOut();$('#authDialog').close();toast('از حساب خارج شدی.')}
 
 $('#provinceFallback').addEventListener('change',e=>e.target.value&&selectProvince(e.target.value));$('#filterProvince').addEventListener('change',renderSongs);
 $('#addSongBtn').addEventListener('click',openSongDialog);$('#openAddTop').addEventListener('click',()=>selected?openSongDialog():$('#map-section').scrollIntoView({behavior:'smooth'}));
 $('#closeDialog').addEventListener('click',()=>$('#songDialog').close());$('#songDialog').addEventListener('click',e=>e.target===$('#songDialog')&&$('#songDialog').close());$('#songForm').addEventListener('submit',submitSong);
-$('#accountBtn').addEventListener('click',openAuth);$('#closeAuth').addEventListener('click',()=>$('#authDialog').close());$('#authDialog').addEventListener('click',e=>e.target===$('#authDialog')&&$('#authDialog').close());document.querySelectorAll('[data-provider]').forEach(button=>button.addEventListener('click',()=>signInWithProvider(button.dataset.provider)));$('#signOutBtn').addEventListener('click',signOut);
+$('#accountBtn').addEventListener('click',openAuth);$('#closeAuth').addEventListener('click',()=>$('#authDialog').close());$('#authDialog').addEventListener('click',e=>e.target===$('#authDialog')&&$('#authDialog').close());$('#loginTab').addEventListener('click',()=>setAuthMode('login'));$('#signupTab').addEventListener('click',()=>setAuthMode('signup'));$('#authForm').addEventListener('submit',submitAuth);$('#signOutBtn').addEventListener('click',signOut);
 $('#languageSelect').addEventListener('change',e=>{if(e.target.value!=='fa')toast('نسخه ورود در حال حاضر با رابط فارسی فعال است.');e.target.value='fa'});
 db.auth.onAuthStateChange((_event,session)=>{user=session?.user||null;renderAuth();renderSongs();updateStats();if(user&&pendingAdd){pendingAdd=false;setTimeout(openSongDialog,200)}});
 
