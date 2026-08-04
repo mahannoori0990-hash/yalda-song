@@ -9,16 +9,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="yalda-theme.css" />
 </head>
 <body>
   <header class="hero">
+    <div class="yalda-sky" aria-hidden="true">
+      <span class="star star-1">✦</span><span class="star star-2">✧</span><span class="star star-3">✦</span>
+      <span class="falling-seed seed-1">●</span><span class="falling-seed seed-2">●</span><span class="falling-seed seed-3">●</span>
+    </div>
     <nav class="nav shell">
       <a class="brand" href="#map-section"><span>🍉</span><strong data-i18n="brand">یلدای ایران</strong></a>
       <div class="nav-right">
         <div class="nav-links">
           <a href="#map-section" data-i18n="navMap">نقشه</a>
           <a href="#songs-section" data-i18n="navSongs">آهنگ‌ها</a>
-          <button id="accountBtn" class="account-btn" type="button">ورود / ثبت‌نام</button>
+          <a href="#story-section" data-i18n="navStory">درباره یلدا</a>
+          <a href="#event-section" data-i18n="navEvent">مراسم</a>
+          <a href="#faq-section" data-i18n="navFaq">سؤالات</a>
           <button id="openAddTop" class="primary small" data-i18n="addSong">افزودن آهنگ</button>
         </div>
         <label class="language-picker" for="languageSelect">
@@ -32,6 +39,8 @@
       </div>
     </nav>
     <div class="hero-content shell">
+      <div class="hero-boteh hero-boteh-a" aria-hidden="true"></div>
+      <div class="hero-boteh hero-boteh-b" aria-hidden="true"></div>
       <p class="eyebrow" data-i18n="heroEyebrow">یک یلدا، سی‌ویک صدا</p>
       <h1><span data-i18n="heroTitle1">آهنگ محبوب شهرت را</span><br><span data-i18n="heroTitle2">به نقشه یلدای ایران اضافه کن</span></h1>
       <p data-i18n="heroText">استانت را انتخاب کن، آهنگ پیشنهادی‌ات را ثبت کن و به انتخاب‌های بقیه رأی بده.</p>
@@ -40,6 +49,35 @@
   </header>
 
   <main>
+    <section id="story-section" class="section story-section">
+      <div class="shell">
+        <div class="story-intro reveal">
+          <div>
+            <p class="eyebrow dark" data-i18n="storyEyebrow">قصه بلندترین شب سال</p>
+            <h2 data-i18n="storyTitle">چرا ایرانی‌ها شب یلدا را جشن می‌گیرند؟</h2>
+          </div>
+          <p data-i18n="storyLead">یلدا، شب آخر پاییز و بلندترین شب سال، جشنی دیرینه برای استقبال از روشنایی و بلندترشدن روزهاست؛ شبی که خانواده‌ها و دوستان را دور یک سفره جمع می‌کند.</p>
+        </div>
+        <div class="story-layout">
+          <article class="story-main reveal">
+            <div class="story-visual" aria-hidden="true">
+              <div class="candle"><span></span></div>
+            </div>
+            <div class="story-copy">
+              <h3 data-i18n="historyTitle">ریشه و معنای یلدا</h3>
+              <p data-i18n="historyText1">واژه «یلدا» به معنای زایش است و این جشن با انقلاب زمستانی پیوند دارد. از فردای یلدا، روزها آرام‌آرام بلندتر می‌شوند؛ به همین دلیل این شب در فرهنگ ایرانی نماد پیروزی نور بر تاریکی و امید به آغاز دوباره است.</p>
+              <p data-i18n="historyText2">این آیین در طول سده‌ها در بخش‌های مختلف ایران با رسم‌های محلی گوناگون ادامه یافته، اما قلب آن همیشه یکی بوده است: باهم‌بودن، قصه‌گویی و گرم‌کردن سردترین شب‌های سال.</p>
+            </div>
+          </article>
+          <div class="traditions-grid">
+            <article class="tradition-card reveal"><span>🍉</span><h3 data-i18n="traditionFoodTitle">سفره رنگارنگ</h3><p data-i18n="traditionFoodText">هندوانه، انار، آجیل و میوه خشک پای ثابت سفره یلدا هستند. سرخی انار و هندوانه یادآور گرمای خورشید و شادی است.</p></article>
+            <article class="tradition-card reveal"><span>📖</span><h3 data-i18n="traditionPoetryTitle">فال حافظ و شعرخوانی</h3><p data-i18n="traditionPoetryText">بسیاری از خانواده‌ها دیوان حافظ را باز می‌کنند، شعر می‌خوانند و تعبیر آن را با آرزوهایشان پیوند می‌دهند.</p><a class="hafez-link" href="https://faal.ganjoor.net/" target="_blank" rel="noopener noreferrer" data-i18n="hafezCta">فال حافظ بگیر ↗</a></article>
+            <article class="tradition-card reveal"><span>🕯️</span><h3 data-i18n="traditionFamilyTitle">دورهمی و قصه‌گویی</h3><p data-i18n="traditionFamilyText">خانواده‌ها معمولاً در خانه بزرگ‌ترها جمع می‌شوند، شام می‌خورند، خاطره تعریف می‌کنند، موسیقی گوش می‌دهند و تا پاسی از شب بیدار می‌مانند.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="map-section" class="section shell">
       <div class="section-heading">
         <div><p class="eyebrow dark" data-i18n="mapEyebrow">از روی نقشه انتخاب کن</p><h2 data-i18n="mapTitle">استان موردنظرت کجاست؟</h2></div>
@@ -81,6 +119,43 @@
         <div id="emptyState" class="empty-state" hidden><div>🎵</div><h3 data-i18n="emptyTitle">هنوز آهنگی ثبت نشده</h3><p data-i18n="emptyText">اولین انتخاب این استان را تو اضافه کن.</p></div>
       </div>
     </section>
+
+    <section id="event-section" class="section event-section">
+      <div class="shell">
+        <div class="section-heading event-heading">
+          <div>
+            <p class="eyebrow dark" data-i18n="eventEyebrow">دورهمی شب یلدا</p>
+            <h2 data-i18n="eventTitle">اطلاعات جشن</h2>
+          </div>
+          <span class="event-pill" data-i18n="ageBadge">ورود برای ۱۸ سال به بالا</span>
+        </div>
+        <div class="event-grid">
+          <article class="event-card event-card-main">
+            <span class="event-icon" aria-hidden="true">🍉</span>
+            <div><small data-i18n="venueLabel">محل برگزاری</small><h3>KulturCafé</h3><p data-i18n="eventAudience">این جشن برای همه آزاد است و فقط مخصوص دانشجویان نیست.</p></div>
+          </article>
+          <article class="event-card"><span class="event-icon" aria-hidden="true">📅</span><div><small data-i18n="dateLabel">تاریخ</small><h3 data-i18n="eventDate">جمعه ۱۸ دسامبر ۲۰۲۶</h3></div></article>
+          <article class="event-card"><span class="event-icon" aria-hidden="true">🕙</span><div><small data-i18n="timeLabel">زمان شروع</small><h3 data-i18n="eventTime">ساعت ۲۲:۰۰</h3></div></article>
+          <article class="event-card event-address"><span class="event-icon" aria-hidden="true">📍</span><div><small data-i18n="addressLabel">آدرس</small><h3>Universitätsstraße 150, 44801 Bochum Süd</h3><a class="map-link" href="https://maps.app.goo.gl/k18XxaG4sbHf6Pm5A" target="_blank" rel="noopener noreferrer" data-i18n="openMap">نمایش در Google Maps ↗</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq-section" class="section faq-section">
+      <div class="shell faq-shell">
+        <div>
+          <p class="eyebrow dark" data-i18n="faqEyebrow">پیش از آمدن بدانید</p>
+          <h2 data-i18n="faqTitle">سؤالات متداول</h2>
+          <p class="faq-intro" data-i18n="faqIntro">پاسخ کوتاه به مهم‌ترین سؤال‌ها درباره جشن و ثبت آهنگ.</p>
+        </div>
+        <div class="faq-list">
+          <details open><summary data-i18n="faqStudentsQ">آیا جشن فقط برای دانشجویان است؟</summary><p data-i18n="faqStudentsA">خیر. شرکت در جشن برای همه آزاد است.</p></details>
+          <details><summary data-i18n="faqAgeQ">آیا محدودیت سنی وجود دارد؟</summary><p data-i18n="faqAgeA">بله. ورود فقط برای افراد ۱۸ سال و بالاتر امکان‌پذیر است.</p></details>
+          <details><summary data-i18n="faqSongsQ">محدودیت افزودن آهنگ چگونه است؟</summary><p data-i18n="faqSongsA">برای افزودن آهنگ باید وارد حساب خود شوید. هر حساب می‌تواند هر ۶۰ ثانیه یک آهنگ ثبت کند و فعلاً سقفی برای تعداد کل آهنگ‌ها وجود ندارد.</p></details>
+          <details><summary data-i18n="faqWhereQ">جشن کجا و چه زمانی برگزار می‌شود؟</summary><p data-i18n="faqWhereA">جمعه ۱۸ دسامبر ۲۰۲۶ از ساعت ۲۲:۰۰ در KulturCafé، Universitätsstraße 150, 44801 Bochum Süd.</p></details>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer><div class="shell"><strong data-i18n="brand">یلدای ایران</strong><span data-i18n="footerText">ساخته‌شده برای کنار هم شنیدن صداهای ایران</span></div></footer>
@@ -93,38 +168,13 @@
       <label><span data-i18n="songName">نام آهنگ</span><input id="songTitle" required maxlength="80" data-i18n-placeholder="songPlaceholder" placeholder="مثلاً شب یلدا" /></label>
       <label><span data-i18n="artistName">نام خواننده</span><input id="artistName" required maxlength="80" data-i18n-placeholder="artistPlaceholder" placeholder="نام خواننده یا گروه" /></label>
       <label><span data-i18n="songLink">لینک آهنگ</span> <small data-i18n="optional">(اختیاری)</small><input id="songLink" type="url" placeholder="https://youtube.com/..." /></label>
+      <label><span data-i18n="yourName">نام شما</span> <small data-i18n="optional">(اختیاری)</small><input id="submitter" maxlength="50" data-i18n-placeholder="guestPlaceholder" placeholder="مهمان یلدا" /></label>
       <button class="primary full" type="submit" data-i18n="submitSong">ثبت آهنگ</button>
-      <p class="privacy">این پیشنهاد با حساب کاربری شما ثبت می‌شود.</p>
+      <p class="privacy" data-i18n="privacy">نسخه آزمایشی اطلاعات را در مرورگر خودت ذخیره می‌کند.</p>
     </form>
   </dialog>
 
-  <dialog id="authDialog">
-    <div class="dialog-card auth-card">
-      <button type="button" id="closeAuth" class="close" aria-label="بستن">×</button>
-      <div id="authGuestView">
-        <p class="eyebrow dark">حساب کاربری</p>
-        <h2 id="authTitle">ورود</h2>
-        <p class="auth-intro">برای ثبت آهنگ و جلوگیری از اسپم، ابتدا وارد حساب خودت شو.</p>
-        <form id="authForm">
-          <label id="displayNameLabel" hidden><span>نام نمایشی</span><input id="displayName" maxlength="50" autocomplete="name" /></label>
-          <label><span>ایمیل</span><input id="authEmail" type="email" required maxlength="254" autocomplete="email" /></label>
-          <label><span>رمز عبور</span><input id="authPassword" type="password" required minlength="8" maxlength="72" autocomplete="current-password" /></label>
-          <button id="authSubmit" class="primary full" type="submit">ورود</button>
-        </form>
-        <button id="switchAuthMode" class="text-btn" type="button">حساب نداری؟ ثبت‌نام کن</button>
-        <p id="authMessage" class="form-message" aria-live="polite"></p>
-      </div>
-      <div id="authUserView" hidden>
-        <p class="eyebrow dark">حساب من</p>
-        <h2 id="userDisplayName">کاربر یلدا</h2>
-        <p id="userEmail" class="auth-intro"></p>
-        <button id="signOutBtn" class="secondary full" type="button">خروج از حساب</button>
-      </div>
-    </div>
-  </dialog>
-
   <div id="toast" class="toast" aria-live="polite"></div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 </body>
 </html>

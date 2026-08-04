@@ -1,14 +1,17 @@
-# Yalda of Iran — Supabase Auth edition
+# Yalda of Iran — Multilingual prototype
 
-Upload `index.html`, `styles.css` and `app.js` to GitHub. Then run `setup-auth.sql` once in Supabase SQL Editor.
+Open `index.html` in a modern browser.
 
 Features:
 - Interactive SVG map of Iran provinces
-- Supabase email/password registration and login
-- Email confirmation support
-- Only authenticated users can submit songs or like
-- One like per user and song
-- Database Row Level Security policies
-- Province selection, song submission and filtering
+- Persian, English and German language switcher
+- RTL layout for Persian and LTR layout for English/German
+- Province selection, song submission, filtering and likes
+- Trilingual Yalda history and traditions section
+- Animated pomegranate, watermelon, candlelight, stars and scroll reveals
+- Realistic transparent pomegranate and watermelon artwork
+- Subtle red Persian boteh-jegheh background pattern
+- Event details, map link and FAQ
+- Language and demo data saved in localStorage
 
-In Supabase Authentication settings, keep email confirmation enabled. Add your Netlify address under Authentication > URL Configuration > Site URL. The vector map is loaded from a public GitHub source; the province dropdown remains available if it fails.
+The vector map is loaded from the public GitHub source used in earlier versions, so an internet connection is required for the map. The province dropdown remains available if loading fails.
