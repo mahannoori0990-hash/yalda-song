@@ -1,12 +1,22 @@
-# Yalda of Iran — Multilingual prototype
+# Yalda of Iran — Supabase version
 
-Open `index.html` in a modern browser.
+This version stores songs and likes in Supabase so all visitors see the same data.
 
-Features:
-- Interactive SVG map of Iran provinces
-- Persian, English and German language switcher
-- RTL layout for Persian and LTR layout for English/German
-- Province selection, song submission, filtering and likes
-- Language and demo data saved in localStorage
+## One-time Supabase setup
 
-The vector map is loaded from the public GitHub source used in earlier versions, so an internet connection is required for the map. The province dropdown remains available if loading fails.
+1. Open the project in Supabase.
+2. Go to **SQL Editor**, paste all of `setup.sql`, and click **Run**.
+3. Open `index.html` locally or deploy these files to GitHub/Netlify.
+
+The Project URL and publishable key are already configured in `app.js`. The
+publishable key is safe for browser use because access is restricted by RLS.
+Never place a `service_role` key in this project.
+
+## Files to deploy
+
+- `index.html`
+- `styles.css`
+- `app.js`
+
+The map is loaded from a public GitHub SVG source, so the visitor needs an
+internet connection. The province dropdown still works if the map cannot load.

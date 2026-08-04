@@ -31,24 +31,24 @@ const translations = {
     heroEyebrow:'یک یلدا، سی‌ویک صدا', heroTitle1:'آهنگ محبوب شهرت را', heroTitle2:'به نقشه یلدای ایران اضافه کن', heroText:'استانت را انتخاب کن، آهنگ پیشنهادی‌ات را ثبت کن و به انتخاب‌های بقیه رأی بده.', chooseProvince:'انتخاب استان',
     mapEyebrow:'از روی نقشه انتخاب کن', mapTitle:'استان موردنظرت کجاست؟', noneSelected:'هنوز استانی انتخاب نشده', mapLoading:'در حال آماده‌سازی نقشه تعاملی…', mapLoadError:'نقشه وکتوری آنلاین بارگذاری نشد؛ انتخاب از فهرست همچنان فعال است.', mapNote:'روی هر استان برو تا نام آن نمایش داده شود؛ با کلیک فقط همان استان انتخاب می‌شود.', selectedProvinceLabel:'استان انتخاب‌شده', provinceHelpDefault:'از روی نقشه یک استان را انتخاب کن.', addForProvince:'+ افزودن آهنگ برای این استان', songsCount:'آهنگ', likesCount:'لایک', chooseFromList:'انتخاب از فهرست', chooseProvinceOption:'یک استان را انتخاب کن',
     peopleChoice:'انتخاب مردم', popularSongs:'محبوب‌ترین آهنگ‌های یلدایی', songsOf:'آهنگ‌های یلدایی {province}', allProvinces:'همه استان‌ها', emptyTitle:'هنوز آهنگی ثبت نشده', emptyText:'اولین انتخاب این استان را تو اضافه کن.', footerText:'ساخته‌شده برای کنار هم شنیدن صداهای ایران',
-    yourSuggestion:'پیشنهاد تو', addSongFor:'افزودن آهنگ برای', songName:'نام آهنگ', songPlaceholder:'مثلاً شب یلدا', artistName:'نام خواننده', artistPlaceholder:'نام خواننده یا گروه', songLink:'لینک آهنگ', optional:'(اختیاری)', yourName:'نام شما', guestPlaceholder:'مهمان یلدا', submitSong:'ثبت آهنگ', privacy:'نسخه آزمایشی اطلاعات را در مرورگر خودت ذخیره می‌کند.',
-    selectedBadge:'استان انتخاب‌شده: {province}', provinceHelp:'حالا می‌توانی آهنگ محبوبت برای شب یلدا را به فهرست {province} اضافه کنی.', suggestedBy:'پیشنهاد از {name}', guest:'مهمان یلدا', listen:'شنیدن ↗', chooseFirst:'اول یک استان را انتخاب کن', addedSuccess:'آهنگ با موفقیت اضافه شد 🎉'
+    yourSuggestion:'پیشنهاد تو', addSongFor:'افزودن آهنگ برای', songName:'نام آهنگ', songPlaceholder:'مثلاً شب یلدا', artistName:'نام خواننده', artistPlaceholder:'نام خواننده یا گروه', songLink:'لینک آهنگ', optional:'(اختیاری)', yourName:'نام شما', guestPlaceholder:'مهمان یلدا', submitSong:'ثبت آهنگ', privacy:'آهنگ برای همه بازدیدکنندگان در پایگاه داده ثبت می‌شود.',
+    selectedBadge:'استان انتخاب‌شده: {province}', provinceHelp:'حالا می‌توانی آهنگ محبوبت برای شب یلدا را به فهرست {province} اضافه کنی.', suggestedBy:'پیشنهاد از {name}', guest:'مهمان یلدا', listen:'شنیدن ↗', chooseFirst:'اول یک استان را انتخاب کن', addedSuccess:'آهنگ با موفقیت اضافه شد 🎉', loadError:'دریافت آهنگ‌ها ممکن نشد. تنظیمات Supabase را بررسی کن.', saveError:'ثبت آهنگ ممکن نشد. دوباره تلاش کن.', likeError:'ثبت لایک ممکن نشد.'
   },
   en: {
     pageTitle:'Yalda of Iran | Provincial Music Map', brand:'Yalda of Iran', navMap:'Map', navSongs:'Songs', addSong:'Add song', languageLabel:'Language',
     heroEyebrow:'One Yalda, thirty-one voices', heroTitle1:'Add your city’s favorite song', heroTitle2:'to Iran’s Yalda music map', heroText:'Choose your province, submit a song and vote for other people’s suggestions.', chooseProvince:'Choose a province',
     mapEyebrow:'Choose on the map', mapTitle:'Which province is yours?', noneSelected:'No province selected yet', mapLoading:'Preparing the interactive map…', mapLoadError:'The online vector map could not be loaded. You can still choose from the list.', mapNote:'Hover over a province to see its name. Click to select only that province.', selectedProvinceLabel:'Selected province', provinceHelpDefault:'Choose a province on the map.', addForProvince:'+ Add a song for this province', songsCount:'Songs', likesCount:'Likes', chooseFromList:'Choose from list', chooseProvinceOption:'Choose a province',
     peopleChoice:'People’s choice', popularSongs:'Most popular Yalda songs', songsOf:'Yalda songs from {province}', allProvinces:'All provinces', emptyTitle:'No songs yet', emptyText:'Be the first to add a song for this province.', footerText:'Made to hear the many voices of Iran together',
-    yourSuggestion:'Your suggestion', addSongFor:'Add a song for', songName:'Song title', songPlaceholder:'For example: Shab-e Yalda', artistName:'Artist', artistPlaceholder:'Artist or band name', songLink:'Song link', optional:'(optional)', yourName:'Your name', guestPlaceholder:'Yalda guest', submitSong:'Submit song', privacy:'This prototype stores data in your own browser.',
-    selectedBadge:'Selected province: {province}', provinceHelp:'You can now add your favorite Yalda song to the {province} list.', suggestedBy:'Suggested by {name}', guest:'Yalda guest', listen:'Listen ↗', chooseFirst:'Choose a province first', addedSuccess:'Song added successfully 🎉'
+    yourSuggestion:'Your suggestion', addSongFor:'Add a song for', songName:'Song title', songPlaceholder:'For example: Shab-e Yalda', artistName:'Artist', artistPlaceholder:'Artist or band name', songLink:'Song link', optional:'(optional)', yourName:'Your name', guestPlaceholder:'Yalda guest', submitSong:'Submit song', privacy:'The song is stored in the shared database for every visitor.',
+    selectedBadge:'Selected province: {province}', provinceHelp:'You can now add your favorite Yalda song to the {province} list.', suggestedBy:'Suggested by {name}', guest:'Yalda guest', listen:'Listen ↗', chooseFirst:'Choose a province first', addedSuccess:'Song added successfully 🎉', loadError:'Could not load songs. Check the Supabase setup.', saveError:'Could not submit the song. Please try again.', likeError:'Could not save the like.'
   },
   de: {
     pageTitle:'Yalda im Iran | Musikkarte der Provinzen', brand:'Yalda im Iran', navMap:'Karte', navSongs:'Lieder', addSong:'Lied hinzufügen', languageLabel:'Sprache',
     heroEyebrow:'Eine Yalda, einunddreißig Stimmen', heroTitle1:'Füge das Lieblingslied deiner Stadt', heroTitle2:'zur Yalda-Musikkarte Irans hinzu', heroText:'Wähle deine Provinz, schlage ein Lied vor und stimme für die Vorschläge anderer ab.', chooseProvince:'Provinz auswählen',
     mapEyebrow:'Auf der Karte auswählen', mapTitle:'Welche Provinz ist deine?', noneSelected:'Noch keine Provinz ausgewählt', mapLoading:'Interaktive Karte wird vorbereitet…', mapLoadError:'Die Online-Vektorkarte konnte nicht geladen werden. Die Auswahl aus der Liste funktioniert weiterhin.', mapNote:'Fahre über eine Provinz, um ihren Namen zu sehen. Mit einem Klick wird nur diese Provinz ausgewählt.', selectedProvinceLabel:'Ausgewählte Provinz', provinceHelpDefault:'Wähle eine Provinz auf der Karte aus.', addForProvince:'+ Lied für diese Provinz hinzufügen', songsCount:'Lieder', likesCount:'Likes', chooseFromList:'Aus Liste auswählen', chooseProvinceOption:'Provinz auswählen',
     peopleChoice:'Wahl der Community', popularSongs:'Beliebteste Yalda-Lieder', songsOf:'Yalda-Lieder aus {province}', allProvinces:'Alle Provinzen', emptyTitle:'Noch keine Lieder vorhanden', emptyText:'Füge das erste Lied für diese Provinz hinzu.', footerText:'Geschaffen, um die Stimmen Irans gemeinsam zu hören',
-    yourSuggestion:'Dein Vorschlag', addSongFor:'Lied hinzufügen für', songName:'Liedtitel', songPlaceholder:'Zum Beispiel: Shab-e Yalda', artistName:'Interpret', artistPlaceholder:'Name des Interpreten oder der Band', songLink:'Link zum Lied', optional:'(optional)', yourName:'Dein Name', guestPlaceholder:'Yalda-Gast', submitSong:'Lied eintragen', privacy:'Dieser Prototyp speichert die Daten in deinem Browser.',
-    selectedBadge:'Ausgewählte Provinz: {province}', provinceHelp:'Du kannst jetzt dein Lieblingslied für Yalda zur Liste von {province} hinzufügen.', suggestedBy:'Vorgeschlagen von {name}', guest:'Yalda-Gast', listen:'Anhören ↗', chooseFirst:'Wähle zuerst eine Provinz aus', addedSuccess:'Lied erfolgreich hinzugefügt 🎉'
+    yourSuggestion:'Dein Vorschlag', addSongFor:'Lied hinzufügen für', songName:'Liedtitel', songPlaceholder:'Zum Beispiel: Shab-e Yalda', artistName:'Interpret', artistPlaceholder:'Name des Interpreten oder der Band', songLink:'Link zum Lied', optional:'(optional)', yourName:'Dein Name', guestPlaceholder:'Yalda-Gast', submitSong:'Lied eintragen', privacy:'Das Lied wird für alle Besucher in der gemeinsamen Datenbank gespeichert.',
+    selectedBadge:'Ausgewählte Provinz: {province}', provinceHelp:'Du kannst jetzt dein Lieblingslied für Yalda zur Liste von {province} hinzufügen.', suggestedBy:'Vorgeschlagen von {name}', guest:'Yalda-Gast', listen:'Anhören ↗', chooseFirst:'Wähle zuerst eine Provinz aus', addedSuccess:'Lied erfolgreich hinzugefügt 🎉', loadError:'Lieder konnten nicht geladen werden. Prüfe die Supabase-Einrichtung.', saveError:'Das Lied konnte nicht gespeichert werden. Bitte versuche es erneut.', likeError:'Der Like konnte nicht gespeichert werden.'
   }
 };
 
@@ -70,15 +70,14 @@ const resolveProvinceId = raw => {
 };
 
 const provinceColors=['#7a2638','#9d3d48','#b85d4d','#6a3746','#a66a3f','#8b4a3e','#5f4553','#a54c58'];
+const SUPABASE_URL='https://rvtufzcwjvvnonggqzoj.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_ylwegXC8xWEmlGSkQu4byw_3zQFKQBQ';
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 let currentLang = localStorage.getItem('yaldaLanguage') || 'fa';
 if (!translations[currentLang]) currentLang = 'fa';
 let selected = '';
-const fallbackSongs = [
-  {id:1,province:'fars',title:'شب یلدا',artist:'گروه دنگ شو',link:'https://www.youtube.com/results?search_query=شب+یلدا+آهنگ',by:'سارا',likes:18,liked:false},
-  {id:2,province:'gilan',title:'گل انار',artist:'آهنگ محلی گیلکی',link:'https://www.youtube.com/results?search_query=آهنگ+محلی+گیلکی+یلدا',by:'امیر',likes:14,liked:false},
-  {id:3,province:'tehran',title:'زمستون',artist:'افشین مقدم',link:'https://www.youtube.com/results?search_query=افشین+مقدم+زمستون',by:'مهمان یلدا',likes:31,liked:false}
-];
-let songs = JSON.parse(localStorage.getItem('yaldaSongs') || 'null') || fallbackSongs;
+let songs=[];
+const likedSongIds=new Set(JSON.parse(localStorage.getItem('yaldaLikedSongs')||'[]'));
 const $=s=>document.querySelector(s);
 const t=(key,vars={})=>Object.entries(vars).reduce((text,[k,v])=>text.replaceAll(`{${k}}`,v),translations[currentLang][key]||key);
 const provinceName=id=>provinceNames[currentLang][id] || provinceNames.en[id] || id;
@@ -153,18 +152,34 @@ function renderSongs(){
   </article>`).join('');
   $('#emptyState').hidden=!!list.length; document.querySelectorAll('[data-like]').forEach(btn=>btn.addEventListener('click',()=>toggleLike(Number(btn.dataset.like))));
 }
-function toggleLike(id){const s=songs.find(x=>x.id===id);if(!s)return;s.liked=!s.liked;s.likes+=s.liked?1:-1;save();renderSongs();updateStats()}
+async function loadSongs(){
+  const {data,error}=await db.from('songs').select('*').order('likes',{ascending:false}).order('created_at',{ascending:false});
+  if(error){console.error(error);toast(t('loadError'));return}
+  songs=data.map(song=>({...song,by:song.submitted_by,liked:likedSongIds.has(song.id)}));
+  renderSongs();updateStats();
+}
+async function toggleLike(id){
+  const song=songs.find(x=>x.id===id);if(!song)return;
+  const wasLiked=song.liked,changeBy=wasLiked?-1:1;
+  song.liked=!wasLiked;song.likes=Math.max(0,song.likes+changeBy);renderSongs();updateStats();
+  const {data,error}=await db.rpc('adjust_song_likes',{song_id:id,change_by:changeBy});
+  if(error){song.liked=wasLiked;song.likes=Math.max(0,song.likes-changeBy);renderSongs();updateStats();console.error(error);toast(t('likeError'));return}
+  song.likes=data;song.liked?likedSongIds.add(id):likedSongIds.delete(id);
+  localStorage.setItem('yaldaLikedSongs',JSON.stringify([...likedSongIds]));renderSongs();updateStats();
+}
 const dialog=$('#songDialog');
 function openDialog(){if(!selected){toast(t('chooseFirst'));return}$('#dialogProvince').textContent=provinceName(selected);dialog.showModal();setTimeout(()=>$('#songTitle').focus(),50)}
 $('#addSongBtn').addEventListener('click',openDialog); $('#openAddTop').addEventListener('click',()=>{if(selected)openDialog();else document.querySelector('#map-section').scrollIntoView()});
 $('#closeDialog').addEventListener('click',()=>dialog.close()); dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
-$('#songForm').addEventListener('submit',e=>{
-  e.preventDefault(); songs.push({id:Date.now(),province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link:$('#songLink').value.trim(),by:$('#submitter').value.trim()||t('guest'),likes:0,liked:false});
-  save();e.target.reset();dialog.close();filterProvince.value=selected;renderSongs();updateStats();toast(t('addedSuccess'));document.querySelector('#songs-section').scrollIntoView({behavior:'smooth'});
+$('#songForm').addEventListener('submit',async e=>{
+  e.preventDefault();const submitButton=e.target.querySelector('[type="submit"]');submitButton.disabled=true;
+  const payload={province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link:$('#songLink').value.trim()||null,submitted_by:$('#submitter').value.trim()||t('guest')};
+  const {data,error}=await db.from('songs').insert(payload).select().single();submitButton.disabled=false;
+  if(error){console.error(error);toast(t('saveError'));return}
+  songs.push({...data,by:data.submitted_by,liked:false});e.target.reset();dialog.close();filterProvince.value=selected;renderSongs();updateStats();toast(t('addedSuccess'));document.querySelector('#songs-section').scrollIntoView({behavior:'smooth'});
 });
-function save(){localStorage.setItem('yaldaSongs',JSON.stringify(songs))}
 function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function escapeAttr(v=''){return escapeHtml(v)}
 function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
 
-applyLanguage(currentLang); loadMap();
+applyLanguage(currentLang);loadMap();loadSongs();
