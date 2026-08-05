@@ -21,8 +21,8 @@ Features:
 ## Supabase setup
 
 1. Run `setup-auth.sql` once in Supabase SQL Editor.
-2. Anonymous Sign-Ins are optional for song submission. Enable them only if you want per-visitor likes.
-3. Public song submission works without registration or an Auth session.
+2. Public song submission and per-browser likes work without registration or an Auth session.
+3. Each browser receives a random local visitor ID so one click adds a like and a second click removes it.
 4. There is no per-minute song submission limit.
 5. Never place a `service_role` key in this frontend project.
 

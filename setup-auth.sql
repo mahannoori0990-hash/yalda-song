@@ -26,16 +26,25 @@ drop function if exists public.limit_song_submissions();
 
 create table if not exists public.song_likes (
   song_id bigint not null references public.songs(id) on delete cascade,
-  user_id uuid not null references auth.users(id) on delete cascade,
+  user_id uuid references auth.users(id) on delete cascade,
+  visitor_id uuid not null,
   created_at timestamptz not null default now(),
-  primary key (song_id, user_id)
+  primary key (song_id, visitor_id)
 );
+alter table public.song_likes add column if not exists visitor_id uuid;
+alter table public.song_likes alter column user_id drop not null;
+update public.song_likes set visitor_id = coalesce(user_id, gen_random_uuid()) where visitor_id is null;
+alter table public.song_likes alter column visitor_id set not null;
+alter table public.song_likes drop constraint if exists song_likes_pkey;
+alter table public.song_likes add constraint song_likes_pkey primary key (song_id, visitor_id);
 alter table public.song_likes enable row level security;
 drop policy if exists "Public can read likes" on public.song_likes;
 drop policy if exists "Users manage own likes" on public.song_likes;
+drop policy if exists "Public can add likes" on public.song_likes;
+drop policy if exists "Public can remove likes" on public.song_likes;
 create policy "Public can read likes" on public.song_likes for select to anon, authenticated using (true);
-create policy "Users manage own likes" on public.song_likes for all to authenticated
-using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "Public can add likes" on public.song_likes for insert to anon, authenticated with check (true);
+create policy "Public can remove likes" on public.song_likes for delete to anon, authenticated using (true);
 
 create index if not exists songs_created_at_idx on public.songs(created_at desc);
 create index if not exists songs_user_id_idx on public.songs(user_id);
@@ -43,5 +52,5 @@ create index if not exists song_likes_song_id_idx on public.song_likes(song_id);
 grant usage on schema public to anon, authenticated;
 grant select on public.songs, public.song_likes to anon, authenticated;
 grant insert on public.songs to anon, authenticated;
-grant insert, delete on public.song_likes to authenticated;
+grant insert, delete on public.song_likes to anon, authenticated;
 grant usage, select on sequence public.songs_id_seq to anon, authenticated;

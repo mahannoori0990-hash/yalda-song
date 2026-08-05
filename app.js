@@ -88,7 +88,9 @@ let selected = '';
 const SUPABASE_URL='https://rvtufzcwjvvnonggqzoj.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY='sb_publishable_ylwegXC8xWEmlGSkQu4byw_3zQFKQBQ';
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
-let currentUser=null;
+const VISITOR_KEY='yaldaVisitorId';
+function createVisitorId(){return crypto.randomUUID?crypto.randomUUID():'10000000-1000-4000-8000-100000000000'.replace(/[018]/g,c=>(c^crypto.getRandomValues(new Uint8Array(1))[0]&15>>c/4).toString(16))}
+const visitorId=localStorage.getItem(VISITOR_KEY)||createVisitorId();localStorage.setItem(VISITOR_KEY,visitorId);
 let songs=[];
 const $=s=>document.querySelector(s);
 const t=(key,vars={})=>Object.entries(vars).reduce((text,[k,v])=>text.replaceAll(`{${k}}`,v),translations[currentLang][key]||key);
@@ -192,19 +194,16 @@ async function loadSongs(){
   const {data,error}=await supabaseClient.from('songs').select('id,province,title,artist,link,submitted_by,created_at,song_likes(count)').order('created_at',{ascending:false});
   if(error){console.error(error);songs=[];renderSongs();renderRanking();toast(t('databaseError'));return}
   let likedIds=new Set();
-  if(currentUser){
-    const {data:likes}=await supabaseClient.from('song_likes').select('song_id').eq('user_id',currentUser.id);
-    likedIds=new Set((likes||[]).map(item=>Number(item.song_id)));
-  }
+  const {data:likes}=await supabaseClient.from('song_likes').select('song_id').eq('visitor_id',visitorId);
+  likedIds=new Set((likes||[]).map(item=>Number(item.song_id)));
   songs=(data||[]).map(song=>({id:Number(song.id),province:song.province,title:song.title,artist:song.artist,link:song.link||'',by:song.submitted_by,likes:Number(song.song_likes?.[0]?.count||0),liked:likedIds.has(Number(song.id))}));
   renderSongs();renderRanking();updateStats();
 }
 async function toggleLike(id){
-  if(!currentUser){toast(t('databaseError'));return}
   const song=songs.find(item=>item.id===id);if(!song)return;
   const result=song.liked
-    ? await supabaseClient.from('song_likes').delete().eq('song_id',id).eq('user_id',currentUser.id)
-    : await supabaseClient.from('song_likes').insert({song_id:id,user_id:currentUser.id});
+    ? await supabaseClient.from('song_likes').delete().eq('song_id',id).eq('visitor_id',visitorId)
+    : await supabaseClient.from('song_likes').insert({song_id:id,visitor_id:visitorId,user_id:null});
   if(result.error){console.error(result.error);toast(t('databaseError'));return}
   song.liked=!song.liked;song.likes+=song.liked?1:-1;renderSongs();renderRanking();updateStats();
 }
@@ -224,7 +223,7 @@ $('#closeDialog').addEventListener('click',()=>dialog.close()); dialog.addEventL
 $('#songForm').addEventListener('submit',async e=>{
   e.preventDefault();
   const submitButton=e.submitter||e.target.querySelector('[type="submit"]');submitButton.disabled=true;
-  const {error}=await supabaseClient.from('songs').insert({province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link:$('#songLink').value.trim()||null,submitted_by:$('#submitter').value.trim()||t('guest'),user_id:currentUser?.id||null});
+  const {error}=await supabaseClient.from('songs').insert({province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link:$('#songLink').value.trim()||null,submitted_by:$('#submitter').value.trim()||t('guest'),user_id:null});
   submitButton.disabled=false;
   if(error){console.error(error);toast(error.message||t('databaseError'));return}
   e.target.reset();dialog.close();filterProvince.value=selected;await loadSongs();toast(t('addedSuccess'));document.querySelector('#songs-section').scrollIntoView({behavior:'smooth'});
@@ -244,10 +243,6 @@ function initRevealAnimations(){
 }
 
 async function bootstrap(){
-  applyLanguage(currentLang);loadMap();initRevealAnimations();
-  let {data:{session}}=await supabaseClient.auth.getSession();
-  if(!session){const {data,error}=await supabaseClient.auth.signInAnonymously();if(error)console.warn('Anonymous session unavailable; public song submission remains active.',error);else session=data.session}
-  currentUser=session?.user||null;await loadSongs();
-  supabaseClient.auth.onAuthStateChange(async(_event,nextSession)=>{currentUser=nextSession?.user||null;if(currentUser)await loadSongs()});
+  applyLanguage(currentLang);loadMap();initRevealAnimations();await loadSongs();
 }
 bootstrap();
