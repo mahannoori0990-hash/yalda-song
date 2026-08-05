@@ -222,11 +222,11 @@ function openDialog(){if(!selected){toast(t('chooseFirst'));return}$('#dialogPro
 $('#addSongBtn').addEventListener('click',openDialog); $('#openAddTop').addEventListener('click',()=>{if(selected)openDialog();else document.querySelector('#map-section').scrollIntoView()});
 $('#closeDialog').addEventListener('click',()=>dialog.close()); dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
 $('#songForm').addEventListener('submit',async e=>{
-  e.preventDefault();if(!currentUser){toast(t('databaseError'));return}
-  const submitButton=e.submitter;submitButton.disabled=true;
-  const {error}=await supabaseClient.from('songs').insert({province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link:$('#songLink').value.trim()||null,submitted_by:$('#submitter').value.trim()||t('guest'),user_id:currentUser.id});
+  e.preventDefault();
+  const submitButton=e.submitter||e.target.querySelector('[type="submit"]');submitButton.disabled=true;
+  const {error}=await supabaseClient.from('songs').insert({province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link:$('#songLink').value.trim()||null,submitted_by:$('#submitter').value.trim()||t('guest'),user_id:currentUser?.id||null});
   submitButton.disabled=false;
-  if(error){console.error(error);toast(error.message?.includes('wait')?error.message:t('databaseError'));return}
+  if(error){console.error(error);toast(error.message||t('databaseError'));return}
   e.target.reset();dialog.close();filterProvince.value=selected;await loadSongs();toast(t('addedSuccess'));document.querySelector('#songs-section').scrollIntoView({behavior:'smooth'});
 });
 
@@ -246,7 +246,7 @@ function initRevealAnimations(){
 async function bootstrap(){
   applyLanguage(currentLang);loadMap();initRevealAnimations();
   let {data:{session}}=await supabaseClient.auth.getSession();
-  if(!session){const {data,error}=await supabaseClient.auth.signInAnonymously();if(error){console.error(error);toast(t('databaseError'));return}session=data.session}
+  if(!session){const {data,error}=await supabaseClient.auth.signInAnonymously();if(error)console.warn('Anonymous session unavailable; public song submission remains active.',error);else session=data.session}
   currentUser=session?.user||null;await loadSongs();
   supabaseClient.auth.onAuthStateChange(async(_event,nextSession)=>{currentUser=nextSession?.user||null;if(currentUser)await loadSongs()});
 }

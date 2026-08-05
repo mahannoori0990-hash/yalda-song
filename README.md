@@ -21,8 +21,8 @@ Features:
 ## Supabase setup
 
 1. Run `setup-auth.sql` once in Supabase SQL Editor.
-2. In Authentication > Sign In / Providers, enable Anonymous Sign-Ins.
-3. Visitors are signed in anonymously in the background; no registration form is shown.
+2. Anonymous Sign-Ins are optional for song submission. Enable them only if you want per-visitor likes.
+3. Public song submission works without registration or an Auth session.
 4. There is no per-minute song submission limit.
 5. Never place a `service_role` key in this frontend project.
 

@@ -11,13 +11,14 @@ create table if not exists public.songs (
 );
 
 alter table public.songs add column if not exists user_id uuid references auth.users(id) on delete cascade;
+alter table public.songs alter column user_id drop not null;
 alter table public.songs enable row level security;
 drop policy if exists "Public can read songs" on public.songs;
 drop policy if exists "Users can submit songs" on public.songs;
 drop policy if exists "Public can submit songs" on public.songs;
 create policy "Public can read songs" on public.songs for select to anon, authenticated using (true);
-create policy "Users can submit songs" on public.songs for insert to authenticated
-with check (auth.uid() = user_id);
+create policy "Public can submit songs" on public.songs for insert to anon, authenticated
+with check (user_id is null or auth.uid() = user_id);
 
 -- Remove the old 60-second submission limit if an earlier version was installed.
 drop trigger if exists enforce_song_rate_limit on public.songs;
@@ -41,6 +42,6 @@ create index if not exists songs_user_id_idx on public.songs(user_id);
 create index if not exists song_likes_song_id_idx on public.song_likes(song_id);
 grant usage on schema public to anon, authenticated;
 grant select on public.songs, public.song_likes to anon, authenticated;
-grant insert on public.songs to authenticated;
+grant insert on public.songs to anon, authenticated;
 grant insert, delete on public.song_likes to authenticated;
-grant usage, select on sequence public.songs_id_seq to authenticated;
+grant usage, select on sequence public.songs_id_seq to anon, authenticated;
