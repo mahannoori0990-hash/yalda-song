@@ -19,22 +19,9 @@ create policy "Public can read songs" on public.songs for select to anon, authen
 create policy "Users can submit songs" on public.songs for insert to authenticated
 with check (auth.uid() = user_id);
 
--- Server-side rate limit: one song per account every 60 seconds.
-create or replace function public.limit_song_submissions()
-returns trigger language plpgsql security definer set search_path = public as $$
-begin
-  if exists (
-    select 1 from public.songs
-    where user_id = new.user_id and created_at > now() - interval '60 seconds'
-  ) then
-    raise exception 'Please wait before submitting another song';
-  end if;
-  return new;
-end;
-$$;
+-- Remove the old 60-second submission limit if an earlier version was installed.
 drop trigger if exists enforce_song_rate_limit on public.songs;
-create trigger enforce_song_rate_limit before insert on public.songs
-for each row execute function public.limit_song_submissions();
+drop function if exists public.limit_song_submissions();
 
 create table if not exists public.song_likes (
   song_id bigint not null references public.songs(id) on delete cascade,
@@ -50,6 +37,7 @@ create policy "Users manage own likes" on public.song_likes for all to authentic
 using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
 create index if not exists songs_created_at_idx on public.songs(created_at desc);
+create index if not exists songs_user_id_idx on public.songs(user_id);
 create index if not exists song_likes_song_id_idx on public.song_likes(song_id);
 grant usage on schema public to anon, authenticated;
 grant select on public.songs, public.song_likes to anon, authenticated;

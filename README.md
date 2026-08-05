@@ -15,6 +15,15 @@ Features:
 - Subtle red Persian boteh-jegheh background pattern
 - Event details, map link and FAQ
 - Fully visible two-row navigation on mobile screens
-- Language and demo data saved in localStorage
+- Language preference saved in localStorage
+- Songs, likes and Top 100 ranking synchronized with Supabase
+
+## Supabase setup
+
+1. Run `setup-auth.sql` once in Supabase SQL Editor.
+2. In Authentication > Sign In / Providers, enable Anonymous Sign-Ins.
+3. Visitors are signed in anonymously in the background; no registration form is shown.
+4. There is no per-minute song submission limit.
+5. Never place a `service_role` key in this frontend project.
 
 The vector map is loaded from the public GitHub source used in earlier versions, so an internet connection is required for the map. The province dropdown remains available if loading fails.
