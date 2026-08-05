@@ -7,6 +7,8 @@ Features:
 - Persian, English and German language switcher
 - RTL layout for Persian and LTR layout for English/German
 - Province selection, song submission, filtering and likes
+- Live countdown to the Yalda event on 18 December 2026 at 22:00 (Berlin time)
+- Searchable and province-filterable Top 100 ranking based on community likes
 - Trilingual Yalda history and traditions section
 - Animated pomegranate, watermelon, candlelight, stars and scroll reveals
 - Realistic transparent pomegranate and watermelon artwork

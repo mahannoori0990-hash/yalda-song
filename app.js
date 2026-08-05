@@ -27,7 +27,8 @@ const provinceNames = {
 
 const translations = {
   fa: {
-    pageTitle:'یلدای ایران | انتخاب آهنگ استان‌ها', brand:'یلدای ایران', navMap:'نقشه', navSongs:'آهنگ‌ها', navStory:'درباره یلدا', navEvent:'مراسم', navFaq:'سؤالات', addSong:'افزودن آهنگ', languageLabel:'زبان',
+    pageTitle:'یلدای ایران | انتخاب آهنگ استان‌ها', brand:'یلدای ایران', navMap:'نقشه', navSongs:'آهنگ‌ها', navTopSongs:'۱۰۰ آهنگ برتر', navStory:'درباره یلدا', navEvent:'مراسم', navFaq:'سؤالات', addSong:'افزودن آهنگ', languageLabel:'زبان',
+    countdownEyebrow:'تا دورهمی شب یلدا', countdownTitle:'شمارش معکوس جشن', countdownDate:'جمعه ۱۸ دسامبر ۲۰۲۶، ساعت ۲۲:۰۰', days:'روز', hours:'ساعت', minutes:'دقیقه', seconds:'ثانیه', eventStarted:'جشن شب یلدا آغاز شده است ✨', rankingEyebrow:'رتبه‌بندی انتخاب مردم', rankingTitle:'۱۰۰ آهنگ برتر یلدا', rankingLead:'محبوب‌ترین پیشنهادها را یکجا ببین، جست‌وجو کن و به آهنگ موردعلاقه‌ات رأی بده.', rankingSearch:'جست‌وجوی آهنگ یا خواننده…', rankingEmpty:'آهنگی با این مشخصات پیدا نشد', rankLabel:'رتبه {rank}',
     heroEyebrow:'یک یلدا، سی‌ویک صدا', heroTitle1:'آهنگ محبوب شهرت را', heroTitle2:'به نقشه یلدای ایران اضافه کن', heroText:'استانت را انتخاب کن، آهنگ پیشنهادی‌ات را ثبت کن و به انتخاب‌های بقیه رأی بده.', chooseProvince:'انتخاب استان',
     mapEyebrow:'از روی نقشه انتخاب کن', mapTitle:'استان موردنظرت کجاست؟', noneSelected:'هنوز استانی انتخاب نشده', mapLoading:'در حال آماده‌سازی نقشه تعاملی…', mapLoadError:'نقشه وکتوری آنلاین بارگذاری نشد؛ انتخاب از فهرست همچنان فعال است.', mapNote:'روی هر استان برو تا نام آن نمایش داده شود؛ با کلیک فقط همان استان انتخاب می‌شود.', selectedProvinceLabel:'استان انتخاب‌شده', provinceHelpDefault:'از روی نقشه یک استان را انتخاب کن.', addForProvince:'+ افزودن آهنگ برای این استان', songsCount:'آهنگ', likesCount:'لایک', chooseFromList:'انتخاب از فهرست', chooseProvinceOption:'یک استان را انتخاب کن',
     peopleChoice:'انتخاب مردم', popularSongs:'محبوب‌ترین آهنگ‌های یلدایی', songsOf:'آهنگ‌های یلدایی {province}', allProvinces:'همه استان‌ها', emptyTitle:'هنوز آهنگی ثبت نشده', emptyText:'اولین انتخاب این استان را تو اضافه کن.', footerText:'ساخته‌شده برای کنار هم شنیدن صداهای ایران',
@@ -38,7 +39,8 @@ const translations = {
     faqEyebrow:'پیش از آمدن بدانید', faqTitle:'سؤالات متداول', faqIntro:'پاسخ کوتاه به مهم‌ترین سؤال‌ها درباره جشن و ثبت آهنگ.', faqStudentsQ:'آیا جشن فقط برای دانشجویان است؟', faqStudentsA:'خیر. شرکت در جشن برای همه آزاد است.', faqAgeQ:'آیا محدودیت سنی وجود دارد؟', faqAgeA:'بله. ورود فقط برای افراد ۱۸ سال و بالاتر امکان‌پذیر است.', faqSongsQ:'محدودیت افزودن آهنگ چگونه است؟', faqSongsA:'برای افزودن آهنگ باید وارد حساب خود شوید. هر حساب می‌تواند هر ۶۰ ثانیه یک آهنگ ثبت کند و فعلاً سقفی برای تعداد کل آهنگ‌ها وجود ندارد.', faqWhereQ:'جشن کجا و چه زمانی برگزار می‌شود؟', faqWhereA:'جمعه ۱۸ دسامبر ۲۰۲۶ از ساعت ۲۲:۰۰ در KulturCafé، Universitätsstraße 150, 44801 Bochum Süd.'
   },
   en: {
-    pageTitle:'Yalda of Iran | Provincial Music Map', brand:'Yalda of Iran', navMap:'Map', navSongs:'Songs', navStory:'About Yalda', navEvent:'Event', navFaq:'FAQ', addSong:'Add song', languageLabel:'Language',
+    pageTitle:'Yalda of Iran | Provincial Music Map', brand:'Yalda of Iran', navMap:'Map', navSongs:'Songs', navTopSongs:'Top 100', navStory:'About Yalda', navEvent:'Event', navFaq:'FAQ', addSong:'Add song', languageLabel:'Language',
+    countdownEyebrow:'Until our Yalda gathering', countdownTitle:'Event countdown', countdownDate:'Friday, 18 December 2026 at 22:00', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds', eventStarted:'Yalda Night has begun ✨', rankingEyebrow:"People's ranking", rankingTitle:'Top 100 Yalda songs', rankingLead:'Browse the most popular suggestions, search the list and vote for your favorite.', rankingSearch:'Search song or artist…', rankingEmpty:'No matching song found', rankLabel:'Rank {rank}',
     heroEyebrow:'One Yalda, thirty-one voices', heroTitle1:'Add your city’s favorite song', heroTitle2:'to Iran’s Yalda music map', heroText:'Choose your province, submit a song and vote for other people’s suggestions.', chooseProvince:'Choose a province',
     mapEyebrow:'Choose on the map', mapTitle:'Which province is yours?', noneSelected:'No province selected yet', mapLoading:'Preparing the interactive map…', mapLoadError:'The online vector map could not be loaded. You can still choose from the list.', mapNote:'Hover over a province to see its name. Click to select only that province.', selectedProvinceLabel:'Selected province', provinceHelpDefault:'Choose a province on the map.', addForProvince:'+ Add a song for this province', songsCount:'Songs', likesCount:'Likes', chooseFromList:'Choose from list', chooseProvinceOption:'Choose a province',
     peopleChoice:'People’s choice', popularSongs:'Most popular Yalda songs', songsOf:'Yalda songs from {province}', allProvinces:'All provinces', emptyTitle:'No songs yet', emptyText:'Be the first to add a song for this province.', footerText:'Made to hear the many voices of Iran together',
@@ -49,7 +51,8 @@ const translations = {
     faqEyebrow:'Good to know', faqTitle:'Frequently asked questions', faqIntro:'Quick answers to the most important questions about the event and song submissions.', faqStudentsQ:'Is the event only for students?', faqStudentsA:'No. The event is open to everyone.', faqAgeQ:'Is there an age restriction?', faqAgeA:'Yes. Admission is limited to guests aged 18 and over.', faqSongsQ:'What are the song submission limits?', faqSongsA:'You must be signed in to add a song. Each account can submit one song every 60 seconds, and there is currently no overall submission limit.', faqWhereQ:'Where and when is the event?', faqWhereA:'Friday, 18 December 2026 from 22:00 at KulturCafé, Universitätsstraße 150, 44801 Bochum Süd.'
   },
   de: {
-    pageTitle:'Yalda im Iran | Musikkarte der Provinzen', brand:'Yalda im Iran', navMap:'Karte', navSongs:'Lieder', navStory:'Über Yalda', navEvent:'Feier', navFaq:'FAQ', addSong:'Lied hinzufügen', languageLabel:'Sprache',
+    pageTitle:'Yalda im Iran | Musikkarte der Provinzen', brand:'Yalda im Iran', navMap:'Karte', navSongs:'Lieder', navTopSongs:'Top 100', navStory:'Über Yalda', navEvent:'Feier', navFaq:'FAQ', addSong:'Lied hinzufügen', languageLabel:'Sprache',
+    countdownEyebrow:'Bis zu unserer Yalda-Feier', countdownTitle:'Countdown zur Feier', countdownDate:'Freitag, 18. Dezember 2026 um 22:00 Uhr', days:'Tage', hours:'Stunden', minutes:'Minuten', seconds:'Sekunden', eventStarted:'Die Yalda-Nacht hat begonnen ✨', rankingEyebrow:'Ranking der Community', rankingTitle:'Top 100 Yalda-Lieder', rankingLead:'Entdecke die beliebtesten Vorschläge, durchsuche die Liste und stimme für deinen Favoriten ab.', rankingSearch:'Lied oder Interpret suchen…', rankingEmpty:'Kein passendes Lied gefunden', rankLabel:'Platz {rank}',
     heroEyebrow:'Eine Yalda, einunddreißig Stimmen', heroTitle1:'Füge das Lieblingslied deiner Stadt', heroTitle2:'zur Yalda-Musikkarte Irans hinzu', heroText:'Wähle deine Provinz, schlage ein Lied vor und stimme für die Vorschläge anderer ab.', chooseProvince:'Provinz auswählen',
     mapEyebrow:'Auf der Karte auswählen', mapTitle:'Welche Provinz ist deine?', noneSelected:'Noch keine Provinz ausgewählt', mapLoading:'Interaktive Karte wird vorbereitet…', mapLoadError:'Die Online-Vektorkarte konnte nicht geladen werden. Die Auswahl aus der Liste funktioniert weiterhin.', mapNote:'Fahre über eine Provinz, um ihren Namen zu sehen. Mit einem Klick wird nur diese Provinz ausgewählt.', selectedProvinceLabel:'Ausgewählte Provinz', provinceHelpDefault:'Wähle eine Provinz auf der Karte aus.', addForProvince:'+ Lied für diese Provinz hinzufügen', songsCount:'Lieder', likesCount:'Likes', chooseFromList:'Aus Liste auswählen', chooseProvinceOption:'Provinz auswählen',
     peopleChoice:'Wahl der Community', popularSongs:'Beliebteste Yalda-Lieder', songsOf:'Yalda-Lieder aus {province}', allProvinces:'Alle Provinzen', emptyTitle:'Noch keine Lieder vorhanden', emptyText:'Füge das erste Lied für diese Provinz hinzu.', footerText:'Geschaffen, um die Stimmen Irans gemeinsam zu hören',
@@ -93,17 +96,20 @@ const t=(key,vars={})=>Object.entries(vars).reduce((text,[k,v])=>text.replaceAll
 const provinceName=id=>provinceNames[currentLang][id] || provinceNames.en[id] || id;
 const mapStage=$('#mapStage'), tooltip=$('#tooltip'), status=$('#mapStatus'), svgLayer=$('#svgLayer');
 const provinceFallback=$('#provinceFallback'), filterProvince=$('#filterProvince');
+const rankingProvince=$('#rankingProvince'), rankingSearch=$('#rankingSearch');
 
 function number(n){return new Intl.NumberFormat(currentLang==='fa'?'fa-IR':currentLang==='de'?'de-DE':'en-US').format(n)}
 function rebuildProvinceOptions(){
   const fallbackValue=provinceFallback.value, filterValue=filterProvince.value || 'all';
   provinceFallback.innerHTML=`<option value="">${t('chooseProvinceOption')}</option>`;
   filterProvince.innerHTML=`<option value="all">${t('allProvinces')}</option>`;
+  rankingProvince.innerHTML=`<option value="all">${t('allProvinces')}</option>`;
   Object.keys(provinceNames.fa).sort((a,b)=>provinceName(a).localeCompare(provinceName(b),currentLang)).forEach(id=>{
     provinceFallback.insertAdjacentHTML('beforeend',`<option value="${id}">${provinceName(id)}</option>`);
     filterProvince.insertAdjacentHTML('beforeend',`<option value="${id}">${provinceName(id)}</option>`);
+    rankingProvince.insertAdjacentHTML('beforeend',`<option value="${id}">${provinceName(id)}</option>`);
   });
-  provinceFallback.value=fallbackValue; filterProvince.value=filterValue;
+  provinceFallback.value=fallbackValue; filterProvince.value=filterValue; rankingProvince.value=rankingProvince.dataset.value || 'all';
 }
 function applyLanguage(lang){
   currentLang=translations[lang]?lang:'fa'; localStorage.setItem('yaldaLanguage',currentLang);
@@ -122,7 +128,7 @@ function applyLanguage(lang){
   } else {
     $('#selectedBadge').textContent=t('noneSelected'); $('#provinceHelp').textContent=t('provinceHelpDefault');
   }
-  renderSongs(); updateStats();
+  renderSongs(); renderRanking(); updateStats(); updateCountdown();
 }
 
 async function loadMap(){
@@ -150,6 +156,8 @@ function selectProvince(id){
 }
 provinceFallback.addEventListener('change',e=>e.target.value&&selectProvince(e.target.value));
 filterProvince.addEventListener('change',renderSongs);
+rankingProvince.addEventListener('change',()=>{rankingProvince.dataset.value=rankingProvince.value;renderRanking()});
+rankingSearch.addEventListener('input',renderRanking);
 $('#languageSelect').addEventListener('change',e=>applyLanguage(e.target.value));
 function updateStats(){const list=songs.filter(s=>s.province===selected);$('#provinceSongCount').textContent=number(list.length);$('#provinceLikeCount').textContent=number(list.reduce((a,s)=>a+s.likes,0))}
 function renderSongs(){
@@ -162,14 +170,41 @@ function renderSongs(){
   </article>`).join('');
   $('#emptyState').hidden=!!list.length; document.querySelectorAll('[data-like]').forEach(btn=>btn.addEventListener('click',()=>toggleLike(Number(btn.dataset.like))));
 }
-function toggleLike(id){const s=songs.find(x=>x.id===id);if(!s)return;s.liked=!s.liked;s.likes+=s.liked?1:-1;save();renderSongs();updateStats()}
+function renderRanking(){
+  const filter=rankingProvince.value || 'all';
+  const query=(rankingSearch.value || '').trim().toLocaleLowerCase(currentLang);
+  const ranked=[...songs].sort((a,b)=>b.likes-a.likes || b.id-a.id).slice(0,100);
+  const list=ranked.filter(song=>(filter==='all'||song.province===filter)&&(!query||`${song.title} ${song.artist} ${provinceName(song.province)}`.toLocaleLowerCase(currentLang).includes(query)));
+  $('#rankingList').innerHTML=list.map(song=>{
+    const rank=ranked.findIndex(item=>item.id===song.id)+1;
+    const medal=rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':'';
+    return `<article class="ranking-row">
+      <div class="rank-number" aria-label="${t('rankLabel',{rank:number(rank)})}">${medal||number(rank)}</div>
+      <div class="ranking-song"><strong>${escapeHtml(song.title)}</strong><span>${escapeHtml(song.artist)} · ${provinceName(song.province)}</span></div>
+      <button class="like-btn ${song.liked?'liked':''}" data-ranking-like="${song.id}">♥ ${number(song.likes)}</button>
+      ${song.link?`<a class="listen-link" target="_blank" rel="noopener" href="${escapeAttr(song.link)}">${t('listen')}</a>`:'<span></span>'}
+    </article>`;
+  }).join('');
+  $('#rankingEmpty').hidden=!!list.length;
+  document.querySelectorAll('[data-ranking-like]').forEach(btn=>btn.addEventListener('click',()=>toggleLike(Number(btn.dataset.rankingLike))));
+}
+function toggleLike(id){const s=songs.find(x=>x.id===id);if(!s)return;s.liked=!s.liked;s.likes+=s.liked?1:-1;save();renderSongs();renderRanking();updateStats()}
+
+const eventTime=new Date('2026-12-18T22:00:00+01:00').getTime();
+function updateCountdown(){
+  const remaining=Math.max(0,eventTime-Date.now());
+  if(!remaining){$('#countdown').innerHTML=`<p class="countdown-finished">${t('eventStarted')}</p>`;return}
+  const units=[Math.floor(remaining/86400000),Math.floor(remaining/3600000)%24,Math.floor(remaining/60000)%60,Math.floor(remaining/1000)%60];
+  ['Days','Hours','Minutes','Seconds'].forEach((unit,index)=>{const el=$(`#countdown${unit}`);if(el)el.textContent=number(units[index])});
+}
+setInterval(updateCountdown,1000);
 const dialog=$('#songDialog');
 function openDialog(){if(!selected){toast(t('chooseFirst'));return}$('#dialogProvince').textContent=provinceName(selected);dialog.showModal();setTimeout(()=>$('#songTitle').focus(),50)}
 $('#addSongBtn').addEventListener('click',openDialog); $('#openAddTop').addEventListener('click',()=>{if(selected)openDialog();else document.querySelector('#map-section').scrollIntoView()});
 $('#closeDialog').addEventListener('click',()=>dialog.close()); dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
 $('#songForm').addEventListener('submit',e=>{
   e.preventDefault(); songs.push({id:Date.now(),province:selected,title:$('#songTitle').value.trim(),artist:$('#artistName').value.trim(),link:$('#songLink').value.trim(),by:$('#submitter').value.trim()||t('guest'),likes:0,liked:false});
-  save();e.target.reset();dialog.close();filterProvince.value=selected;renderSongs();updateStats();toast(t('addedSuccess'));document.querySelector('#songs-section').scrollIntoView({behavior:'smooth'});
+  save();e.target.reset();dialog.close();filterProvince.value=selected;renderSongs();renderRanking();updateStats();toast(t('addedSuccess'));document.querySelector('#songs-section').scrollIntoView({behavior:'smooth'});
 });
 function save(){localStorage.setItem('yaldaSongs',JSON.stringify(songs))}
 function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}

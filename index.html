@@ -24,6 +24,7 @@
         <div class="nav-links">
           <a href="#map-section" data-i18n="navMap">نقشه</a>
           <a href="#songs-section" data-i18n="navSongs">آهنگ‌ها</a>
+          <a href="#top-songs-section" data-i18n="navTopSongs">۱۰۰ آهنگ برتر</a>
           <a href="#story-section" data-i18n="navStory">درباره یلدا</a>
           <a href="#event-section" data-i18n="navEvent">مراسم</a>
           <a href="#faq-section" data-i18n="navFaq">سؤالات</a>
@@ -50,6 +51,22 @@
   </header>
 
   <main>
+    <section id="countdown-section" class="countdown-section" aria-labelledby="countdownTitle">
+      <div class="shell countdown-shell reveal">
+        <div class="countdown-copy">
+          <p class="eyebrow" data-i18n="countdownEyebrow">تا دورهمی شب یلدا</p>
+          <h2 id="countdownTitle" data-i18n="countdownTitle">شمارش معکوس جشن</h2>
+          <p data-i18n="countdownDate">جمعه ۱۸ دسامبر ۲۰۲۶، ساعت ۲۲:۰۰</p>
+        </div>
+        <div id="countdown" class="countdown" role="timer" aria-live="off">
+          <div><strong id="countdownDays">۰</strong><span data-i18n="days">روز</span></div>
+          <div><strong id="countdownHours">۰</strong><span data-i18n="hours">ساعت</span></div>
+          <div><strong id="countdownMinutes">۰</strong><span data-i18n="minutes">دقیقه</span></div>
+          <div><strong id="countdownSeconds">۰</strong><span data-i18n="seconds">ثانیه</span></div>
+        </div>
+      </div>
+    </section>
+
     <section id="story-section" class="section story-section">
       <div class="shell">
         <div class="story-intro reveal">
@@ -118,6 +135,24 @@
         </div>
         <div id="songsGrid" class="songs-grid"></div>
         <div id="emptyState" class="empty-state" hidden><div>🎵</div><h3 data-i18n="emptyTitle">هنوز آهنگی ثبت نشده</h3><p data-i18n="emptyText">اولین انتخاب این استان را تو اضافه کن.</p></div>
+      </div>
+    </section>
+
+    <section id="top-songs-section" class="section ranking-section">
+      <div class="shell">
+        <div class="ranking-heading reveal">
+          <div>
+            <p class="eyebrow dark" data-i18n="rankingEyebrow">رتبه‌بندی انتخاب مردم</p>
+            <h2 data-i18n="rankingTitle">۱۰۰ آهنگ برتر یلدا</h2>
+            <p data-i18n="rankingLead">محبوب‌ترین پیشنهادها را یکجا ببین، جست‌وجو کن و به آهنگ موردعلاقه‌ات رأی بده.</p>
+          </div>
+          <div class="ranking-tools">
+            <input id="rankingSearch" type="search" data-i18n-placeholder="rankingSearch" placeholder="جست‌وجوی آهنگ یا خواننده…" />
+            <select id="rankingProvince" aria-label="فیلتر استان"><option value="all" data-i18n="allProvinces">همه استان‌ها</option></select>
+          </div>
+        </div>
+        <div id="rankingList" class="ranking-list"></div>
+        <div id="rankingEmpty" class="empty-state" hidden><div>🎶</div><h3 data-i18n="rankingEmpty">آهنگی با این مشخصات پیدا نشد</h3></div>
       </div>
     </section>
 
