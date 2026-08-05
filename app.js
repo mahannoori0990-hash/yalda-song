@@ -150,7 +150,21 @@ function moveTip(e){const r=mapStage.getBoundingClientRect();tooltip.style.left=
 function hideTip(){tooltip.classList.remove('show')}
 function selectProvince(id){
   if(!provinceNames.fa[id]) return; selected=id;
-  svgLayer.querySelectorAll('#provinces path').forEach(p=>p.classList.toggle('is-selected',p.dataset.province===id));
+  const provinceGroup=svgLayer.querySelector('#provinces');
+  provinceGroup?.querySelector('.selection-overlay')?.remove();
+  const provincePaths=[...svgLayer.querySelectorAll('#provinces path:not(.selection-outline)')];
+  provincePaths.forEach(p=>p.classList.toggle('is-selected',p.dataset.province===id));
+  const selectedPaths=provincePaths.filter(p=>p.dataset.province===id);
+  if(provinceGroup&&selectedPaths.length){
+    const overlay=document.createElementNS('http://www.w3.org/2000/svg','g');
+    overlay.classList.add('selection-overlay');overlay.setAttribute('aria-hidden','true');
+    selectedPaths.forEach(path=>{
+      const outline=path.cloneNode(true);
+      outline.removeAttribute('id');outline.removeAttribute('tabindex');outline.removeAttribute('role');outline.removeAttribute('aria-label');
+      outline.classList.remove('is-selected');outline.classList.add('selection-outline');overlay.appendChild(outline);
+    });
+    provinceGroup.appendChild(overlay);
+  }
   $('#selectedProvince').textContent=provinceName(id); $('#selectedBadge').textContent=t('selectedBadge',{province:provinceName(id)});
   $('#provinceHelp').textContent=t('provinceHelp',{province:provinceName(id)}); $('#addSongBtn').disabled=false;
   provinceFallback.value=id; filterProvince.value=id; renderSongs(); updateStats();
