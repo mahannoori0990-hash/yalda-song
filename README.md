@@ -4,6 +4,7 @@ Open `index.html` in a modern browser.
 
 Features:
 - Interactive SVG map of Iran provinces
+- A distinct, full-view Iranian carpet artwork for each of all 31 provinces
 - Persian, English and German language switcher
 - RTL layout for Persian and LTR layout for English/German
 - Province selection, song submission, filtering and likes
@@ -26,4 +27,4 @@ Features:
 4. There is no per-minute song submission limit.
 5. Never place a `service_role` key in this frontend project.
 
-The vector map is loaded from the public GitHub source used in earlier versions, so an internet connection is required for the map. The province dropdown remains available if loading fails.
+The vector map is loaded from the public GitHub source used in earlier versions, so an internet connection is required for the map. The province dropdown remains available if loading fails. Province carpet assets are stored locally in `carpets/provinces/` and are fitted inside each province without cropping.

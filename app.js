@@ -137,8 +137,39 @@ async function loadMap(){
     const url='https://raw.githubusercontent.com/nastoohir/iran-map-svg/master/iran.svg';
     const text=await (await fetch(url)).text(); if(!text.includes('<svg')) throw new Error('invalid svg');
     svgLayer.innerHTML=text; const svg=svgLayer.querySelector('svg'); svg.removeAttribute('width'); svg.removeAttribute('height'); svg.setAttribute('preserveAspectRatio','xMidYMid meet');
+    const svgNs='http://www.w3.org/2000/svg';
+    const xlinkNs='http://www.w3.org/1999/xlink';
+    const carpetPatterns=document.createElementNS(svgNs,'defs');
+    svg.insertBefore(carpetPatterns,svg.firstChild);
     svg.querySelectorAll('#provinces path').forEach((path,index)=>{
-      const id=resolveProvinceId(path.id); path.dataset.province=id; path.style.setProperty('--province-color',provinceColors[index%provinceColors.length]);
+      const id=resolveProvinceId(path.id);
+      const patternId=`province-carpet-${id}`;
+      if(id&&!svg.querySelector(`#${patternId}`)){
+        const pattern=document.createElementNS(svgNs,'pattern');
+        pattern.id=patternId;
+        pattern.setAttribute('patternUnits','objectBoundingBox');
+        pattern.setAttribute('patternContentUnits','objectBoundingBox');
+        pattern.setAttribute('width','1');
+        pattern.setAttribute('height','1');
+        const baseColor=document.createElementNS(svgNs,'rect');
+        baseColor.setAttribute('width','1');
+        baseColor.setAttribute('height','1');
+        baseColor.setAttribute('fill',provinceColors[index%provinceColors.length]);
+        pattern.appendChild(baseColor);
+        const image=document.createElementNS(svgNs,'image');
+        const textureUrl=`carpets/provinces/${id}.webp`;
+        image.setAttribute('href',textureUrl);
+        image.setAttributeNS(xlinkNs,'xlink:href',textureUrl);
+        image.setAttribute('x','0');
+        image.setAttribute('y','0');
+        image.setAttribute('width','1');
+        image.setAttribute('height','1');
+        image.setAttribute('preserveAspectRatio','none');
+        image.setAttribute('opacity','0.94');
+        pattern.appendChild(image);
+        carpetPatterns.appendChild(pattern);
+      }
+      path.dataset.province=id; path.style.setProperty('--province-color',provinceColors[index%provinceColors.length]); path.style.setProperty('--province-fill',`url(#${patternId})`);
       path.setAttribute('tabindex','0'); path.setAttribute('role','button'); path.setAttribute('aria-label',provinceName(id));
       path.addEventListener('pointerenter',e=>showTip(e,provinceName(id))); path.addEventListener('pointermove',moveTip); path.addEventListener('pointerleave',hideTip);
       path.addEventListener('click',e=>{selectProvince(id);e.currentTarget.blur?.();document.activeElement?.blur?.();}); path.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectProvince(id)}});

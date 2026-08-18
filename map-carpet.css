@@ -1,0 +1,4 @@
+/* Keep the original map design and clip the carpet texture inside each province. */
+.svg-layer #provinces path:not(.selection-outline) {
+  fill: var(--province-fill, var(--province-color, #9f3f4d)) !important;
+}
