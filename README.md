@@ -4,7 +4,7 @@ Open `index.html` in a modern browser.
 
 Features:
 - Interactive SVG map of Iran provinces
-- Caspian Sea and Persian Gulf shapes, islands and localized labels on the map
+- Caspian Sea and Persian Gulf shapes and islands on the map
 - A distinct, full-view Iranian carpet artwork for each of all 31 provinces
 - GitHub-friendly carpet bundle: all 31 designs are packed into the single `carpets.js` file
 - Persian, English and German language switcher
