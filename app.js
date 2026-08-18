@@ -25,6 +25,12 @@ const provinceNames = {
   }
 };
 
+const seaNames = {
+  fa: {caspian:'دریای خزر', persianGulf:'خلیج فارس'},
+  en: {caspian:'Caspian Sea', persianGulf:'Persian Gulf'},
+  de: {caspian:'Kaspisches Meer', persianGulf:'Persischer Golf'}
+};
+
 const translations = {
   fa: {
     pageTitle:'یلدای ایران | انتخاب آهنگ استان‌ها', brand:'یلدای ایران', navMap:'نقشه', navSongs:'آهنگ‌ها', navTopSongs:'۱۰۰ آهنگ برتر', navStory:'درباره یلدا', navEvent:'مراسم', navFaq:'سؤالات', addSong:'افزودن آهنگ', languageLabel:'زبان', login:'ورود', logout:'خروج', accountEyebrow:'حساب کاربری', loginTitle:'ورود برای ثبت آهنگ و رأی‌دادن', loginHelp:'ایمیلت را وارد کن؛ لینک ورود امن برایت ارسال می‌شود و نیازی به رمز عبور نیست.', emailLabel:'ایمیل', sendLoginLink:'ارسال لینک ورود', loginSent:'لینک ورود به ایمیلت ارسال شد.', loginRequired:'برای ثبت آهنگ یا رأی‌دادن ابتدا وارد شو.', loggedOut:'از حساب خارج شدی.', databaseError:'ارتباط با پایگاه داده برقرار نشد. دوباره تلاش کن.', loadingSongs:'در حال دریافت آهنگ‌ها…',
@@ -129,7 +135,74 @@ function applyLanguage(lang){
   } else {
     $('#selectedBadge').textContent=t('noneSelected'); $('#provinceHelp').textContent=t('provinceHelpDefault');
   }
-  renderSongs(); renderRanking(); updateStats(); updateCountdown();
+  updateSeaLabels(); renderSongs(); renderRanking(); updateStats(); updateCountdown();
+}
+
+function updateSeaLabels(){
+  const names=seaNames[currentLang]||seaNames.fa;
+  svgLayer.querySelectorAll('[data-sea-label]').forEach(label=>{
+    const name=names[label.dataset.seaLabel]||'';
+    label.textContent=name;
+    label.setAttribute('aria-label',name);
+    label.setAttribute('direction',currentLang==='fa'?'rtl':'ltr');
+    label.setAttribute('unicode-bidi','plaintext');
+  });
+  const caspian=svgLayer.querySelector('#caspian-sea');
+  const persianGulf=svgLayer.querySelector('#persian-gulf_3_');
+  caspian?.setAttribute('aria-label',names.caspian);
+  persianGulf?.setAttribute('aria-label',names.persianGulf);
+}
+
+function addSeaPresentation(svg,defs,svgNs){
+  const gradient=document.createElementNS(svgNs,'linearGradient');
+  gradient.id='yalda-sea-gradient';
+  gradient.setAttribute('x1','0'); gradient.setAttribute('y1','0');
+  gradient.setAttribute('x2','0'); gradient.setAttribute('y2','1');
+  [['0%','#28677c'],['48%','#4c8fa4'],['100%','#79adba']].forEach(([offset,color])=>{
+    const stop=document.createElementNS(svgNs,'stop');
+    stop.setAttribute('offset',offset); stop.setAttribute('stop-color',color);
+    gradient.appendChild(stop);
+  });
+  defs.appendChild(gradient);
+
+  const waterPattern=document.createElementNS(svgNs,'pattern');
+  waterPattern.id='yalda-sea-water';
+  waterPattern.setAttribute('patternUnits','userSpaceOnUse');
+  waterPattern.setAttribute('width','56'); waterPattern.setAttribute('height','32');
+  const waterBase=document.createElementNS(svgNs,'rect');
+  waterBase.setAttribute('width','56'); waterBase.setAttribute('height','32');
+  waterBase.setAttribute('fill','url(#yalda-sea-gradient)');
+  waterPattern.appendChild(waterBase);
+  const waves=document.createElementNS(svgNs,'path');
+  waves.setAttribute('d','M0 10 Q14 3 28 10 T56 10 M0 25 Q14 18 28 25 T56 25');
+  waves.setAttribute('fill','none'); waves.setAttribute('stroke','#d6edf0');
+  waves.setAttribute('stroke-width','1.2'); waves.setAttribute('opacity','.38');
+  waterPattern.appendChild(waves);
+  defs.appendChild(waterPattern);
+
+  const provinces=svg.querySelector('#provinces');
+  const seas=svg.querySelector('#seas');
+  if(seas&&provinces){
+    seas.setAttribute('aria-hidden','false');
+    svg.insertBefore(seas,provinces);
+  }
+
+  const labels=document.createElementNS(svgNs,'g');
+  labels.id='sea-labels';
+  [
+    {key:'caspian',x:'465',y:'115'},
+    {key:'persianGulf',x:'460',y:'875'}
+  ].forEach(({key,x,y})=>{
+    const label=document.createElementNS(svgNs,'text');
+    label.dataset.seaLabel=key;
+    label.setAttribute('x',x); label.setAttribute('y',y);
+    label.setAttribute('text-anchor','middle');
+    label.setAttribute('dominant-baseline','middle');
+    label.setAttribute('role','img');
+    labels.appendChild(label);
+  });
+  svg.appendChild(labels);
+  updateSeaLabels();
 }
 
 async function loadMap(){
@@ -141,6 +214,7 @@ async function loadMap(){
     const xlinkNs='http://www.w3.org/1999/xlink';
     const carpetPatterns=document.createElementNS(svgNs,'defs');
     svg.insertBefore(carpetPatterns,svg.firstChild);
+    addSeaPresentation(svg,carpetPatterns,svgNs);
     svg.querySelectorAll('#provinces path').forEach((path,index)=>{
       const id=resolveProvinceId(path.id);
       const patternId=`province-carpet-${id}`;

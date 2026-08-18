@@ -4,6 +4,7 @@ Open `index.html` in a modern browser.
 
 Features:
 - Interactive SVG map of Iran provinces
+- Caspian Sea and Persian Gulf shapes, islands and localized labels on the map
 - A distinct, full-view Iranian carpet artwork for each of all 31 provinces
 - Persian, English and German language switcher
 - RTL layout for Persian and LTR layout for English/German
