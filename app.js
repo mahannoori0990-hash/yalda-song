@@ -230,17 +230,19 @@ async function loadMap(){
         baseColor.setAttribute('height','1');
         baseColor.setAttribute('fill',provinceColors[index%provinceColors.length]);
         pattern.appendChild(baseColor);
-        const image=document.createElementNS(svgNs,'image');
-        const textureUrl=`carpets/provinces/${id}.webp`;
-        image.setAttribute('href',textureUrl);
-        image.setAttributeNS(xlinkNs,'xlink:href',textureUrl);
-        image.setAttribute('x','0');
-        image.setAttribute('y','0');
-        image.setAttribute('width','1');
-        image.setAttribute('height','1');
-        image.setAttribute('preserveAspectRatio','none');
-        image.setAttribute('opacity','0.94');
-        pattern.appendChild(image);
+        const textureUrl=window.YALDA_CARPETS?.[id];
+        if(textureUrl){
+          const image=document.createElementNS(svgNs,'image');
+          image.setAttribute('href',textureUrl);
+          image.setAttributeNS(xlinkNs,'xlink:href',textureUrl);
+          image.setAttribute('x','0');
+          image.setAttribute('y','0');
+          image.setAttribute('width','1');
+          image.setAttribute('height','1');
+          image.setAttribute('preserveAspectRatio','none');
+          image.setAttribute('opacity','0.94');
+          pattern.appendChild(image);
+        }
         carpetPatterns.appendChild(pattern);
       }
       path.dataset.province=id; path.style.setProperty('--province-color',provinceColors[index%provinceColors.length]); path.style.setProperty('--province-fill',`url(#${patternId})`);

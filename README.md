@@ -6,6 +6,7 @@ Features:
 - Interactive SVG map of Iran provinces
 - Caspian Sea and Persian Gulf shapes, islands and localized labels on the map
 - A distinct, full-view Iranian carpet artwork for each of all 31 provinces
+- GitHub-friendly carpet bundle: all 31 designs are packed into the single `carpets.js` file
 - Persian, English and German language switcher
 - RTL layout for Persian and LTR layout for English/German
 - Province selection, song submission, filtering and likes
@@ -28,4 +29,4 @@ Features:
 4. There is no per-minute song submission limit.
 5. Never place a `service_role` key in this frontend project.
 
-The vector map is loaded from the public GitHub source used in earlier versions, so an internet connection is required for the map. The province dropdown remains available if loading fails. Province carpet assets are stored locally in `carpets/provinces/` and are fitted inside each province without cropping.
+The vector map is loaded from the public GitHub source used in earlier versions, so an internet connection is required for the map. The province dropdown remains available if loading fails. All province carpets are stored as optimized embedded images in the single local `carpets.js` file and are fitted inside each province without cropping. Upload `carpets.js` alongside `app.js`; no `carpets` folder is required.
