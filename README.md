@@ -20,6 +20,9 @@ Features:
 - Fully visible two-row navigation on mobile screens
 - Language preference saved in localStorage
 - Songs, likes and Top 100 ranking synchronized with Supabase
+- Professional responsive 3D presentation layer with subtle pointer parallax and reduced-motion support
+
+The 3D styling is isolated in `premium-3d.css`, so the original page structure and application logic remain unchanged.
 
 ## Supabase setup
 

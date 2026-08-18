@@ -325,7 +325,39 @@ function initRevealAnimations(){
   items.forEach(item=>observer.observe(item));
 }
 
+function initPremium3D(){
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const coarsePointer=window.matchMedia('(pointer: coarse)').matches;
+  if(reduceMotion||coarsePointer)return;
+
+  document.querySelectorAll('.map-card, .event-poster').forEach(card=>{
+    card.classList.add('premium-tilt');
+    let animationFrame=0;
+    const reset=()=>{
+      cancelAnimationFrame(animationFrame);
+      card.style.setProperty('--tilt-x','0deg');
+      card.style.setProperty('--tilt-y','0deg');
+      card.style.setProperty('--spot-x','50%');
+      card.style.setProperty('--spot-y','30%');
+    };
+    card.addEventListener('pointermove',event=>{
+      cancelAnimationFrame(animationFrame);
+      animationFrame=requestAnimationFrame(()=>{
+        const rect=card.getBoundingClientRect();
+        const x=Math.min(1,Math.max(0,(event.clientX-rect.left)/rect.width));
+        const y=Math.min(1,Math.max(0,(event.clientY-rect.top)/rect.height));
+        card.style.setProperty('--tilt-x',`${((.5-y)*4.5).toFixed(2)}deg`);
+        card.style.setProperty('--tilt-y',`${((x-.5)*5.5).toFixed(2)}deg`);
+        card.style.setProperty('--spot-x',`${(x*100).toFixed(1)}%`);
+        card.style.setProperty('--spot-y',`${(y*100).toFixed(1)}%`);
+      });
+    });
+    card.addEventListener('pointerleave',reset);
+    card.addEventListener('blur',reset,true);
+  });
+}
+
 async function bootstrap(){
-  applyLanguage(currentLang);loadMap();initRevealAnimations();await loadSongs();
+  applyLanguage(currentLang);loadMap();initRevealAnimations();initPremium3D();await loadSongs();
 }
 bootstrap();
