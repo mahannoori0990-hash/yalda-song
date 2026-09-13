@@ -217,6 +217,15 @@
     </form>
   </dialog>
 
+  <audio id="backgroundMusic" src="yalda-background-music.mp3" preload="auto" autoplay loop></audio>
+  <button id="musicToggle" class="music-toggle" type="button" aria-pressed="false">
+    <span class="music-icon" aria-hidden="true">▶</span>
+    <span class="music-copy">
+      <strong data-i18n="musicTitle">رقص بهار</strong>
+      <small data-i18n="musicPlay">پخش موسیقی</small>
+    </span>
+  </button>
+
   <div id="toast" class="toast" aria-live="polite"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="carpets.js"></script>

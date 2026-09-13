@@ -27,7 +27,7 @@ const provinceNames = {
 
 const translations = {
   fa: {
-    pageTitle:'یلدای ایران | انتخاب آهنگ استان‌ها', brand:'یلدای ایران', navMap:'نقشه', navSongs:'آهنگ‌ها', navTopSongs:'۱۰۰ آهنگ برتر', navStory:'درباره یلدا', navEvent:'مراسم', navFaq:'سؤالات', addSong:'افزودن آهنگ', languageLabel:'زبان', login:'ورود', logout:'خروج', accountEyebrow:'حساب کاربری', loginTitle:'ورود برای ثبت آهنگ و رأی‌دادن', loginHelp:'ایمیلت را وارد کن؛ لینک ورود امن برایت ارسال می‌شود و نیازی به رمز عبور نیست.', emailLabel:'ایمیل', sendLoginLink:'ارسال لینک ورود', loginSent:'لینک ورود به ایمیلت ارسال شد.', loginRequired:'برای ثبت آهنگ یا رأی‌دادن ابتدا وارد شو.', loggedOut:'از حساب خارج شدی.', databaseError:'ارتباط با پایگاه داده برقرار نشد. دوباره تلاش کن.', loadingSongs:'در حال دریافت آهنگ‌ها…',
+    pageTitle:'یلدای ایران | انتخاب آهنگ استان‌ها', brand:'یلدای ایران', navMap:'نقشه', navSongs:'آهنگ‌ها', navTopSongs:'۱۰۰ آهنگ برتر', navStory:'درباره یلدا', navEvent:'مراسم', navFaq:'سؤالات', addSong:'افزودن آهنگ', languageLabel:'زبان', musicTitle:'رقص بهار', musicPlay:'پخش موسیقی', musicPause:'توقف موسیقی', login:'ورود', logout:'خروج', accountEyebrow:'حساب کاربری', loginTitle:'ورود برای ثبت آهنگ و رأی‌دادن', loginHelp:'ایمیلت را وارد کن؛ لینک ورود امن برایت ارسال می‌شود و نیازی به رمز عبور نیست.', emailLabel:'ایمیل', sendLoginLink:'ارسال لینک ورود', loginSent:'لینک ورود به ایمیلت ارسال شد.', loginRequired:'برای ثبت آهنگ یا رأی‌دادن ابتدا وارد شو.', loggedOut:'از حساب خارج شدی.', databaseError:'ارتباط با پایگاه داده برقرار نشد. دوباره تلاش کن.', loadingSongs:'در حال دریافت آهنگ‌ها…',
     countdownEyebrow:'تا دورهمی شب یلدا', countdownTitle:'شمارش معکوس جشن', countdownDate:'جمعه ۱۸ دسامبر ۲۰۲۶، ساعت ۲۲:۰۰', days:'روز', hours:'ساعت', minutes:'دقیقه', seconds:'ثانیه', eventStarted:'جشن شب یلدا آغاز شده است ✨', rankingEyebrow:'رتبه‌بندی انتخاب مردم', rankingTitle:'۱۰۰ آهنگ برتر یلدا', rankingLead:'محبوب‌ترین پیشنهادها را یکجا ببین، جست‌وجو کن و به آهنگ موردعلاقه‌ات رأی بده.', rankingSearch:'جست‌وجوی آهنگ یا خواننده…', rankingEmpty:'آهنگی با این مشخصات پیدا نشد', rankLabel:'رتبه {rank}',
     heroEyebrow:'یک یلدا، سی‌ویک صدا', heroTitle1:'آهنگ محبوب شهرت را', heroTitle2:'به نقشه یلدای ایران اضافه کن', heroText:'استانت را انتخاب کن، آهنگ پیشنهادی‌ات را ثبت کن و به انتخاب‌های بقیه رأی بده.', chooseProvince:'انتخاب استان',
     mapEyebrow:'از روی نقشه انتخاب کن', mapTitle:'استان موردنظرت کجاست؟', noneSelected:'هنوز استانی انتخاب نشده', mapLoading:'در حال آماده‌سازی نقشه تعاملی…', mapLoadError:'نقشه وکتوری آنلاین بارگذاری نشد؛ انتخاب از فهرست همچنان فعال است.', mapNote:'روی هر استان برو تا نام آن نمایش داده شود؛ با کلیک فقط همان استان انتخاب می‌شود.', selectedProvinceLabel:'استان انتخاب‌شده', provinceHelpDefault:'از روی نقشه یک استان را انتخاب کن.', addForProvince:'+ افزودن آهنگ برای این استان', songsCount:'آهنگ', likesCount:'لایک', chooseFromList:'انتخاب از فهرست', chooseProvinceOption:'یک استان را انتخاب کن',
@@ -39,7 +39,7 @@ const translations = {
     faqEyebrow:'پیش از آمدن بدانید', faqTitle:'سؤالات متداول', faqIntro:'پاسخ کوتاه به مهم‌ترین سؤال‌ها درباره جشن و ثبت آهنگ.', faqStudentsQ:'آیا جشن فقط برای دانشجویان است؟', faqStudentsA:'خیر. شرکت در جشن برای همه آزاد است.', faqAgeQ:'آیا محدودیت سنی وجود دارد؟', faqAgeA:'بله. ورود فقط برای افراد ۱۸ سال و بالاتر امکان‌پذیر است.', faqSongsQ:'آیا تعداد آهنگ‌هایی که هر کاربر می‌تواند اضافه کند محدود است؟', faqSongsA:'خیر. می‌توانید هر تعداد آهنگ که دوست دارید پیشنهاد دهید.', faqRegisterQ:'آیا برای ثبت آهنگ نیاز به ثبت‌نام است؟', faqRegisterA:'خیر. برای سهولت استفاده، می‌توانید بدون ایجاد حساب کاربری آهنگ ثبت کنید.', faqPurposeQ:'هدف از این پروژه چیست؟', faqPurposeA:'هدف، شنیده‌شدن بیشتر تنوع موسیقی ایرانی، به‌ویژه موسیقی فولکلور و اقوام مختلف ایران، و فراهم‌کردن تجربه‌ای دلنشین‌تر برای شما مهمان عزیز است.', faqWhereQ:'جشن کجا و چه زمانی برگزار می‌شود؟', faqWhereA:'جمعه ۱۸ دسامبر ۲۰۲۶ از ساعت ۲۲:۰۰ در KulturCafé، Universitätsstraße 150, 44801 Bochum Süd.'
   },
   en: {
-    pageTitle:'Yalda of Iran | Provincial Music Map', brand:'Yalda of Iran', navMap:'Map', navSongs:'Songs', navTopSongs:'Top 100', navStory:'About Yalda', navEvent:'Event', navFaq:'FAQ', addSong:'Add song', languageLabel:'Language', login:'Sign in', logout:'Sign out', accountEyebrow:'Account', loginTitle:'Sign in to submit songs and vote', loginHelp:'Enter your email and we will send you a secure passwordless sign-in link.', emailLabel:'Email', sendLoginLink:'Send sign-in link', loginSent:'A sign-in link was sent to your email.', loginRequired:'Sign in first to submit a song or vote.', loggedOut:'You have signed out.', databaseError:'Could not connect to the database. Please try again.', loadingSongs:'Loading songs…',
+    pageTitle:'Yalda of Iran | Provincial Music Map', brand:'Yalda of Iran', navMap:'Map', navSongs:'Songs', navTopSongs:'Top 100', navStory:'About Yalda', navEvent:'Event', navFaq:'FAQ', addSong:'Add song', languageLabel:'Language', musicTitle:'Dance of Spring', musicPlay:'Play music', musicPause:'Pause music', login:'Sign in', logout:'Sign out', accountEyebrow:'Account', loginTitle:'Sign in to submit songs and vote', loginHelp:'Enter your email and we will send you a secure passwordless sign-in link.', emailLabel:'Email', sendLoginLink:'Send sign-in link', loginSent:'A sign-in link was sent to your email.', loginRequired:'Sign in first to submit a song or vote.', loggedOut:'You have signed out.', databaseError:'Could not connect to the database. Please try again.', loadingSongs:'Loading songs…',
     countdownEyebrow:'Until our Yalda gathering', countdownTitle:'Event countdown', countdownDate:'Friday, 18 December 2026 at 22:00', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds', eventStarted:'Yalda Night has begun ✨', rankingEyebrow:"People's ranking", rankingTitle:'Top 100 Yalda songs', rankingLead:'Browse the most popular suggestions, search the list and vote for your favorite.', rankingSearch:'Search song or artist…', rankingEmpty:'No matching song found', rankLabel:'Rank {rank}',
     heroEyebrow:'One Yalda, thirty-one voices', heroTitle1:'Add your city’s favorite song', heroTitle2:'to Iran’s Yalda music map', heroText:'Choose your province, submit a song and vote for other people’s suggestions.', chooseProvince:'Choose a province',
     mapEyebrow:'Choose on the map', mapTitle:'Which province is yours?', noneSelected:'No province selected yet', mapLoading:'Preparing the interactive map…', mapLoadError:'The online vector map could not be loaded. You can still choose from the list.', mapNote:'Hover over a province to see its name. Click to select only that province.', selectedProvinceLabel:'Selected province', provinceHelpDefault:'Choose a province on the map.', addForProvince:'+ Add a song for this province', songsCount:'Songs', likesCount:'Likes', chooseFromList:'Choose from list', chooseProvinceOption:'Choose a province',
@@ -51,7 +51,7 @@ const translations = {
     faqEyebrow:'Good to know', faqTitle:'Frequently asked questions', faqIntro:'Quick answers to the most important questions about the event and song submissions.', faqStudentsQ:'Is the event only for students?', faqStudentsA:'No. The event is open to everyone.', faqAgeQ:'Is there an age restriction?', faqAgeA:'Yes. Admission is limited to guests aged 18 and over.', faqSongsQ:'Is there a limit to how many songs each person can add?', faqSongsA:'No. You can suggest as many songs as you like.', faqRegisterQ:'Do I need to register to submit a song?', faqRegisterA:'No. To keep things simple, you can submit songs without creating an account.', faqPurposeQ:'What is the purpose of this project?', faqPurposeA:'The goal is to give greater visibility to the diversity of Iranian music, especially folk music and the traditions of Iran’s different ethnic communities, while creating a more enjoyable experience for you, our valued guests.', faqWhereQ:'Where and when is the event?', faqWhereA:'Friday, 18 December 2026 from 22:00 at KulturCafé, Universitätsstraße 150, 44801 Bochum Süd.'
   },
   de: {
-    pageTitle:'Yalda im Iran | Musikkarte der Provinzen', brand:'Yalda im Iran', navMap:'Karte', navSongs:'Lieder', navTopSongs:'Top 100', navStory:'Über Yalda', navEvent:'Feier', navFaq:'FAQ', addSong:'Lied hinzufügen', languageLabel:'Sprache', login:'Anmelden', logout:'Abmelden', accountEyebrow:'Benutzerkonto', loginTitle:'Anmelden, um Lieder einzutragen und abzustimmen', loginHelp:'Gib deine E-Mail-Adresse ein. Wir senden dir einen sicheren Anmeldelink ohne Passwort.', emailLabel:'E-Mail', sendLoginLink:'Anmeldelink senden', loginSent:'Der Anmeldelink wurde an deine E-Mail gesendet.', loginRequired:'Melde dich zuerst an, um ein Lied einzutragen oder abzustimmen.', loggedOut:'Du wurdest abgemeldet.', databaseError:'Die Datenbankverbindung ist fehlgeschlagen. Versuche es erneut.', loadingSongs:'Lieder werden geladen…',
+    pageTitle:'Yalda im Iran | Musikkarte der Provinzen', brand:'Yalda im Iran', navMap:'Karte', navSongs:'Lieder', navTopSongs:'Top 100', navStory:'Über Yalda', navEvent:'Feier', navFaq:'FAQ', addSong:'Lied hinzufügen', languageLabel:'Sprache', musicTitle:'Tanz des Frühlings', musicPlay:'Musik abspielen', musicPause:'Musik pausieren', login:'Anmelden', logout:'Abmelden', accountEyebrow:'Benutzerkonto', loginTitle:'Anmelden, um Lieder einzutragen und abzustimmen', loginHelp:'Gib deine E-Mail-Adresse ein. Wir senden dir einen sicheren Anmeldelink ohne Passwort.', emailLabel:'E-Mail', sendLoginLink:'Anmeldelink senden', loginSent:'Der Anmeldelink wurde an deine E-Mail gesendet.', loginRequired:'Melde dich zuerst an, um ein Lied einzutragen oder abzustimmen.', loggedOut:'Du wurdest abgemeldet.', databaseError:'Die Datenbankverbindung ist fehlgeschlagen. Versuche es erneut.', loadingSongs:'Lieder werden geladen…',
     countdownEyebrow:'Bis zu unserer Yalda-Feier', countdownTitle:'Countdown zur Feier', countdownDate:'Freitag, 18. Dezember 2026 um 22:00 Uhr', days:'Tage', hours:'Stunden', minutes:'Minuten', seconds:'Sekunden', eventStarted:'Die Yalda-Nacht hat begonnen ✨', rankingEyebrow:'Ranking der Community', rankingTitle:'Top 100 Yalda-Lieder', rankingLead:'Entdecke die beliebtesten Vorschläge, durchsuche die Liste und stimme für deinen Favoriten ab.', rankingSearch:'Lied oder Interpret suchen…', rankingEmpty:'Kein passendes Lied gefunden', rankLabel:'Platz {rank}',
     heroEyebrow:'Eine Yalda, einunddreißig Stimmen', heroTitle1:'Füge das Lieblingslied deiner Stadt', heroTitle2:'zur Yalda-Musikkarte Irans hinzu', heroText:'Wähle deine Provinz, schlage ein Lied vor und stimme für die Vorschläge anderer ab.', chooseProvince:'Provinz auswählen',
     mapEyebrow:'Auf der Karte auswählen', mapTitle:'Welche Provinz ist deine?', noneSelected:'Noch keine Provinz ausgewählt', mapLoading:'Interaktive Karte wird vorbereitet…', mapLoadError:'Die Online-Vektorkarte konnte nicht geladen werden. Die Auswahl aus der Liste funktioniert weiterhin.', mapNote:'Fahre über eine Provinz, um ihren Namen zu sehen. Mit einem Klick wird nur diese Provinz ausgewählt.', selectedProvinceLabel:'Ausgewählte Provinz', provinceHelpDefault:'Wähle eine Provinz auf der Karte aus.', addForProvince:'+ Lied für diese Provinz hinzufügen', songsCount:'Lieder', likesCount:'Likes', chooseFromList:'Aus Liste auswählen', chooseProvinceOption:'Provinz auswählen',
@@ -129,7 +129,7 @@ function applyLanguage(lang){
   } else {
     $('#selectedBadge').textContent=t('noneSelected'); $('#provinceHelp').textContent=t('provinceHelpDefault');
   }
-  renderSongs(); renderRanking(); updateStats(); updateCountdown();
+  renderSongs(); renderRanking(); updateStats(); updateCountdown(); updateMusicControl();
 }
 
 function addSeaPresentation(svg,defs,svgNs){
@@ -315,6 +315,41 @@ $('#songForm').addEventListener('submit',async e=>{
 function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
 function escapeAttr(v=''){return escapeHtml(v)}
 function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),2200)}
+
+const backgroundMusic=$('#backgroundMusic');
+const musicToggle=$('#musicToggle');
+backgroundMusic.volume=.35;
+
+function updateMusicControl(){
+  if(!backgroundMusic||!musicToggle)return;
+  const isPlaying=!backgroundMusic.paused;
+  musicToggle.classList.toggle('is-playing',isPlaying);
+  musicToggle.setAttribute('aria-pressed',String(isPlaying));
+  musicToggle.setAttribute('aria-label',t(isPlaying?'musicPause':'musicPlay'));
+  musicToggle.title=t(isPlaying?'musicPause':'musicPlay');
+  musicToggle.querySelector('.music-icon').textContent=isPlaying?'❚❚':'▶';
+  musicToggle.querySelector('small').textContent=t(isPlaying?'musicPause':'musicPlay');
+}
+
+async function startBackgroundMusic(){
+  try{await backgroundMusic.play()}catch(error){/* Some browsers wait for the first user interaction. */}
+  updateMusicControl();
+}
+
+musicToggle.addEventListener('click',async()=>{
+  if(backgroundMusic.paused)await startBackgroundMusic();
+  else backgroundMusic.pause();
+  updateMusicControl();
+});
+backgroundMusic.addEventListener('play',updateMusicControl);
+backgroundMusic.addEventListener('pause',updateMusicControl);
+window.addEventListener('load',startBackgroundMusic,{once:true});
+document.addEventListener('pointerdown',event=>{
+  if(!musicToggle.contains(event.target)&&backgroundMusic.paused)startBackgroundMusic();
+},{once:true,capture:true});
+document.addEventListener('keydown',()=>{
+  if(backgroundMusic.paused)startBackgroundMusic();
+},{once:true,capture:true});
 
 function initRevealAnimations(){
   const items=document.querySelectorAll('.reveal');
