@@ -23,13 +23,10 @@ Features:
 - Professional responsive 3D presentation layer with subtle pointer parallax and reduced-motion support
 - A self-contained, real-time WebGL pomegranate made from more than 3,000 animated points
 - Pointer-responsive 3D camera movement, cinematic light, glass surfaces and a mobile composition
-- Scroll-responsive WebGL camera, page progress rail, magnetic CTA, interactive cursor light and section choreography
-- Live music equalizer, editorial section numbering and a cinematic culture marquee
-- Repeating paisley backgrounds removed for a cleaner premium presentation
 
-The immersive styling is isolated in `premium-3d.css`. `yalda-3d.js` renders the hero artwork without an external 3D library, and `yalda-experience.js` handles lightweight page choreography. The original Supabase, map, submission, voting and multilingual application logic remains in `app.js`.
+The immersive styling is isolated in `premium-3d.css`, while `yalda-3d.js` renders the hero artwork without an external 3D library. The original Supabase, map, submission, voting and multilingual application logic remains in `app.js`.
 
-Upload `yalda-3d.js` and `yalda-experience.js` beside `index.html` when deploying. The background track keeps its original Persian filename, so upload the MP3 without renaming it.
+Upload `yalda-3d.js` beside `index.html` when deploying. The background track keeps its original Persian filename, so upload the MP3 without renaming it.
 
 ## Supabase setup
 
