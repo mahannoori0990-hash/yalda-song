@@ -23,6 +23,7 @@
     uniform float uAspect;
     uniform float uSide;
     uniform float uPixelRatio;
+    uniform float uScroll;
     varying vec3 vColor;
     varying float vGlow;
     void main() {
@@ -32,6 +33,8 @@
       mat3 ry = mat3(cos(yaw),0.,-sin(yaw), 0.,1.,0., sin(yaw),0.,cos(yaw));
       mat3 rx = mat3(1.,0.,0., 0.,cos(pitch),-sin(pitch), 0.,sin(pitch),cos(pitch));
       p = rx * ry * p;
+      p *= 1. + uScroll * .3;
+      p.y += uScroll * .16;
       p.x += uSide * 1.48;
       p.y += sin(uTime * .7) * .055;
       float depth = p.z + 5.25;
@@ -156,8 +159,10 @@
     aspect: gl.getUniformLocation(program, 'uAspect'),
     side: gl.getUniformLocation(program, 'uSide'),
     pixelRatio: gl.getUniformLocation(program, 'uPixelRatio')
+    ,scroll: gl.getUniformLocation(program, 'uScroll')
   };
   const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+  let scrollProgress = 0;
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let visible = true;
 
@@ -178,6 +183,9 @@
     pointer.ty = ((event.clientY - rect.top) / rect.height * 2 - 1) * -1;
   }, { passive: true });
   hero.addEventListener('pointerleave', () => { pointer.tx = 0; pointer.ty = 0; });
+  addEventListener('scroll', () => {
+    scrollProgress = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / Math.max(hero.offsetHeight, 1)));
+  }, { passive: true });
   new IntersectionObserver(entries => { visible = entries[0].isIntersecting; }).observe(hero);
 
   gl.enable(gl.BLEND);
@@ -191,6 +199,7 @@
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.uniform1f(uniforms.time, reduceMotion ? 0 : ms * .001);
     gl.uniform2f(uniforms.pointer, pointer.x, pointer.y);
+    gl.uniform1f(uniforms.scroll, scrollProgress);
     gl.uniform1f(uniforms.side, innerWidth < 680 ? 0 : (document.documentElement.dir === 'rtl' ? -1 : 1));
     gl.drawArrays(gl.POINTS, 0, positions.length / 3);
   }
