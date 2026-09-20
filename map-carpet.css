@@ -29,12 +29,15 @@
   transition: transform .18s, fill .18s, stroke .18s, filter .18s;
 }
 .svg-layer #islands .island-marker {
-  fill: rgba(244, 202, 115, .2);
-  stroke: #f4ca73;
-  stroke-width: 1.4;
+  fill: rgba(244, 202, 115, .72);
+  stroke: #fff7d8;
+  stroke-width: 2.4;
   vector-effect: non-scaling-stroke;
   cursor: pointer;
-  transition: fill .18s, stroke .18s, filter .18s;
+  filter: drop-shadow(0 0 5px rgba(87, 28, 42, .72));
+  transition: fill .18s, stroke .18s, filter .18s, transform .18s;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 .svg-layer #islands .island-shape:hover,
 .svg-layer #islands .island-shape:focus-visible {
@@ -46,12 +49,14 @@
 }
 .svg-layer #islands .island-marker:hover,
 .svg-layer #islands .island-marker:focus-visible {
-  fill: rgba(244, 202, 115, .62);
-  stroke: #fff4cf;
+  fill: #fff2b8;
+  stroke: #571c2a;
   filter: drop-shadow(0 0 6px rgba(244, 202, 115, .9));
+  transform: scale(1.22);
   outline: none;
 }
 .svg-layer #islands .is-selected {
   stroke: #fff7da !important;
   filter: drop-shadow(0 0 7px rgba(255, 211, 92, .95));
 }
+.svg-layer #islands .island-marker.is-selected { fill:#fff2a8;stroke:#571c2a!important;transform:scale(1.18) }

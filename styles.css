@@ -25,6 +25,13 @@
 .county-chip:hover{transform:translateY(-1px);border-color:#c99a43}
 .county-chip.is-active{background:var(--wine2);border-color:var(--wine2);color:#fff5da;box-shadow:0 5px 13px rgba(87,28,42,.24)}
 .county-empty{margin:8px 0 0!important;min-height:0!important;font-size:13px;text-align:center}
+.province-island-panel{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.province-island-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;color:var(--wine);font-size:14px;font-weight:800}
+.province-island-head b{display:grid;place-items:center;min-width:30px;height:30px;padding:0 8px;border-radius:999px;background:#e8c36a;color:#421621}
+.province-island-list{display:flex;flex-wrap:wrap;gap:7px}
+.island-chip{border:1px solid #d8ad4e;background:linear-gradient(145deg,#fff6d7,#f0ce7d);color:#51202d;border-radius:999px;padding:7px 11px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:transform .18s,background .18s,color .18s,box-shadow .18s}
+.island-chip:hover{transform:translateY(-1px);box-shadow:0 5px 13px rgba(87,28,42,.14)}
+.island-chip.is-active{background:var(--wine2);border-color:var(--wine2);color:#fff5da;box-shadow:0 5px 13px rgba(87,28,42,.24)}
 
 .county-map-layer{position:absolute;inset:0;z-index:2;padding:30px 26px 42px;background:radial-gradient(circle at 20% 15%,rgba(213,166,74,.2),transparent 25%),linear-gradient(145deg,#f3e9d2,#dfcfaf)}
 .county-map-layer[hidden]{display:none}

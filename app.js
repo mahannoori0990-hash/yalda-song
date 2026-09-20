@@ -30,7 +30,7 @@ const translations = {
     pageTitle:'یلدای ایران | انتخاب آهنگ استان‌ها', brand:'یلدای ایران', navMap:'نقشه', navSongs:'آهنگ‌ها', navTopSongs:'۱۰۰ آهنگ برتر', navStory:'درباره یلدا', navEvent:'مراسم', navFaq:'سؤالات', addSong:'افزودن آهنگ', languageLabel:'زبان', musicTitle:'رقص بهار', musicPlay:'پخش موسیقی', musicPause:'توقف موسیقی', login:'ورود', logout:'خروج', accountEyebrow:'حساب کاربری', loginTitle:'ورود برای ثبت آهنگ و رأی‌دادن', loginHelp:'ایمیلت را وارد کن؛ لینک ورود امن برایت ارسال می‌شود و نیازی به رمز عبور نیست.', emailLabel:'ایمیل', sendLoginLink:'ارسال لینک ورود', loginSent:'لینک ورود به ایمیلت ارسال شد.', loginRequired:'برای ثبت آهنگ یا رأی‌دادن ابتدا وارد شو.', loggedOut:'از حساب خارج شدی.', databaseError:'ارتباط با پایگاه داده برقرار نشد. دوباره تلاش کن.', loadingSongs:'در حال دریافت آهنگ‌ها…',
     countdownEyebrow:'تا دورهمی شب یلدا', countdownTitle:'شمارش معکوس جشن', countdownDate:'جمعه ۱۸ دسامبر ۲۰۲۶، ساعت ۲۲:۰۰', days:'روز', hours:'ساعت', minutes:'دقیقه', seconds:'ثانیه', eventStarted:'جشن شب یلدا آغاز شده است ✨', rankingEyebrow:'رتبه‌بندی انتخاب مردم', rankingTitle:'۱۰۰ آهنگ برتر یلدا', rankingLead:'محبوب‌ترین پیشنهادها را یکجا ببین، جست‌وجو کن و به آهنگ موردعلاقه‌ات رأی بده.', rankingSearch:'جست‌وجوی آهنگ یا خواننده…', rankingEmpty:'آهنگی با این مشخصات پیدا نشد', rankLabel:'رتبه {rank}',
     heroEyebrow:'یک یلدا، سی‌ویک صدا', heroTitle1:'آهنگ محبوب شهرت را', heroTitle2:'به نقشه یلدای ایران اضافه کن', heroText:'استانت را انتخاب کن، آهنگ پیشنهادی‌ات را ثبت کن و به انتخاب‌های بقیه رأی بده.', chooseProvince:'انتخاب استان', metricCountProvinces:'۳۱', metricProvinces:'استان', metricCountLanguages:'۳', metricLanguages:'زبان', metricCountSongs:'۱۰۰', metricSongs:'رتبه برتر',
-    mapEyebrow:'از روی نقشه انتخاب کن', mapTitle:'استان موردنظرت کجاست؟', noneSelected:'هنوز استانی انتخاب نشده', mapLoading:'در حال آماده‌سازی نقشه تعاملی…', mapLoadError:'نقشه وکتوری آنلاین بارگذاری نشد؛ انتخاب از فهرست همچنان فعال است.', mapNote:'روی استان یا جزیره کلیک کن؛ نقشه روی استان مربوط زوم می‌شود و مرز شهرستان‌ها را نشان می‌دهد.', mapBack:'بازگشت به نقشه ایران', countyMapLabel:'تقسیمات شهرستانی {province}', selectedProvinceLabel:'استان انتخاب‌شده', provinceHelpDefault:'از روی نقشه یک استان را انتخاب کن.', addForProvince:'+ افزودن آهنگ برای این استان', songsCount:'آهنگ', likesCount:'لایک', chooseFromList:'انتخاب از فهرست', chooseProvinceOption:'یک استان را انتخاب کن', countyListLabel:'شهرستان‌های استان', countySearchLabel:'جست‌وجوی شهرستان', countySearchPlaceholder:'نام شهرستان را جست‌وجو کن…', countyEmpty:'شهرستانی با این نام پیدا نشد.',
+    mapEyebrow:'از روی نقشه انتخاب کن', mapTitle:'استان موردنظرت کجاست؟', noneSelected:'هنوز استانی انتخاب نشده', mapLoading:'در حال آماده‌سازی نقشه تعاملی…', mapLoadError:'نقشه وکتوری آنلاین بارگذاری نشد؛ انتخاب از فهرست همچنان فعال است.', mapNote:'روی استان یا جزیره کلیک کن؛ نقشه روی استان مربوط زوم می‌شود و مرز شهرستان‌ها را نشان می‌دهد.', mapBack:'بازگشت به نقشه ایران', countyMapLabel:'تقسیمات شهرستانی {province}', islandsOfProvince:'جزیره‌های این استان', selectedProvinceLabel:'استان انتخاب‌شده', provinceHelpDefault:'از روی نقشه یک استان را انتخاب کن.', addForProvince:'+ افزودن آهنگ برای این استان', songsCount:'آهنگ', likesCount:'لایک', chooseFromList:'انتخاب از فهرست', chooseProvinceOption:'یک استان را انتخاب کن', countyListLabel:'شهرستان‌های استان', countySearchLabel:'جست‌وجوی شهرستان', countySearchPlaceholder:'نام شهرستان را جست‌وجو کن…', countyEmpty:'شهرستانی با این نام پیدا نشد.',
     peopleChoice:'انتخاب مردم', popularSongs:'محبوب‌ترین آهنگ‌های یلدایی', songsOf:'آهنگ‌های یلدایی {province}', allProvinces:'همه استان‌ها', emptyTitle:'هنوز آهنگی ثبت نشده', emptyText:'اولین انتخاب این استان را تو اضافه کن.', footerText:'ساخته‌شده برای کنار هم شنیدن صداهای ایران',
     yourSuggestion:'پیشنهاد تو', addSongFor:'افزودن آهنگ برای', countyFieldLabel:'نام شهرستان', countyFieldPlaceholder:'مثلاً شیراز', songName:'نام آهنگ', songPlaceholder:'مثلاً شب یلدا', artistName:'نام خواننده', artistPlaceholder:'نام خواننده یا گروه', songLink:'لینک آهنگ', optional:'(اختیاری)', yourName:'نام شما', guestPlaceholder:'مهمان یلدا', submitSong:'ثبت آهنگ', privacy:'آهنگ بدون نیاز به ثبت‌نام در پایگاه داده یلدا ذخیره می‌شود.', countySetupRequired:'برای ذخیره شهرستان، ابتدا فایل SQL به‌روزرسانی را در Supabase اجرا کن.',
     selectedBadge:'استان انتخاب‌شده: {province}', provinceHelp:'حالا می‌توانی آهنگ محبوبت برای شب یلدا را به فهرست {province} اضافه کنی.', suggestedBy:'پیشنهاد از {name}', guest:'مهمان یلدا', listen:'شنیدن ↗', chooseFirst:'اول یک استان را انتخاب کن', addedSuccess:'آهنگ با موفقیت اضافه شد 🎉',
@@ -42,7 +42,7 @@ const translations = {
     pageTitle:'Yalda of Iran | Provincial Music Map', brand:'Yalda of Iran', navMap:'Map', navSongs:'Songs', navTopSongs:'Top 100', navStory:'About Yalda', navEvent:'Event', navFaq:'FAQ', addSong:'Add song', languageLabel:'Language', musicTitle:'Dance of Spring', musicPlay:'Play music', musicPause:'Pause music', login:'Sign in', logout:'Sign out', accountEyebrow:'Account', loginTitle:'Sign in to submit songs and vote', loginHelp:'Enter your email and we will send you a secure passwordless sign-in link.', emailLabel:'Email', sendLoginLink:'Send sign-in link', loginSent:'A sign-in link was sent to your email.', loginRequired:'Sign in first to submit a song or vote.', loggedOut:'You have signed out.', databaseError:'Could not connect to the database. Please try again.', loadingSongs:'Loading songs…',
     countdownEyebrow:'Until our Yalda gathering', countdownTitle:'Event countdown', countdownDate:'Friday, 18 December 2026 at 22:00', days:'Days', hours:'Hours', minutes:'Minutes', seconds:'Seconds', eventStarted:'Yalda Night has begun ✨', rankingEyebrow:"People's ranking", rankingTitle:'Top 100 Yalda songs', rankingLead:'Browse the most popular suggestions, search the list and vote for your favorite.', rankingSearch:'Search song or artist…', rankingEmpty:'No matching song found', rankLabel:'Rank {rank}',
     heroEyebrow:'One Yalda, thirty-one voices', heroTitle1:'Add your city’s favorite song', heroTitle2:'to Iran’s Yalda music map', heroText:'Choose your province, submit a song and vote for other people’s suggestions.', chooseProvince:'Choose a province', metricCountProvinces:'31', metricProvinces:'provinces', metricCountLanguages:'3', metricLanguages:'languages', metricCountSongs:'100', metricSongs:'top ranking',
-    mapEyebrow:'Choose on the map', mapTitle:'Which province is yours?', noneSelected:'No province selected yet', mapLoading:'Preparing the interactive map…', mapLoadError:'The online vector map could not be loaded. You can still choose from the list.', mapNote:'Click a province or island to zoom into its province and see the county boundaries.', mapBack:'Back to Iran map', countyMapLabel:'County divisions of {province}', selectedProvinceLabel:'Selected province', provinceHelpDefault:'Choose a province on the map.', addForProvince:'+ Add a song for this province', songsCount:'Songs', likesCount:'Likes', chooseFromList:'Choose from list', chooseProvinceOption:'Choose a province', countyListLabel:'Counties in', countySearchLabel:'Search counties', countySearchPlaceholder:'Search for a county…', countyEmpty:'No county matches your search.',
+    mapEyebrow:'Choose on the map', mapTitle:'Which province is yours?', noneSelected:'No province selected yet', mapLoading:'Preparing the interactive map…', mapLoadError:'The online vector map could not be loaded. You can still choose from the list.', mapNote:'Click a province or island to zoom into its province and see the county boundaries.', mapBack:'Back to Iran map', countyMapLabel:'County divisions of {province}', islandsOfProvince:'Islands in this province', selectedProvinceLabel:'Selected province', provinceHelpDefault:'Choose a province on the map.', addForProvince:'+ Add a song for this province', songsCount:'Songs', likesCount:'Likes', chooseFromList:'Choose from list', chooseProvinceOption:'Choose a province', countyListLabel:'Counties in', countySearchLabel:'Search counties', countySearchPlaceholder:'Search for a county…', countyEmpty:'No county matches your search.',
     peopleChoice:'People’s choice', popularSongs:'Most popular Yalda songs', songsOf:'Yalda songs from {province}', allProvinces:'All provinces', emptyTitle:'No songs yet', emptyText:'Be the first to add a song for this province.', footerText:'Made to hear the many voices of Iran together',
     yourSuggestion:'Your suggestion', addSongFor:'Add a song for', countyFieldLabel:'County name', countyFieldPlaceholder:'For example: Shiraz', songName:'Song title', songPlaceholder:'For example: Shab-e Yalda', artistName:'Artist', artistPlaceholder:'Artist or band name', songLink:'Song link', optional:'(optional)', yourName:'Your name', guestPlaceholder:'Yalda guest', submitSong:'Submit song', privacy:'Your song is saved to the Yalda database without registration.', countySetupRequired:'Run the included Supabase SQL update before saving a county.',
     selectedBadge:'Selected province: {province}', provinceHelp:'You can now add your favorite Yalda song to the {province} list.', suggestedBy:'Suggested by {name}', guest:'Yalda guest', listen:'Listen ↗', chooseFirst:'Choose a province first', addedSuccess:'Song added successfully 🎉',
@@ -54,7 +54,7 @@ const translations = {
     pageTitle:'Yalda im Iran | Musikkarte der Provinzen', brand:'Yalda im Iran', navMap:'Karte', navSongs:'Lieder', navTopSongs:'Top 100', navStory:'Über Yalda', navEvent:'Feier', navFaq:'FAQ', addSong:'Lied hinzufügen', languageLabel:'Sprache', musicTitle:'Tanz des Frühlings', musicPlay:'Musik abspielen', musicPause:'Musik pausieren', login:'Anmelden', logout:'Abmelden', accountEyebrow:'Benutzerkonto', loginTitle:'Anmelden, um Lieder einzutragen und abzustimmen', loginHelp:'Gib deine E-Mail-Adresse ein. Wir senden dir einen sicheren Anmeldelink ohne Passwort.', emailLabel:'E-Mail', sendLoginLink:'Anmeldelink senden', loginSent:'Der Anmeldelink wurde an deine E-Mail gesendet.', loginRequired:'Melde dich zuerst an, um ein Lied einzutragen oder abzustimmen.', loggedOut:'Du wurdest abgemeldet.', databaseError:'Die Datenbankverbindung ist fehlgeschlagen. Versuche es erneut.', loadingSongs:'Lieder werden geladen…',
     countdownEyebrow:'Bis zu unserer Yalda-Feier', countdownTitle:'Countdown zur Feier', countdownDate:'Freitag, 18. Dezember 2026 um 22:00 Uhr', days:'Tage', hours:'Stunden', minutes:'Minuten', seconds:'Sekunden', eventStarted:'Die Yalda-Nacht hat begonnen ✨', rankingEyebrow:'Ranking der Community', rankingTitle:'Top 100 Yalda-Lieder', rankingLead:'Entdecke die beliebtesten Vorschläge, durchsuche die Liste und stimme für deinen Favoriten ab.', rankingSearch:'Lied oder Interpret suchen…', rankingEmpty:'Kein passendes Lied gefunden', rankLabel:'Platz {rank}',
     heroEyebrow:'Eine Yalda, einunddreißig Stimmen', heroTitle1:'Füge das Lieblingslied deiner Stadt', heroTitle2:'zur Yalda-Musikkarte Irans hinzu', heroText:'Wähle deine Provinz, schlage ein Lied vor und stimme für die Vorschläge anderer ab.', chooseProvince:'Provinz auswählen', metricCountProvinces:'31', metricProvinces:'Provinzen', metricCountLanguages:'3', metricLanguages:'Sprachen', metricCountSongs:'100', metricSongs:'Top-Ranking',
-    mapEyebrow:'Auf der Karte auswählen', mapTitle:'Welche Provinz ist deine?', noneSelected:'Noch keine Provinz ausgewählt', mapLoading:'Interaktive Karte wird vorbereitet…', mapLoadError:'Die Online-Vektorkarte konnte nicht geladen werden. Die Auswahl aus der Liste funktioniert weiterhin.', mapNote:'Klicke auf eine Provinz oder Insel, um die zugehörige Provinz und ihre Landkreisgrenzen zu öffnen.', mapBack:'Zurück zur Iran-Karte', countyMapLabel:'Landkreiseinteilung von {province}', selectedProvinceLabel:'Ausgewählte Provinz', provinceHelpDefault:'Wähle eine Provinz auf der Karte aus.', addForProvince:'+ Lied für diese Provinz hinzufügen', songsCount:'Lieder', likesCount:'Likes', chooseFromList:'Aus Liste auswählen', chooseProvinceOption:'Provinz auswählen', countyListLabel:'Landkreise in', countySearchLabel:'Landkreise durchsuchen', countySearchPlaceholder:'Landkreis suchen…', countyEmpty:'Kein Landkreis entspricht deiner Suche.',
+    mapEyebrow:'Auf der Karte auswählen', mapTitle:'Welche Provinz ist deine?', noneSelected:'Noch keine Provinz ausgewählt', mapLoading:'Interaktive Karte wird vorbereitet…', mapLoadError:'Die Online-Vektorkarte konnte nicht geladen werden. Die Auswahl aus der Liste funktioniert weiterhin.', mapNote:'Klicke auf eine Provinz oder Insel, um die zugehörige Provinz und ihre Landkreisgrenzen zu öffnen.', mapBack:'Zurück zur Iran-Karte', countyMapLabel:'Landkreiseinteilung von {province}', islandsOfProvince:'Inseln dieser Provinz', selectedProvinceLabel:'Ausgewählte Provinz', provinceHelpDefault:'Wähle eine Provinz auf der Karte aus.', addForProvince:'+ Lied für diese Provinz hinzufügen', songsCount:'Lieder', likesCount:'Likes', chooseFromList:'Aus Liste auswählen', chooseProvinceOption:'Provinz auswählen', countyListLabel:'Landkreise in', countySearchLabel:'Landkreise durchsuchen', countySearchPlaceholder:'Landkreis suchen…', countyEmpty:'Kein Landkreis entspricht deiner Suche.',
     peopleChoice:'Wahl der Community', popularSongs:'Beliebteste Yalda-Lieder', songsOf:'Yalda-Lieder aus {province}', allProvinces:'Alle Provinzen', emptyTitle:'Noch keine Lieder vorhanden', emptyText:'Füge das erste Lied für diese Provinz hinzu.', footerText:'Geschaffen, um die Stimmen Irans gemeinsam zu hören',
     yourSuggestion:'Dein Vorschlag', addSongFor:'Lied hinzufügen für', countyFieldLabel:'Landkreis', countyFieldPlaceholder:'Zum Beispiel: Schiras', songName:'Liedtitel', songPlaceholder:'Zum Beispiel: Shab-e Yalda', artistName:'Interpret', artistPlaceholder:'Name des Interpreten oder der Band', songLink:'Link zum Lied', optional:'(optional)', yourName:'Dein Name', guestPlaceholder:'Yalda-Gast', submitSong:'Lied eintragen', privacy:'Dein Lied wird ohne Registrierung in der Yalda-Datenbank gespeichert.', countySetupRequired:'Führe zuerst das mitgelieferte Supabase-SQL-Update aus, um den Landkreis zu speichern.',
     selectedBadge:'Ausgewählte Provinz: {province}', provinceHelp:'Du kannst jetzt dein Lieblingslied für Yalda zur Liste von {province} hinzufügen.', suggestedBy:'Vorgeschlagen von {name}', guest:'Yalda-Gast', listen:'Anhören ↗', chooseFirst:'Wähle zuerst eine Provinz aus', addedSuccess:'Lied erfolgreich hinzugefügt 🎉',
@@ -107,16 +107,41 @@ const provinceFallback=$('#provinceFallback'), filterProvince=$('#filterProvince
 const rankingProvince=$('#rankingProvince'), rankingSearch=$('#rankingSearch');
 const countyPanel=$('#countyPanel'), countyList=$('#countyList'), countySearch=$('#countySearch');
 const countyMapLayer=$('#countyMapLayer'), mapBackButton=$('#mapBackButton'), countyMapCaption=$('#countyMapCaption');
-let selectedCountyKey='';
+const provinceIslandPanel=$('#provinceIslandPanel'), provinceIslandList=$('#provinceIslandList');
+let selectedCountyKey='', selectedIslandId='';
 
 function number(n){return new Intl.NumberFormat(currentLang==='fa'?'fa-IR':currentLang==='de'?'de-DE':'en-US').format(n)}
 function countyName(county){return county?.[currentLang] || county?.en || ''}
 function songLocation(song){return [provinceName(song.province),song.county].filter(Boolean).join(' · ')}
 function mapCountyName(county){return county?.[currentLang] || county?.en || ''}
 function selectCounty(key){
-  selectedCountyKey=key;
+  selectedCountyKey=key;selectedIslandId='';
   countyList.querySelectorAll('.county-chip').forEach(item=>item.classList.toggle('is-active',item.dataset.countyKey===key));
   countyMapLayer.querySelectorAll('.county-shape').forEach(path=>path.classList.toggle('is-active',path.dataset.countyKey===key));
+  provinceIslandList.querySelectorAll('.island-chip').forEach(item=>item.classList.remove('is-active'));
+  svgLayer.querySelectorAll('#islands [data-island]').forEach(shape=>shape.classList.remove('is-selected'));
+}
+function selectIsland(id){
+  if(!islandProvinces[id])return;
+  selectedIslandId=id;selectedCountyKey='';
+  countyList.querySelectorAll('.county-chip').forEach(item=>item.classList.remove('is-active'));
+  countyMapLayer.querySelectorAll('.county-shape').forEach(path=>path.classList.remove('is-active'));
+  provinceIslandList.querySelectorAll('.island-chip').forEach(item=>item.classList.toggle('is-active',item.dataset.island===id));
+  svgLayer.querySelectorAll('#islands [data-island]').forEach(shape=>shape.classList.toggle('is-selected',shape.dataset.island===id));
+  if(!countyMapLayer.hidden)countyMapCaption.textContent=`${t('countyMapLabel',{province:provinceName(selected)})} · ${islandName(id)}`;
+}
+function renderProvinceIslands(){
+  if(!selected){provinceIslandPanel.hidden=true;return}
+  const ids=Object.keys(islandProvinces).filter(id=>islandProvinces[id]===selected);
+  provinceIslandPanel.hidden=!ids.length;
+  $('#provinceIslandCount').textContent=number(ids.length);
+  provinceIslandList.replaceChildren(...ids.map(id=>{
+    const button=document.createElement('button');
+    button.type='button';button.className='island-chip';button.dataset.island=id;button.textContent=islandName(id);
+    button.classList.toggle('is-active',id===selectedIslandId);
+    button.addEventListener('click',()=>selectIsland(id));
+    return button;
+  }));
 }
 function renderCountyMap(id){
   const counties=typeof countyMapData==='undefined'?[]:(countyMapData[id]||[]);
@@ -188,8 +213,8 @@ function applyLanguage(lang){
   } else {
     $('#selectedBadge').textContent=t('noneSelected'); $('#provinceHelp').textContent=t('provinceHelpDefault');
   }
-  renderCounties();
-  if(selected&&!countyMapLayer.hidden) renderCountyMap(selected);
+  renderCounties();renderProvinceIslands();
+  if(selected&&!countyMapLayer.hidden){renderCountyMap(selected);if(selectedIslandId)selectIsland(selectedIslandId)}
   renderSongs(); renderRanking(); updateStats(); updateCountdown(); updateMusicControl();
 }
 
@@ -243,23 +268,21 @@ function addIslandPresentation(svg,svgNs){
     if(!province)return;
     shape.dataset.island=id;shape.dataset.province=province;shape.classList.add('island-shape');
     shape.setAttribute('tabindex','0');shape.setAttribute('role','button');shape.setAttribute('aria-label',islandName(id));
-    const activate=()=>selectProvince(province);
+    const activate=e=>{e?.stopPropagation?.();selectProvince(province,id)};
     shape.addEventListener('pointerenter',e=>showTip(e,islandName(id)));
     shape.addEventListener('pointermove',moveTip);shape.addEventListener('pointerleave',hideTip);
     shape.addEventListener('click',activate);
     shape.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate()}});
     const box=shape.getBBox();
-    if(Math.max(box.width,box.height)<14){
-      const marker=document.createElementNS(svgNs,'circle');
-      marker.classList.add('island-marker');marker.dataset.island=id;marker.dataset.province=province;
-      marker.setAttribute('cx',String(box.x+box.width/2));marker.setAttribute('cy',String(box.y+box.height/2));marker.setAttribute('r','7.5');
-      marker.setAttribute('tabindex','0');marker.setAttribute('role','button');marker.setAttribute('aria-label',islandName(id));
-      marker.addEventListener('pointerenter',e=>showTip(e,islandName(id)));
-      marker.addEventListener('pointermove',moveTip);marker.addEventListener('pointerleave',hideTip);
-      marker.addEventListener('click',activate);
-      marker.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate()}});
-      islands.insertBefore(marker,shape);
-    }
+    const marker=document.createElementNS(svgNs,'circle');
+    marker.classList.add('island-marker');marker.dataset.island=id;marker.dataset.province=province;
+    marker.setAttribute('cx',String(box.x+box.width/2));marker.setAttribute('cy',String(box.y+box.height/2));marker.setAttribute('r',id==='qeshm'?'9':'11');
+    marker.setAttribute('tabindex','0');marker.setAttribute('role','button');marker.setAttribute('aria-label',islandName(id));
+    marker.addEventListener('pointerenter',e=>showTip(e,islandName(id)));
+    marker.addEventListener('pointermove',moveTip);marker.addEventListener('pointerleave',hideTip);
+    marker.addEventListener('click',activate);
+    marker.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate(e)}});
+    islands.insertBefore(marker,shape);
   });
 }
 
@@ -314,13 +337,13 @@ async function loadMap(){
 function showTip(e,name){tooltip.textContent=name;tooltip.classList.add('show');moveTip(e)}
 function moveTip(e){const r=mapStage.getBoundingClientRect();tooltip.style.left=`${e.clientX-r.left}px`;tooltip.style.top=`${e.clientY-r.top}px`}
 function hideTip(){tooltip.classList.remove('show')}
-function selectProvince(id){
-  if(!provinceNames.fa[id]) return; selected=id; selectedCountyKey='';
+function selectProvince(id,islandId=''){
+  if(!provinceNames.fa[id]) return; selected=id; selectedCountyKey='';selectedIslandId=islandId;
   const provinceGroup=svgLayer.querySelector('#provinces');
   provinceGroup?.querySelector('.selection-overlay')?.remove();
   const provincePaths=[...svgLayer.querySelectorAll('#provinces path:not(.selection-outline)')];
   provincePaths.forEach(p=>p.classList.toggle('is-selected',p.dataset.province===id));
-  svgLayer.querySelectorAll('#islands [data-province]').forEach(shape=>shape.classList.toggle('is-selected',shape.dataset.province===id));
+  svgLayer.querySelectorAll('#islands [data-island]').forEach(shape=>shape.classList.toggle('is-selected',shape.dataset.island===selectedIslandId));
   const selectedPaths=provincePaths.filter(p=>p.dataset.province===id);
   if(provinceGroup&&selectedPaths.length){
     const overlay=document.createElementNS('http://www.w3.org/2000/svg','g');
@@ -334,8 +357,9 @@ function selectProvince(id){
   }
   $('#selectedProvince').textContent=provinceName(id); $('#selectedBadge').textContent=t('selectedBadge',{province:provinceName(id)});
   $('#provinceHelp').textContent=t('provinceHelp',{province:provinceName(id)}); $('#addSongBtn').disabled=false;
-  countySearch.value=''; renderCounties();
+  countySearch.value=''; renderCounties();renderProvinceIslands();
   renderCountyMap(id);
+  if(selectedIslandId)selectIsland(selectedIslandId);
   provinceFallback.value=id; filterProvince.value=id; renderSongs(); updateStats();
 }
 provinceFallback.addEventListener('change',e=>e.target.value&&selectProvince(e.target.value));
@@ -406,13 +430,15 @@ function updateCountdown(){
 setInterval(updateCountdown,1000);
 const dialog=$('#songDialog');
 function selectedCountyName(){
+  if(selectedIslandId)return islandName(selectedIslandId);
   if(!selectedCountyKey||typeof countyData==='undefined')return '';
   const county=(countyData[selected]||[]).find(item=>String(item.en||'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/\b(county|shahrestan)\b/g,'').replace(/[^a-z0-9]+/g,'')===selectedCountyKey);
   return county?countyName(county):'';
 }
 function prepareCountyField(){
-  const options=typeof countyData==='undefined'?[]:(countyData[selected]||[]);
-  $('#countyOptions').replaceChildren(...options.map(county=>{const option=document.createElement('option');option.value=countyName(county);return option}));
+  const counties=typeof countyData==='undefined'?[]:(countyData[selected]||[]).map(county=>countyName(county));
+  const islands=Object.keys(islandProvinces).filter(id=>islandProvinces[id]===selected).map(id=>islandName(id));
+  $('#countyOptions').replaceChildren(...[...counties,...islands].map(name=>{const option=document.createElement('option');option.value=name;return option}));
   $('#songCounty').value=selectedCountyName();
 }
 function openDialog(){if(!selected){toast(t('chooseFirst'));return}$('#dialogProvince').textContent=provinceName(selected);prepareCountyField();dialog.showModal();setTimeout(()=>$('#songCounty').focus(),50)}

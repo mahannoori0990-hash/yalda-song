@@ -56,13 +56,6 @@
         <h1><span data-i18n="heroTitle1">آهنگ محبوب شهرت را</span><br><span data-i18n="heroTitle2">به نقشه یلدای ایران اضافه کن</span></h1>
         <p data-i18n="heroText">استانت را انتخاب کن، آهنگ پیشنهادی‌ات را ثبت کن و به انتخاب‌های بقیه رأی بده.</p>
         <a class="primary hero-cta magnetic" href="#map-section"><span data-i18n="chooseProvince">انتخاب استان</span><b aria-hidden="true">↙</b></a>
-        <div class="hero-metrics" aria-label="Project highlights">
-          <div><strong data-i18n="metricCountProvinces">۳۱</strong><span data-i18n="metricProvinces">استان</span></div>
-          <i></i>
-          <div><strong data-i18n="metricCountLanguages">۳</strong><span data-i18n="metricLanguages">زبان</span></div>
-          <i></i>
-          <div><strong data-i18n="metricCountSongs">۱۰۰</strong><span data-i18n="metricSongs">رتبه برتر</span></div>
-        </div>
       </div>
       <div class="hero-object-label" aria-hidden="true"><span>01</span><i></i><b>YALDA / 2026</b></div>
       <a class="scroll-cue" href="#countdown-section" aria-label="Scroll"><span></span></a>
@@ -70,7 +63,7 @@
   </header>
 
   <div class="culture-marquee" aria-hidden="true">
-    <div><span>MUSIC</span><b>✦</b><span>CULTURE</span><b>✦</b><span>YALDA</span><b>✦</b><span>31 PROVINCES</span><b>✦</b><span>ONE NIGHT</span><b>✦</b><span>MUSIC</span><b>✦</b><span>CULTURE</span><b>✦</b><span>YALDA</span></div>
+    <div><span>MUSIC</span><b>✦</b><span>CULTURE</span><b>✦</b><span>YALDA</span><b>✦</b><span>ONE NIGHT</span><b>✦</b><span>MUSIC</span><b>✦</b><span>CULTURE</span><b>✦</b><span>YALDA</span></div>
   </div>
 
   <main>
@@ -163,6 +156,10 @@
             </label>
             <div id="countyList" class="county-list"></div>
             <p id="countyEmpty" class="county-empty" data-i18n="countyEmpty" hidden>شهرستانی با این نام پیدا نشد.</p>
+          </section>
+          <section id="provinceIslandPanel" class="province-island-panel" aria-live="polite" hidden>
+            <div class="province-island-head"><span data-i18n="islandsOfProvince">جزیره‌های این استان</span><b id="provinceIslandCount">۰</b></div>
+            <div id="provinceIslandList" class="province-island-list"></div>
           </section>
         </aside>
       </div>

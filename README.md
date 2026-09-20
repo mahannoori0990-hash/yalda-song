@@ -8,6 +8,8 @@ Features:
 - Province zoom with visible county boundary polygons; every county area supports hover, keyboard focus and click selection
 - Caspian Sea and Persian Gulf shapes and islands on the map
 - Interactive Iranian islands with trilingual names, larger click targets and province selection, including Ashuradeh in the Caspian Sea
+- Province panels include their islands as selectable subregions, and a selected island prefills the optional location field when adding a song
+- The introductory 31 provinces / 3 languages / Top 100 metric strip has been removed
 - A distinct, full-view Iranian carpet artwork for each of all 31 provinces
 - GitHub-friendly carpet bundle: all 31 designs are packed into the single `carpets.js` file
 - Persian, English and German language switcher
