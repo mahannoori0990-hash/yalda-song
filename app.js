@@ -118,6 +118,20 @@ function selectCounty(key){
   selectedCountyKey=key;selectedIslandId='';
   countyList.querySelectorAll('.county-chip').forEach(item=>item.classList.toggle('is-active',item.dataset.countyKey===key));
   countyMapLayer.querySelectorAll('.county-shape').forEach(path=>path.classList.toggle('is-active',path.dataset.countyKey===key));
+  const svg=countyMapLayer.querySelector('svg');
+  svg?.querySelector('.county-selection-overlay')?.remove();
+  const activePath=[...countyMapLayer.querySelectorAll('.county-shape')].find(path=>path.dataset.countyKey===key);
+  if(svg&&activePath){
+    const overlay=document.createElementNS('http://www.w3.org/2000/svg','g');
+    overlay.classList.add('county-selection-overlay');overlay.setAttribute('aria-hidden','true');
+    ['county-selection-halo','county-selection-line'].forEach(className=>{
+      const outline=activePath.cloneNode(true);
+      outline.removeAttribute('tabindex');outline.removeAttribute('role');outline.removeAttribute('aria-label');
+      outline.removeAttribute('data-county-key');outline.removeAttribute('data-index');
+      outline.setAttribute('class',className);overlay.appendChild(outline);
+    });
+    svg.appendChild(overlay);
+  }
   provinceIslandList.querySelectorAll('.island-chip').forEach(item=>item.classList.remove('is-active'));
   svgLayer.querySelectorAll('#islands [data-island]').forEach(shape=>shape.classList.remove('is-selected'));
 }
@@ -126,6 +140,7 @@ function selectIsland(id){
   selectedIslandId=id;selectedCountyKey='';
   countyList.querySelectorAll('.county-chip').forEach(item=>item.classList.remove('is-active'));
   countyMapLayer.querySelectorAll('.county-shape').forEach(path=>path.classList.remove('is-active'));
+  countyMapLayer.querySelector('.county-selection-overlay')?.remove();
   provinceIslandList.querySelectorAll('.island-chip').forEach(item=>item.classList.toggle('is-active',item.dataset.island===id));
   svgLayer.querySelectorAll('#islands [data-island]').forEach(shape=>shape.classList.toggle('is-selected',shape.dataset.island===id));
   if(!countyMapLayer.hidden)countyMapCaption.textContent=`${t('countyMapLabel',{province:provinceName(selected)})} · ${islandName(id)}`;
@@ -152,12 +167,13 @@ function renderCountyMap(id){
   countyMapCaption.textContent=t('countyMapLabel',{province:provinceName(id)});
   countyMapLayer.querySelectorAll('.county-shape').forEach(path=>{
     const county=counties[Number(path.dataset.index)];
-    const activate=()=>selectCounty(path.dataset.countyKey);
+    const activate=()=>{selectCounty(path.dataset.countyKey);path.blur?.();document.activeElement?.blur?.()};
     path.addEventListener('pointerenter',e=>showTip(e,mapCountyName(county)));
     path.addEventListener('pointermove',moveTip); path.addEventListener('pointerleave',hideTip);
     path.addEventListener('click',activate);
     path.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate()}});
   });
+  if(selectedCountyKey)selectCounty(selectedCountyKey);
 }
 function showProvinceMap(){
   countyMapLayer.hidden=true; countyMapLayer.replaceChildren(); svgLayer.hidden=false;
