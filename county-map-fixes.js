@@ -21,9 +21,6 @@
       fereydan: { fa: 'فریدن', en: 'Faridan', de: 'Faridan', key: 'faridan' }
     },
     khuzestan: { bandaremahshahr: { fa: 'بندر ماهشهر', en: 'Mahshahr', de: 'Mahshahr', key: 'mahshahr' } },
-    semnan: {
-      shahmirzad: { fa: 'شهمیرزاد', en: 'Shahmirzad', de: 'Shahmirzad', key: 'shahmirzad' }
-    },
     tehran: {
       paveh: { fa: 'پردیس', en: 'Pardis', de: 'Pardis', key: 'pardis' },
       cityoftehran: { fa: 'تهران', en: 'Tehran', de: 'Teheran', key: 'tehran' }

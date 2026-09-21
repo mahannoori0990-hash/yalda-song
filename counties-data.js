@@ -2071,7 +2071,7 @@ const countyData = {
       "de": "Qasr-e Qand"
     },
     {
-      "fa": "راسک (ایران)",
+      "fa": "راسک",
       "en": "Rask",
       "de": "Rask"
     },
@@ -2117,6 +2117,11 @@ const countyData = {
     }
   ],
   "south-khorasan": [
+    {
+      "fa": "عشق‌آباد",
+      "en": "Eshqabad",
+      "de": "Eshqabad"
+    },
     {
       "fa": "بیرجند",
       "en": "Birjand",

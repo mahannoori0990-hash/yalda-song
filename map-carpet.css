@@ -60,3 +60,11 @@
   filter: drop-shadow(0 0 7px rgba(255, 211, 92, .95));
 }
 .svg-layer #islands .island-marker.is-selected { fill:#fff2a8;stroke:#571c2a!important;transform:scale(1.18) }
+
+.county-map-attribution {
+  margin: .35rem 0 0;
+  font-size: .75rem;
+  text-align: center;
+  opacity: .64;
+}
+.county-map-attribution a { color: inherit; }
