@@ -8,7 +8,7 @@
 .svg-layer g#islands {
   display: block !important;
 }
-.svg-layer g#seas { pointer-events: none; }
+.svg-layer g#seas { pointer-events: auto; }
 .svg-layer g#islands { pointer-events: auto; }
 .svg-layer #seas path {
   fill: url(#yalda-sea-water) !important;
@@ -16,6 +16,14 @@
   stroke-width: 1.7 !important;
   opacity: .94;
   vector-effect: non-scaling-stroke;
+  pointer-events: visiblePainted;
+  cursor: help;
+  transition: filter .18s ease, opacity .18s ease;
+}
+.svg-layer #seas path:hover,
+.svg-layer #seas path:focus-visible {
+  filter: brightness(1.12) saturate(1.08) drop-shadow(0 0 5px rgba(255, 248, 221, .7));
+  outline: none;
 }
 .svg-layer #islands .island-shape {
   fill: #7a2638 !important;
