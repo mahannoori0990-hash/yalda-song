@@ -8,9 +8,6 @@
     mazandaran: {
       savadkuheshomali: { fa: 'سوادکوه شمالی', en: 'North Savadkuh', de: 'North Savadkuh', key: 'northsavadkuh' }
     },
-    'north-khorasan': {
-      manehandsamalqan: { fa: 'مانه و سملقان', en: 'Maneh and Samalqan', de: 'Maneh und Samalqan', key: 'manehandsamalqan' }
-    },
     'razavi-khorasan': {
       jowayin: { fa: 'جوین', en: 'Joveyn', de: 'Joveyn', key: 'joveyn' },
       neyshabur: { fa: 'نیشابور', en: 'Nishapur', de: 'Nischapur', key: 'nishapur' },
@@ -54,12 +51,4 @@
 
   countyMapData.mazandaran = (countyMapData.mazandaran || []).filter(county => county.key !== 'bandaregaz');
 
-  // Keep Maneh and Samalqan as one county in both the list and the map.
-  if (typeof countyData !== 'undefined' && countyData['north-khorasan']) {
-    const otherCounties = countyData['north-khorasan'].filter(county => !['Maneh', 'Samalqan'].includes(county.en));
-    const combinedCounty = { fa: 'مانه و سملقان', en: 'Maneh and Samalqan', de: 'Maneh und Samalqan' };
-    const insertAt = Math.min(6, otherCounties.length);
-    otherCounties.splice(insertAt, 0, combinedCounty);
-    countyData['north-khorasan'] = otherCounties;
-  }
 })();

@@ -580,3 +580,29 @@ html[dir="ltr"] .hero-cta:hover b { transform:scaleX(-1) translate(-3px,3px); }
   .hero-metrics div { min-width:0; align-items:center; text-align:center; }
   .hero-metrics span { white-space:normal; line-height:1.35; }
 }
+
+/* Keep the supplied Yalda illustration visible behind the existing 3D scene. */
+.hero { isolation:isolate; }
+.hero-scene {
+  position:absolute;
+  z-index:0;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(90deg,rgba(20,2,9,.7),rgba(28,3,12,.32) 44%,rgba(17,1,7,.12) 74%),
+    url("yalda-hero-house.png");
+  background-size:cover;
+  background-position:center;
+}
+html[dir="rtl"] .hero-scene { transform:scaleX(-1); }
+.hero-aurora { opacity:.52; }
+.yalda-3d-canvas { opacity:.74; }
+@media(max-width:760px) {
+  .hero-scene {
+    background-image:
+      linear-gradient(90deg,rgba(16,1,7,.91),rgba(25,2,10,.75) 60%,rgba(16,1,7,.3)),
+      url("yalda-hero-house.png");
+    background-position:52% center;
+  }
+  .yalda-3d-canvas { opacity:.42; }
+}
