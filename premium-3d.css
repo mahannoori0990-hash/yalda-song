@@ -598,11 +598,20 @@ html[dir="rtl"] .hero-scene { transform:scaleX(-1); }
 .hero-aurora { opacity:.52; }
 .yalda-3d-canvas { opacity:.74; }
 @media(max-width:760px) {
+  .hero {
+    min-height:0;
+    padding-bottom:calc(50vw + 48px);
+  }
   .hero-scene {
     background-image:
-      linear-gradient(90deg,rgba(16,1,7,.91),rgba(25,2,10,.75) 60%,rgba(16,1,7,.3)),
+      linear-gradient(180deg,#18030c 0%,rgba(24,3,12,.9) 48%,rgba(24,3,12,.08) 76%,transparent 100%),
       url("yalda-hero-house.png");
-    background-position:52% center;
+    background-color:#18030c;
+    background-size:100% 100%,100% auto;
+    background-position:center,center calc(100% - 54px);
+    background-repeat:no-repeat;
   }
-  .yalda-3d-canvas { opacity:.42; }
+  html[dir="rtl"] .hero-scene { transform:none; }
+  .hero-aurora { opacity:.2; }
+  .yalda-3d-canvas { opacity:.18; }
 }
